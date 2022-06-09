@@ -1,0 +1,15 @@
+:root {
+--primery-text-color: #000;
+--secondary-text-color: #fff;
+--accent-color: #FF6B08;
+--background-color: #F7F7F7;
+--logo-color: #818181;
+--error-notification-color: #FF001B;
+
+	--transition-duration: 300ms;
+	--timing-function: ease;
+}
+
+$mobile: "320px";
+$tablet: "768px";
+$desktop: "1024px";

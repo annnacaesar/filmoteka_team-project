@@ -1,0 +1,13 @@
+@import '~node_modules/modern-normalize/modern-normalize.css';
+
+body {
+	color: var(--primery-text-color);
+	font-family: 'Roboto', sans-serif;
+	font-weight: 500;
+	font-size: 12px;
+}
+
+html, body {
+	overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+}

@@ -1,2 +1,13 @@
-@import './common';
-@import './example';
+@import './utils/reset';
+@import './utils/visually-hidden';
+@import './utils/variables';
+
+@import './base/common';
+@import './base/container';
+@import './base/button';
+
+@import './header';
+@import './films';
+@import './footer';
+@import './modal';
+
