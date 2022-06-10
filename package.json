@@ -18,7 +18,8 @@
     "url": "https://github.com/annnacaesar/filmoteka-project/issues"
   },
   "dependencies": {
-    "modern-normalize": "^1.1.0"
+    "modern-normalize": "^1.1.0",
+    "simplelightbox": "^2.10.3"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
