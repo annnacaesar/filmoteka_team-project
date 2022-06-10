@@ -1,0 +1,26 @@
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<symbol id="icon-slash" viewBox="0 0 19 32">
+<path fill="#8c8c8c" style="fill: var(--color1, #8c8c8c)" d="M17.357 1.501l-10.63 29.642h-3.546l10.65-29.638h3.526z"></path>
+</symbol>
+<symbol id="icon-search-2" viewBox="0 0 32 32">
+<path fill="none" stroke="#fff" style="stroke: var(--color2, #fff)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M14.667 25.333c5.891 0 10.667-4.776 10.667-10.667s-4.776-10.667-10.667-10.667v0c-5.891 0-10.667 4.776-10.667 10.667s4.776 10.667 10.667 10.667v0zM28 28l-5.8-5.8"></path>
+</symbol>
+<symbol id="icon-film" viewBox="0 0 32 32">
+<path fill="none" stroke="#818181" style="stroke: var(--color3, #818181)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M26.427 2.667h-20.853c-1.605 0-2.907 1.301-2.907 2.907v0 20.853c0 1.605 1.301 2.907 2.907 2.907v0h20.853c1.605 0 2.907-1.301 2.907-2.907v0-20.853c0-1.605-1.301-2.907-2.907-2.907v0zM9.333 2.667v26.667M22.667 2.667v26.667M2.667 16h26.667M2.667 9.333h6.667M2.667 22.667h6.667M22.667 22.667h6.667M22.667 9.333h6.667"></path>
+</symbol>
+<symbol id="icon-close" viewBox="0 0 32 32">
+<path stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="2.1333" d="M8.533 8.533l14.933 14.933M8.533 23.467l14.933-14.933"></path>
+</symbol>
+<symbol id="icon-arrow-right" viewBox="0 0 32 32">
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.666" d="M6.666 16h18.668M16 25.334l9.334-9.334-9.334-9.334"></path>
+</symbol>
+<symbol id="icon-arrow-left" viewBox="0 0 32 32">
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.666" d="M25.334 16h-18.668M16 25.334l-9.334-9.334 9.334-9.334"></path>
+</symbol>
+
+<symbol id="icon-heart" viewBox="0 0 34 32">
+<path fill="#ff6b08" style="fill: var(--color5, #ff6b08)" d="M17.231 31.705l-2.412-2.412c-8.96-7.926-14.818-13.268-14.818-19.815-0.001-0.037-0.001-0.080-0.001-0.124 0-5.166 4.188-9.354 9.354-9.354 0.044 0 0.087 0 0.13 0.001l-0.007-0c3.1 0.032 5.868 1.423 7.742 3.605l0.012 0.014c1.886-2.195 4.654-3.587 7.748-3.618l0.006-0c0.037-0.001 0.080-0.001 0.124-0.001 5.166 0 9.354 4.188 9.354 9.354 0 0.044-0 0.087-0.001 0.13l0-0.007c0 6.548-5.858 11.889-14.818 19.815l-2.412 2.412z"></path>
+</symbol>
+</defs>
+</svg>
