@@ -1,16 +1,26 @@
 .container {
-	width: 100%;
-	margin: 0 auto;
-	padding-right: 32px;
-	padding-left: 32px;
-	
-	@media screen and (min-width: $mobile) {
-		width: 320px;
-	}
-	@media screen and (min-width: $tablet) {
-		width: 768px;
-	}
-	@media screen and (min-width: $desktop) {
-		width: 1024px;
-	}
+  width: 100%;
+  margin: 0 auto;
+  padding-right: 32px;
+  padding-left: 32px;
+
+  //   @media screen and (min-width: $mobile) {
+  //     width: 480px;
+  //   }
+  //   @media screen and (min-width: $tablet) {
+  //     width: 768px;
+  //   }
+  //   @media screen and (min-width: $desktop) {
+  //     width: 1024px;
+  //   }
+
+  @include mq(mobile) {
+    width: 480px;
+  }
+  @include mq(tablet) {
+    width: 768px;
+  }
+  @include mq(desktop) {
+    width: 1024px;
+  }
 }
