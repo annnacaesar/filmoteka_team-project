@@ -1,0 +1,30 @@
+.films {
+	display: flex;
+	justify-content: center;
+
+		&__container {
+
+			@include mq(tablet){
+				display: flex;		
+				flex-wrap: wrap;
+				margin: -15px;
+			}
+		}
+
+		&__card {
+			width: 100%;
+
+			@include mq(tablet){
+				margin: 15px;
+				flex-basis: calc(100%/2 - 30px);
+				
+			}
+			@include mq(desktop){
+				flex-basis: calc(100%/3 - 30px);
+			}
+		}
+
+		&__img {
+			width: 100%;
+		}
+}
