@@ -1,0 +1,34 @@
+.films {
+	display: flex;
+	justify-content: center;
+
+		&__container {
+			padding-top: 20px;
+			padding-bottom: 40px;
+
+			@include mq(tablet){
+				padding-top: 60px;
+				padding-bottom: 60px;
+				display: flex;		
+				flex-wrap: wrap;
+				margin: -15px;
+			}
+		}
+
+		&__card {
+			width: 100%;
+
+			@include mq(tablet){
+				margin: 15px;
+				flex-basis: calc(100%/2 - 30px);
+				
+			}
+			@include mq(desktop){
+				flex-basis: calc(100%/3 - 30px);
+			}
+		}
+
+		&__img {
+			width: 100%;
+		}
+}
