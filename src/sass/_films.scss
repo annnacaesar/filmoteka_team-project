@@ -1,0 +1,67 @@
+.film__card {
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  flex-basis: content;
+
+//   @media screen and (min-width: $mobile) {
+//     width: 480px;
+//   }
+//   @media screen and (min-width: $tablet) {
+//     width: 768px;
+//   }
+//   @media screen and (min-width: $desktop) {
+//     width: 1024px;
+//   }
+}
+
+.film__img-wrapper {
+  border-radius: 5px;
+}
+
+.film__info {
+  margin-top: 8px;
+}
+
+.film__name {
+  text-transform: uppercase;
+
+  @media screen and (min-width: $mobile) {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+  }
+  @media screen and (min-width: $tablet) {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+  }
+  @media screen and (min-width: $desktop) {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+
+.film__description {
+  color: var(--accent-color);
+
+  margin-top: 8px;
+
+  @media screen and (min-width: $mobile) {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+  }
+  @media screen and (min-width: $tablet) {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+  }
+  @media screen and (min-width: $desktop) {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
