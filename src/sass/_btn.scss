@@ -1,3 +1,25 @@
+.button {
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+
+  cursor: pointer;
+  font-family: inherit;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.3;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+}
+.button:hover {
+  background-color: #ab8c78;
+}
+
 .button-group {
   display: flex;
   justify-content: center;
@@ -5,88 +27,66 @@
 }
 
 .library__button {
+  width: 130px;
+  height: 44px;
   background: transparent;
   color: var(--secondary-text-color);
-   border: solid 1px;
+  border: solid 1px;
   border-color: var(--secondary-text-color);
 
-  //   @media screen and (min-width: $tablet) {
-  //     display: inline-block;
-  //   }
-  width: 152px;
-  height: 42px;
+  @media screen and (min-width: $tablet) {
+    width: 152px;
+  }
+  @media screen and (min-width: $desktop) {
+    width: 147px;
+    height: 42px;
+  }
 }
 
 .library__button:not(:last-child) {
-  @media screen and (max-width: $tablet) {
-    margin-bottom: 1px;
-  }
+  margin-right: 20px;
+
   @media screen and (min-width: $tablet) {
+    margin-right: 32px;
+  }
+  @media screen and (min-width: $desktop) {
     margin-right: 16px;
   }
-}
-
-.button-group {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.film__button {
-     border: solid 1px;
-  border-color: var(--primery-text-color);
-  background: transparent;
-  color: var(--primery-text-color);
-
-  //   @media screen and (min-width: $tablet) {
-  //     display: inline-block;
-  //   }
-  width: 136px;
-  height: 44px;
-}
-
-.film__button:not(:last-child) {
-  @media screen and (max-width: $tablet) {
-    margin-bottom: 1px;
-  }
-  @media screen and (min-width: $tablet) {
-    margin-right: 15px;
-  }
-}
-
-.button {
-
- 
-  
-
-  border-radius: 5px;
-  display: flex;
-  flex-direction: row;
-  height: 42px;
-  cursor: pointer;
-  font-family: inherit;
-
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-  /* or 133% */
-  justify-content: center;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  text-transform: uppercase;
-}
-.button:hover{
-    background-color: #ab8c78;
 }
 
 .library__button.is-active {
   background-color: var(--accent-color);
   border-color: var(--accent-color);
 }
-.film__button.is-active{
-    border-color: var(--accent-color);
-    background-color: var(--accent-color);
-    color: var(--secondary-text-color);
-}
+
+
+// ----------------------------------------------------
+// .film__button.is-active {
+//   border-color: var(--accent-color);
+//   background-color: var(--accent-color);
+//   color: var(--secondary-text-color);
+// }
+
+// .film__button {
+//   border: solid 1px;
+//   border-color: var(--primery-text-color);
+//   background: transparent;
+//   color: var(--primery-text-color);
+
+//   //   @media screen and (min-width: $tablet) {
+//   //     display: inline-block;
+//   //   }
+//   width: 136px;
+//   height: 44px;
+// }
+
+// .film__button:not(:last-child) {
+//   margin-right: 20px;
+//   @media screen and (min-width: $tablet) {
+//     margin-bottom: 1px;
+//     margin-right: 20px;
+//   }
+//   @media screen and (min-width: $desktop) {
+//     margin-right: 15px;
+//   }
+// }
