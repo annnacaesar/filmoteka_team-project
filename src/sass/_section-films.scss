@@ -3,8 +3,12 @@
 	justify-content: center;
 
 		&__container {
+			padding-top: 20px;
+			padding-bottom: 40px;
 
 			@include mq(tablet){
+				padding-top: 60px;
+				padding-bottom: 60px;
 				display: flex;		
 				flex-wrap: wrap;
 				margin: -15px;
