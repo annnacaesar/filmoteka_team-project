@@ -1,0 +1,35 @@
+<header class="header" id="home">
+
+    <div class="header__container container">
+        <div class="header__wrapper">
+            <a class="logo" href="./index.html" aria-label="Filmoteka logo">
+                <svg class="logo__icon" width="24px" height="24px">
+                    <use href="./images/sprite.svg#icon-film"> </use>
+                </svg>
+                <span class="logo__text">Filmoteka</span>
+            </a>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item active">
+                        <a class="nav__link" href="index.html">home</a>
+                    </li>
+                    <li class="nav__item ">
+                        <a class="nav__link" href="./library.html">my library</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="input ">
+            <form class="input__wraper">
+                <input class=" header__input" type="text" placeholder="Search films ..." autocomplete="off" />
+                <button class="input__search-btn" type="submit" aria-lable="Search films">
+                    <svg class="input__search-icon" width="12px" height="12px">
+                        <use href="./images/sprite.svg#icon-search"></use>
+                    </svg>
+                </button>
+            </form>
+        </div>
+        <p class="input__error" id="js-input-error"></p>
+
+    </div>
+</header>

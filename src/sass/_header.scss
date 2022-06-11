@@ -1,0 +1,197 @@
+.header {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url('./../images/header-main/header320.jpg');
+    @include mq(retina) {background-image: url('./../images/header-main/header320@2x.jpg');}
+
+    @include mq(mobile) {
+        background-size: contain;
+        background-image: url('./../images/header-main/header320.jpg');
+        @include mq(retina) {background-image: url('./../images/header-main/header320@2x.jpg');}
+    }
+
+    @include mq(tablet) {
+        background-size: contain;
+        background-image: url('./../images/header-main/header768.jpg');
+        @include mq(retina) {background-image: url('./../images/header-main/header768@2x.jpg');}
+    }
+
+    @include mq(desktop) {
+        background-size: contain;
+        background-image: url('./../images/header-main/header1024.jpg');
+        @include mq(retina){background-image: url('./../images/header-main/header1024@2x.jpg');}
+    }
+
+    &__wrapper {
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.library {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url('./../images/header-library/library320.jpg');
+    @include mq(retina) {background-image: url('./../images/header-library/library320@2x.jpg')}
+        
+
+    
+
+    @include mq(mobile) {
+        background-size: contain;
+        background-image: url('./../images/header-library/library320.jpg');
+       @include mq(retina) {background-image: url('./../images/header-library/library320@2x.jpg')}
+    }
+
+    @include mq(tablet)  {
+        background-size: contain;
+        background-image: url('./../images/header-library/library768.jpg');
+        @include mq(retina) {background-image: url('./../images/header-library/library768@2x.jpg')
+    }
+    }
+
+    @include mq(desktop) {
+        background-size: contain;
+        background-image: url('./../images/header-library/library1024.jpg');
+        @include mq(retina){background-image: url('./../images/header-library/library1024@2x.jpg')}
+    }
+
+    &__wrapper {
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+}
+
+.logo {
+    margin-top: 40px;
+    margin-left: 20px;
+    @include mq(tablet) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__icon {
+        display: inline-block;
+    }
+
+    &__text {
+        display: none;
+
+    @include mq(tablet) {
+            display: block;
+            font-weight: 500;
+            margin-left: 10px;
+            color: #FFFFFF;
+            font-size: 30px;
+            line-height: 35px;
+        }
+    }
+
+    &:hover {
+        transform: scale(1.2);
+    }
+}
+
+.nav {
+    &__list {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        width: 143px;
+        margin-top: 40px;
+    }
+
+    &__item:nth-child(1) {
+        margin-right: 40px;
+    }
+
+    &__item.active {
+        position: relative;
+        &::after {
+            position: absolute;
+            content: '';
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: #FF6B01;
+        }
+    }
+
+    ;
+
+
+    &__link {
+        opacity: 1;
+        font-weight: 500;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        &:hover,
+        &:focus {
+            color: #FF6B01;
+        };
+    }
+}
+
+
+.input {
+    margin-top: 50px;
+    @include mq(tablet) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 40px;
+    }
+
+}
+
+.header__input {
+    height: 20px;
+    font-weight: 400;
+    font-size: 14px;
+    color: #FFFFFF;
+    background: none;
+    border: none;
+    border-bottom: 0.5px solid #FFFFFF;
+    padding: 0 0 4px 1px;
+    outline: none;
+    width: 230px;
+    @include mq(tablet) {
+        width: 336px;
+    }
+}
+
+.input__search-btn {
+
+    bottom: 6px;
+    background: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+    stroke: #FFFFFF;
+    &:hover,
+    &:focus {
+        stroke: #FF6B01;
+        transform: scale(1.2);
+    }
+}
+
+.header__container {
+    width: 310px;
+    height: 230px;
+    @include mq(tablet) {
+        width: 648px;
+        height: 215px;
+    }
+    @include mq(desktop) {
+        width: 912px;
+        height: 216px;
+    }
+}
