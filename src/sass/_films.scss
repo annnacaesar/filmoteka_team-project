@@ -1,0 +1,76 @@
+.film__card {
+    margin: 0 auto;
+    @media screen and (min-width: $mobile) {
+        width: 320px;
+    }
+    @media screen and (min-width: $tablet) {
+        width: 768px;
+    }
+    @media screen and (min-width: $desktop) {
+        width: 1024px;
+    }
+}
+
+.film__img-wrapper {
+    background-color: red;
+    border-radius: 5px;
+    @media screen and (min-width: $mobile) {
+        width: 280px;
+        height: 402px;
+        background-color: red;
+    }
+    @media screen and (min-width: $tablet) {
+        width: 336px;
+        height: 455px;
+        background-color: red;
+    }
+    @media screen and (min-width: $desktop) {
+        width: 309px;
+        height: 449px;
+        background-color: red;
+    }
+}
+
+.film__info {
+    margin-top: 8px;
+}
+
+.film__name {
+    text-transform: uppercase;
+
+    @media screen and (min-width: $mobile) {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 14px;
+    }
+    @media screen and (min-width: $tablet) {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+    }
+    @media screen and (min-width: $desktop) {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+    }
+}
+
+.film__description {    
+    color: #FF6B08;
+
+    @media screen and (min-width: $mobile) {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+    }
+    @media screen and (min-width: $tablet) {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+    }
+    @media screen and (min-width: $desktop) {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+    }
+}
