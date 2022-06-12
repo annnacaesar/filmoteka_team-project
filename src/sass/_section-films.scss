@@ -15,11 +15,11 @@
 			}
 		}
 
-		&__card:not(:last-child){
+		&__item:not(:last-child){
 			margin-bottom: 15px;
 		}
 
-		&__card {
+		&__item {
 			width: 100%;
 
 			@include mq(tablet){

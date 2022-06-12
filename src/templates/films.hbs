@@ -1,15 +1,24 @@
 {{#each this}}
-
-
+<li class="films__item" data-id={{id}}>
 	<div class="films__card">
-<a class="films__link" href="https://image.tmdb.org/t/p/w500/{{backdrop_path}}">
-<img class="films__img" src="https://image.tmdb.org/t/p/w500/{{poster_path}}" alt="">
+		<a
+			class="films__link"
+			href="https://image.tmdb.org/t/p/w500/{{backdrop_path}}" 
+		>
+			<img
+				class="films__img"
+				src="https://image.tmdb.org/t/p/w500/{{poster_path}}"
+				alt="{{name}}"
+				loading="lazy"
+			/>
 			<div class="films__info">
-						<p class="films__name">{{original_title}}</p>
-						<p class="films__description">{{genres.name}} | {{release_date}}</p>
-			</div>
-			</a>
-			
-	</div>
+				<p class="films__name">{{original_title}}</p>
 
+				<p class="films__description">
+					{{genre_ids}} | {{release_date}}
+				</p>
+			</div>
+		</a>
+	</div>
+</li>
 {{/each}}
