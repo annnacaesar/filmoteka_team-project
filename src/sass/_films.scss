@@ -1,30 +1,16 @@
-.film__card {
+.films__card {
   margin: 0 auto;
 
   display: flex;
   flex-direction: column;
   flex-basis: content;
-
-//   @media screen and (min-width: $mobile) {
-//     width: 480px;
-//   }
-//   @media screen and (min-width: $tablet) {
-//     width: 768px;
-//   }
-//   @media screen and (min-width: $desktop) {
-//     width: 1024px;
-//   }
 }
 
-.film__img-wrapper {
-  border-radius: 5px;
-}
-
-.film__info {
+.films__info {
   margin-top: 8px;
 }
 
-.film__name {
+.films__name {
   text-transform: uppercase;
 
   @media screen and (min-width: $mobile) {
@@ -44,7 +30,7 @@
   }
 }
 
-.film__description {
+.films__description {
   color: var(--accent-color);
 
   margin-top: 8px;
