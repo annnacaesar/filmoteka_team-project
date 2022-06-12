@@ -6,7 +6,7 @@
     @include mq(retina) {background-image: url('./../images/header-main/header320@2x.jpg');}
 
     @include mq(mobile) {
-        background-size: contain;
+        background-size: cover;
         background-image: url('./../images/header-main/header320.jpg');
         @include mq(retina) {background-image: url('./../images/header-main/header320@2x.jpg');}
     }
@@ -184,7 +184,7 @@
 }
 
 .header__container {
-    width: 310px;
+    width: 320px;
     height: 230px;
     @include mq(tablet) {
         width: 648px;
