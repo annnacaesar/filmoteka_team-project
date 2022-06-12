@@ -3,7 +3,7 @@ const BASE_URL = `https://api.themoviedb.org/3/`;
 
 // приклад запиту https://api.themoviedb.org/3/movie/550?api_key=7cb8097836a7a1f4e5c19953961668c8
 
-const VIDEO_BY_SEACH = `${BASE_URL}/seach/movie?api_key=${API_KEY}&include_adult=false`;
+const VIDEO_BY_SEACH = `${BASE_URL}/search/movie?api_key=${API_KEY}&include_adult=false`;
 
 export default class MovieApiService {
   constructor() {
