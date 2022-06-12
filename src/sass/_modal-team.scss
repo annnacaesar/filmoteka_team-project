@@ -1,0 +1,60 @@
+.team__wrap {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.team__title{
+    color: var(--accent-color);
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+.team__list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.team__item {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(129, 124, 124, 0.35);
+  border-radius: 5px;
+  
+ 
+}
+.team__item:not(:last-child) {
+  
+  margin-right: 15px;
+  margin-bottom: 15px;
+  
+}
+.team__item-img {
+    width: 200px;
+    height: 200px;
+  border-radius: 5px;
+  margin-bottom: 5px;;
+}
+
+.team__item-name{
+    font-size: 18px;
+    margin-bottom: 5px;
+
+}
+.team__item-role{
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: var(--accent-color);
+    
+}
+.team__item-icon{
+   
+    margin-bottom: 5px;
+    
+}
