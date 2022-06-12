@@ -15,6 +15,10 @@
 			}
 		}
 
+		&__card:not(:last-child){
+			margin-bottom: 15px;
+		}
+
 		&__card {
 			width: 100%;
 
@@ -27,6 +31,7 @@
 				flex-basis: calc(100%/3 - 30px);
 			}
 		}
+		
 
 		&__img {
 			width: 100%;
