@@ -17,7 +17,7 @@
   text-transform: uppercase;
 }
 .button:hover {
-  background-color: #ab8c78;
+  background-color: #ab8d7852;
 }
 
 .button-group {
@@ -28,6 +28,8 @@
 }
 
 .library__button {
+  margin-bottom: 62px;
+  margin-top: 52px;
   width: 130px;
   height: 44px;
   background: transparent;
@@ -37,6 +39,7 @@
 
   @media screen and (min-width: $tablet) {
     width: 152px;
+   
   }
   @media screen and (min-width: $desktop) {
     width: 147px;
@@ -59,7 +62,6 @@
   background-color: var(--accent-color);
   border-color: var(--accent-color);
 }
-
 
 // ----------------------------------------------------
 // .film__button.is-active {
