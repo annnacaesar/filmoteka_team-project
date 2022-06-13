@@ -3,7 +3,7 @@ const BASE_URL = `https://api.themoviedb.org/3/`;
 
 // приклад запиту https://api.themoviedb.org/3/movie/550?api_key=7cb8097836a7a1f4e5c19953961668c8
 
-const VIDEO_BY_SEACH = `${BASE_URL}/search/movie?api_key=${API_KEY}&include_adult=false`;
+const VIDEO_BY_SEACH = `${BASE_URL}search/movie?api_key=${API_KEY}&include_adult=false`;
 
 export default class MovieApiService {
   constructor() {
@@ -23,7 +23,7 @@ export default class MovieApiService {
   }
 
   async fetchPopular() {
-    const urlPopular = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${this.page}`;
+    const urlPopular = `${BASE_URL}trending/movie/day?api_key=${API_KEY}&page=${this.page}`;
     return fetch(urlPopular).then(responce => responce.json());
   }
 
