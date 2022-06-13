@@ -1,0 +1,45 @@
+#page-buttons {
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 60px 197px 60px 197px;
+}
+
+.button-page {
+  border-radius: 5px;
+  background-color: #fff;
+  &.arrow {
+    background-color: var(--background-color);
+    padding: 12px 12px 12px 12px;
+  }
+  &.active {
+    padding: 13px 13px 11px 13px;
+    background-color: var(--accent-color);
+  }
+  &:not(:last-child) {
+    margin-right: 16px;
+  }
+}
+
+.page-buttons__points {
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+  padding-right: 11px;
+}
+
+@include mq(mobile-only) {
+  .hidden-in-mobile {
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    border: 0;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    margin: -1px;
+  }
+}
