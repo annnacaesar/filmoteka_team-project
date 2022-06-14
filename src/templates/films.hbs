@@ -3,19 +3,19 @@
 	<div class="films__card">
 		<a
 			class="films__link"
-			href="https://image.tmdb.org/t/p/w500/{{poster_path}}" 
+			href="https://image.tmdb.org/t/p/w500/{{img}}" 
 		>
 			<img
 				class="films__img"
-				src="https://image.tmdb.org/t/p/w500/{{poster_path}}"
-				alt="{{name}}"
+				src="https://image.tmdb.org/t/p/w500/{{img}}"
+				alt="{{title}}"
 				loading="lazy"
 			/>
 			<div class="films__info">
-				<p class="films__name">{{original_title}}</p>
+				<p class="films__name">{{title}}</p>
 
 				<p class="films__description">
-					{{genre_ids}} | {{release_date}}
+					{{genre}} | {{releaseDate}}
 				</p>
 			</div>
 		</a>

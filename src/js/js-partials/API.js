@@ -1,5 +1,6 @@
-const API_KEY = `7cb8097836a7a1f4e5c19953961668c8`;
-const BASE_URL = `https://api.themoviedb.org/3`;
+import settings from './settings'
+const API_KEY = settings.API_KEY;
+const BASE_URL = settings.BASE_URL
 
 // приклад запиту https://api.themoviedb.org/3/movie/550?api_key=7cb8097836a7a1f4e5c19953961668c8
 
