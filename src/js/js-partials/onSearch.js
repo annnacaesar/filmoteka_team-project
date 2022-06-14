@@ -12,8 +12,8 @@ searchForm.addEventListener("submit", onSearch);
 function onSearch(e) {
   e.preventDefault();
 
-  // apiService.query = e.currentTarget.elements.searchQuery.value;
-  apiService.query = e.target.value;
+  apiService.query = e.currentTarget.elements.searchQuery.value;
+  // apiService.query = e.target.value;
 
   console.log(apiService.query);
   apiService.resetPage();
