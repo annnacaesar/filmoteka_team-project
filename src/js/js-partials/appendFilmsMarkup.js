@@ -8,9 +8,9 @@
 
 import filmCard from "../../templates/films.hbs";
 import { normalizationMovieObj } from "./normalization-obj";
-const galleryRef = document.querySelector(".films__container");
 
-export default function appendFilmsMarkup(films) {
+
+export default function appendFilmsMarkup(films, page) {
   console.log(films);
   const normalObjs = films.map(element => {
     let temp = normalizationMovieObj(element);
@@ -21,5 +21,5 @@ export default function appendFilmsMarkup(films) {
     return temp;
   });
   console.log(normalObjs);
-  galleryRef.insertAdjacentHTML("beforeend", filmCard(normalObjs));
+  page.insertAdjacentHTML("beforeend", filmCard(normalObjs));
 }
