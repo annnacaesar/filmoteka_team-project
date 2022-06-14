@@ -6,19 +6,19 @@
     @include mq(retina) {background-image: url('./../images/header-main/header320@2x.jpg');}
 
     @include mq(mobile) {
-        background-size: cover;
+        // background-size: cover;
         background-image: url('./../images/header-main/header320.jpg');
         @include mq(retina) {background-image: url('./../images/header-main/header320@2x.jpg');}
     }
 
     @include mq(tablet) {
-        background-size: contain;
+        // background-size: contain;
         background-image: url('./../images/header-main/header768.jpg');
         @include mq(retina) {background-image: url('./../images/header-main/header768@2x.jpg');}
     }
 
     @include mq(desktop) {
-        background-size: contain;
+        // background-size: contain;
         background-image: url('./../images/header-main/header1024.jpg');
         @include mq(retina){background-image: url('./../images/header-main/header1024@2x.jpg');}
     }
@@ -193,11 +193,15 @@ position: absolute;
     
     height: 230px;
     @include mq(tablet) {
-        width: 648px;
+        // width: 648px;
         height: 215px;
     }
     @include mq(desktop) {
-        width: 912px;
+        // width: 912px;
         height: 216px;
     }
+}
+
+.input__search-icon{
+    margin-left: -13px;
 }
