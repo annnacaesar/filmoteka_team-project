@@ -3,6 +3,8 @@
 	justify-content: center;
 
 		&__list {
+			margin-top: 20px;
+			margin-bottom: 20px;
 
 			@include mq(tablet){
 				margin: -15px;
