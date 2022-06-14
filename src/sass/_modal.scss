@@ -142,7 +142,7 @@
   margin-bottom: 20px;
 }
 .modal__rating-left-list {
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -171,6 +171,14 @@
   background: #ff6b01;
   border-radius: 5px;
   color: #fff;
+  margin-right: 3px;
+}
+
+.modal__rating-right-item--shadow {
+  padding: 1px 10px;
+  background: #f7f7f7;
+  border-radius: 5px;
+  margin-left: 3px;
 }
 
 .modal__content-wrap {
