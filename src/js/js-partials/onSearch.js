@@ -6,7 +6,7 @@ import clearFilmsContainer from "./clearFilmsContainer";
 const apiService = new ApiService();
 
 const searchForm = document.querySelector(".input__wraper");
-const filmsContainerIndex = document.querySelector(".films__container-index");
+const filmsContainerIndex = document.querySelector(".js-films-list-index");
 
 searchForm.addEventListener("submit", onSearch);
 

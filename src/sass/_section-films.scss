@@ -2,16 +2,15 @@
 	display: flex;
 	justify-content: center;
 
-		&__container {
-			padding-top: 20px;
-			padding-bottom: 40px;
+		&__list {
 
 			@include mq(tablet){
-				padding-top: 60px;
-				padding-bottom: 60px;
+				margin: -15px;
+				margin-top: 45px;
+				margin-bottom: 45px;
 				display: flex;		
 				flex-wrap: wrap;
-				margin: -15px;
+				
 			}
 		}
 

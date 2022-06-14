@@ -1,5 +1,5 @@
-const galleryRef = document.querySelector('.films__container');
+const listRef = document.querySelector('.js-films-list-index');
 
 export default function clearFilmsContainer() {
-  galleryRef.innerHTML = '';
+  listRef.innerHTML = '';
 }
