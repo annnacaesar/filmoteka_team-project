@@ -1,11 +1,6 @@
 {{#each this}}
 <li class="films__item" data-id={{id}}>
-	<div class="films__card">
-		<a
-			class="films__link"
-			href="{{img}}" 
-		>
-			<img
+	<img
 				class="films__img"
 				src="{{img}}"
 				alt="{{title}}"
@@ -18,7 +13,5 @@
 					{{genre}} | {{releaseDate}}
 				</p>
 			</div>
-		</a>
-	</div>
 </li>
 {{/each}}

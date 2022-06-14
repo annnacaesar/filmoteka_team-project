@@ -20,4 +20,4 @@ export default {
   37: "Western",
 };
 const arr = [1, 2, 3, 4, 5, 6, 7].slice(0, 4);
-console.log(arr);
+
