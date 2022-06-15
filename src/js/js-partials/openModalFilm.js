@@ -95,8 +95,8 @@ async function onClickCard(e) {
             </p>
           </div>
           <div class="modal__button-wrap" data-id="${id}">
-            <button class="modal__button">add to Watched</button>
-            <button class="modal__button modal__button--transparent">
+            <button class="modal__button btn-watch">add to Watched</button>
+            <button class="modal__button btn-queue modal__button--transparent">
               add to queue
             </button>
           </div>
@@ -122,4 +122,44 @@ async function onClickCard(e) {
     }
     modal.show();
   }
+
+  // let watchedMovies = [];
+
+  addWatched();
+  
+  function addWatched() {
+    const addWatchedBtn = document.querySelector('.btn-watch');
+    addWatchedBtn.addEventListener('click', onAddWatchedClick);
+  }
+  
+  function onAddWatchedClick(e) {
+    if (e.target.nodeName !== "BUTTON") {
+      return
+    }
+    const addWatchedId = e.currentTarget.parentNode.dataset.id;
+
+    console.log('add:', e.currentTarget.children);
+
+    localStorage.setItem('watchedMovies', JSON.stringify(addWatchedId)); 
+  }
+  
+  // let queueMovies = [];
+
+  addQueue();
+
+  function addQueue() {
+    const addWatchedBtn = document.querySelector('.btn-queue');
+    addWatchedBtn.addEventListener('click', onAddQueueClick)
+  }
+
+  function onAddQueueClick(e) {
+    if (e.target.nodeName !== "BUTTON") {
+      return
+    }
+    const addQueueBtn = e.currentTarget.parentNode.dataset.id;
+    console.log('queue:', e.currentTarget.children);
+
+    localStorage.setItem('queueMovies', JSON.stringify(addQueueBtn)); 
+  }
+  
 }
