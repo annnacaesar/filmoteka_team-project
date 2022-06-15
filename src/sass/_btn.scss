@@ -15,6 +15,8 @@
   align-items: center;
   text-align: center;
   text-transform: uppercase;
+  transition: var(--transition-duration);
+  transition-timing-function: var(--timing-function);
 }
 .button:hover {
   background-color: #ab8d7852;
@@ -22,9 +24,9 @@
 
 .button-group {
   display: flex;
-    text-align: center;
-    justify-content: center;
-    margin-top: 46px;
+  text-align: center;
+  justify-content: center;
+  margin-top: 46px;
 }
 
 .library__button {
@@ -39,7 +41,6 @@
 
   @media screen and (min-width: $tablet) {
     width: 152px;
-   
   }
   @media screen and (min-width: $desktop) {
     width: 147px;

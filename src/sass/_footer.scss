@@ -11,7 +11,7 @@ footer {
   flex-direction: column;
   align-items: center;
 
-  @media screen and (min-width: $tablet) {
+  @include mq(tablet) {
     flex-direction: row;
   }
 }
@@ -19,7 +19,7 @@ footer {
 .footer__wrap {
   display: flex;
   margin-top: 10px;
-  @media screen and (min-width: $tablet) {
+  @include mq(tablet) {
     margin-top: 0;
   }
 }
@@ -29,7 +29,7 @@ footer {
   font-size: 14px;
   line-height: 1.14;
   color: #545454;
-  @media screen and (min-width: $tablet) {
+  @include mq(tablet) {
     font-size: 16px;
     line-height: 1.19;
   }
@@ -49,6 +49,8 @@ footer {
 .footer__btn {
   background-color: transparent;
   text-decoration: underline #545454;
+  transition: var(--transition-duration);
+  transition-timing-function: var(--timing-function);
 }
 
 .footer__btn:hover {
@@ -58,6 +60,6 @@ footer {
 }
 
 .footer__btn:hover .footer__list-icon {
-    width: 200px;
-    height: 200px;
+  width: 200px;
+  height: 200px;
 }
