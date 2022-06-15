@@ -1,4 +1,22 @@
 import * as basicLightbox from "basiclightbox";
+import ApiService from "./API";
+import settings from "./settings";
+const { IMG_URL } = settings;
+
+const getImgPath = imgPath => (!imgPath ? `${noImg}` : `${IMG_URL}${imgPath}`);
+
+const apiService = new ApiService();
+
+async function loadImgPath(id) {
+  const imgPath = await apiService
+    .getMovieDetails(id)
+    .then(results => getImgPath(results.poster_path));
+  return imgPath;
+}
+async function filmDetails(id) {
+  const details = await apiService.getMovieDetails(id).then(results => results);
+  return details;
+}
 
 const ref = {
   cardContainer: document.querySelector(".films__container"),
@@ -6,17 +24,29 @@ const ref = {
 
 ref.cardContainer.addEventListener("click", onClickCard);
 
-function onClickCard(e) {
+async function onClickCard(e) {
   e.preventDefault();
 
-  if (e.target.nodeName !== "DIV") {
-    console.dir(e.target);
-    // if (e.target.nodeName === "IMG") {
-    //   console.log(
-    //     e.target.parentElement.parentElement.parentElement.dataset.id
-    //   );
-    // }
-    const instance = basicLightbox.create(
+  // console.log(e.target);
+  if (e.target.nodeName !== "DIV" && e.target.nodeName !== "UL") {
+    if (e.target.nodeName === "IMG") {
+      const id = e.target.parentElement.dataset.id;
+      const img = await loadImgPath(id);
+      const details = await filmDetails(id);
+      renderModal({ id, img, details });
+    }
+    if (e.target.nodeName === "P") {
+      const id = e.target.parentElement.parentElement.dataset.id;
+      const img = await loadImgPath(id);
+      const details = await filmDetails(id);
+      renderModal({ id, img, details });
+    }
+  }
+
+  function renderModal({ id, img, details }) {
+    const genres = details.genres.map(genre => genre.name).join(", ");
+
+    const modal = basicLightbox.create(
       `
     <div class="modal__container">
       <div class="modal__close">
@@ -25,28 +55,14 @@ function onClickCard(e) {
       </div>
       <div class="modal-wrap">
         <div class="modal__picture-wrap">
-          <picture>
-            <source
-              srcset="images/modal/modal-plug-desk.jpg"
-              media="(min-width: 1024px)"
-            />
-            <source
-              srcset="images/modal/modal-plug-tab.jpg"
-              media="(min-width: 768px)"
-            />
-            <source
-              srcset="images/modal/modal-plug-mob.jpg"
-              media="(min-width: 320px)"
-            />
-            <img
-              class="modal__picture"
-              src="./images/modal/modal-plug-mob.jpg"
-              alt="film-picture"
-            />
-          </picture>
+          <img
+          class="modal__picture"
+          src="${img}"
+          alt="film-picture"
+          />
         </div>
         <div class="modal__desc-wrap">
-          <h2 class="modal-heading">A FISTFUL OF LEAD</h2>
+          <h2 class="modal-heading">${details.title}</h2>
           <div class="modal__rating-wrap">
             <ul class="modal__rating-left-list">
               <li class="modal__rating-left-item">Vote / Votes</li>
@@ -56,28 +72,29 @@ function onClickCard(e) {
             </ul>
             <ul class="modal__rating-right-list">
               <li class="modal__rating-right-item">
-                <span class="modal__rating-right-item--color">7.3</span> /
-                <span class="modal__rating-right-item--shadow">1260</span>
+                <span class="modal__rating-right-item--color">${
+                  details.vote_average
+                }</span> /
+                <span class="modal__rating-right-item--shadow">${
+                  details.vote_count
+                }</span>
               </li>
-              <li class="modal__rating-right-item">100.2</li>
-              <li class="modal__rating-right-item">A FISTFUL OF LEAD</li>
-              <li class="modal__rating-right-item">Western</li>
+              <li class="modal__rating-right-item">${details.popularity.toFixed(
+                1
+              )}</li>
+              <li class="modal__rating-right-item modal__rating-right-item--uppercase">${
+                details.original_title
+              }</li>
+              <li class="modal__rating-right-item">${genres}</li>
             </ul>
           </div>
           <div class="modal__content-wrap">
             <h4 class="modal__content-heading">About</h4>
             <p class="modal__content">
-              Four of the West’s most infamous outlaws assemble to steal a huge
-              stash of gold from the most corrupt settlement of the gold rush
-              towns. But not all goes to plan one is killed and the other three
-              escapes with bags of gold hide out in the abandoned gold mine where
-              they happen across another gang of three – who themselves were
-              planning to hit the very same bank! As tensions rise, things go from
-              bad to worse as they realise the bags of gold are filled with
-              lead... they’ve been double crossed – but by who and how?
+              ${details.overview}
             </p>
           </div>
-          <div class="modal__button-wrap">
+          <div class="modal__button-wrap" data-id="${id}">
             <button class="modal__button">add to Watched</button>
             <button class="modal__button modal__button--transparent">
               add to queue
@@ -86,15 +103,23 @@ function onClickCard(e) {
         </div>
       </div>
     </div>
-  
+
   `,
       {
-        onShow: instance => {
-          instance.element().querySelector(".modal__close").onclick =
-            instance.close;
+        onShow: modal => {
+          window.addEventListener("keydown", escapeKeyCloseModal);
+          modal.element().querySelector(".modal__close").onclick = modal.close;
+        },
+        onClose: modal => {
+          window.removeEventListener("keydown", escapeKeyCloseModal);
         },
       }
     );
-    instance.show();
+    function escapeKeyCloseModal(event) {
+      if (event.code === "Escape") {
+        modal.close();
+      }
+    }
+    modal.show();
   }
 }
