@@ -48,14 +48,14 @@
     }
 
     @include mq(tablet)  {
-        background-size: contain;
+        background-size: cover;
         background-image: url('./../images/header-library/library768.jpg');
         @include mq(retina) {background-image: url('./../images/header-library/library768@2x.jpg')
     }
     }
 
     @include mq(desktop) {
-        background-size: contain;
+        background-size: cover;
         background-image: url('./../images/header-library/library1024.jpg');
         @include mq(retina){background-image: url('./../images/header-library/library1024@2x.jpg')}
     }
