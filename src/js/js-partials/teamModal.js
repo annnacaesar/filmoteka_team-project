@@ -18,7 +18,7 @@ function onOpenModalTeam() {
         <ul class="team__list">
           <li class="team__item">
             <img
-              src="../../images/team/cisar-min.jpg"
+              src="https://ca.slack-edge.com/T02UC9J08RZ-U02UYSBKN9K-33ecfb4cc335-512"
               alt="Anna Tsisar"
               class="team__item-img"
              
@@ -27,7 +27,7 @@ function onOpenModalTeam() {
             <p class="team__item-role">Team Lead</p>
             <a href="http://github.com"
               ><img
-                src="./images/team/github.png"
+                src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png"
                 alt=""
                 width="20"
                 height="20"
@@ -45,7 +45,7 @@ function onOpenModalTeam() {
             <p class="team__item-role">Scrum</p>
             <a href="http://github.com"
               ><img
-                src="./images/team/github.png"
+                src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png"
                 alt=""
                 width="20"
                 height="20"
@@ -54,7 +54,7 @@ function onOpenModalTeam() {
           </li>
           <li class="team__item">
             <img
-              src="./images/team/dima-min.jpg"
+              src="https://ca.slack-edge.com/T02UC9J08RZ-U02UUQHPP8E-74e7b146e7bb-512"
               alt="Dmytro Onishchuk"
               class="team__item-img"
            
@@ -63,7 +63,7 @@ function onOpenModalTeam() {
             <p class="team__item-role">Developer</p>
             <a href="http://github.com"
               ><img
-                src="./images/team/github.png"
+                src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png"
                 alt=""
                 width="20"
                 height="20"
@@ -72,7 +72,7 @@ function onOpenModalTeam() {
           </li>
           <li class="team__item">
             <img
-              src="./images/team/boyko-min.jpg"
+              src="https://ca.slack-edge.com/T02UC9J08RZ-U02UUMMD4GP-ee2e93c6abed-512"
               alt="Natalia Boyko"
               class="team__item-img"
             
@@ -81,7 +81,7 @@ function onOpenModalTeam() {
             <p class="team__item-role">Developer</p>
             <a href="http://github.com"
               ><img
-                src="./images/team/github.png"
+                src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png"
                 alt=""
                 width="20"
                 height="20"
@@ -90,7 +90,7 @@ function onOpenModalTeam() {
           </li>
           <li class="team__item">
             <img
-              src="./images/team/yovbak-min.jpg"
+              src="https://ca.slack-edge.com/T02UC9J08RZ-U02V34JCQQ4-e66dfa49c3b5-512"
               alt="Serhiy Yovbak"
               class="team__item-img"
             
@@ -99,7 +99,7 @@ function onOpenModalTeam() {
             <p class="team__item-role">Developer</p>
             <a href="http://github.com"
               ><img
-                src="./images/team/github.png"
+                src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png"
                 alt=""
                 width="20"
                 height="20"
@@ -108,7 +108,7 @@ function onOpenModalTeam() {
           </li>
           <li class="team__item">
             <img
-              src="./images/team/timur-min.jpg"
+              src="https://ca.slack-edge.com/T02UC9J08RZ-U03EN8Y7143-68bd892cd92c-512"
               alt="Tymur Popov"
               class="team__item-img"
            
@@ -117,7 +117,7 @@ function onOpenModalTeam() {
             <p class="team__item-role">Developer</p>
             <a href="http://github.com"
               ><img
-                src="./images/team/github.png"
+                src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png"
                 alt=""
                 width="20"
                 height="20"
@@ -126,7 +126,7 @@ function onOpenModalTeam() {
           </li>
           <li class="team__item">
             <img
-              src="./images/team/bunio-min.jpg"
+              src="https://ca.slack-edge.com/T02UC9J08RZ-U02V2CC4YRL-49e85168f371-512"
               alt="Oleg Bunio"
               class="team__item-img"
           
@@ -135,7 +135,7 @@ function onOpenModalTeam() {
             <p class="team__item-role">Developer</p>
             <a href="http://github.com"
               ><img
-                src="./images/team/github.png"
+                src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png"
                 alt=""
                 width="20"
                 height="20"
@@ -145,7 +145,7 @@ function onOpenModalTeam() {
           </li>
             <li class="team__item">
             <img
-              src="./images/team/alex-min.jpg"
+              src="https://ca.slack-edge.com/T02UC9J08RZ-U030HLUNXGT-a1625df59b89-512"
               alt="Alex Chekov"
               class="team__item-img"
            
@@ -154,7 +154,7 @@ function onOpenModalTeam() {
             <p class="team__item-role">Developer</p>
             <a href="http://github.com"
               ><img
-                src="./images/team/github.png"
+                src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png"
                 alt=""
                 width="20"
                 height="20"
