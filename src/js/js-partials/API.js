@@ -1,8 +1,5 @@
 import settings from './settings'
-const API_KEY = settings.API_KEY;
-const BASE_URL = settings.BASE_URL
-
-// приклад запиту https://api.themoviedb.org/3/movie/550?api_key=7cb8097836a7a1f4e5c19953961668c8
+const { API_KEY, BASE_URL } = settings;
 
 const VIDEO_BY_SEACH = `${BASE_URL}/search/movie?api_key=${API_KEY}&include_adult=false`;
 
