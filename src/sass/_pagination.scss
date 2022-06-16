@@ -29,6 +29,11 @@
   padding-right: 11px;
 }
 
+.firstButton-and-threeDots {
+  display: flex;
+  align-items: center;
+}
+
 @include mq(mobile-only) {
   .hidden-in-mobile {
     position: absolute;
@@ -42,4 +47,10 @@
     clip-path: inset(50%);
     margin: -1px;
   }
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 16px;
 }
