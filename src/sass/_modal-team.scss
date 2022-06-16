@@ -1,3 +1,35 @@
+
+// .backdrop {
+//   position: fixed;
+//   @include allSpace();
+//   padding: 20px;
+//   overflow-y: scroll;
+//   z-index: 2;
+//   background-color: rgba(0, 0, 0, 0.3);
+
+//   @media screen and (min-width: $tablet) and (min-height: 570px) {
+//     @include flex();
+//   }
+
+//   @media screen and (min-width: $desktop) and (min-height: 420px) {
+//     @include flex();
+//   }
+
+//   pointer-events: none;
+//   opacity: 0;
+//   visibility: hidden;
+
+
+//   body.show-modal & {
+//     opacity: 1;
+//     visibility: visible;
+//     pointer-events: initial;
+//   }
+// }
+
+
+/* ------------ TeamPopup styles ----------- */
+
 .team__wrap {
   display: flex;
   flex-wrap: wrap;
@@ -26,6 +58,11 @@
   align-items: center;
   background-color: rgba(129, 124, 124, 0.35);
   border-radius: 5px;
+  box-shadow: var(--box-shadow-team);
+  transition: var(--transition-duration);
+  &:hover {
+    transform: scale(1.05);
+  }
   
  
 }
@@ -36,25 +73,39 @@
   
 }
 .team__item-img {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
   border-radius: 5px;
   margin-bottom: 5px;;
+  
 }
 
 .team__item-name{
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 5px;
+   
 
 }
 .team__item-role{
-    font-size: 16px;
+    font-size: 14px;
     margin-bottom: 5px;
     color: var(--accent-color);
     
 }
+.team__item-wrap{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
 .team__item-icon{
-   
+  width: 20px;
+  height: 20px;
+     color: black;
     margin-bottom: 5px;
+    margin-right: 5px;
+    fill:black;
+    
     
 }
+
