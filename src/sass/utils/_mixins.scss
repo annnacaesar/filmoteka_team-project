@@ -8,7 +8,9 @@
     @media screen and (min-width: $mobile) {
       @content;
     }
-  } @else if $range == tablet-only {
+  } 
+
+  @else if $range == tablet-only {
     @media screen and (min-width: $tablet) and (max-width: #{$desktop - 1}) {
       @content;
     }
@@ -34,4 +36,19 @@
       @content;
     }
   }
+}
+
+//flexContainer
+@mixin flex($base: center, $cross: center) {
+  display: flex;
+  justify-content: $base;
+  align-items: $cross;
+}
+
+
+@mixin allSpace() {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }

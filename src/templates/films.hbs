@@ -1,0 +1,17 @@
+{{#each this}}
+<li class="films__item" data-id={{id}}>
+	<img
+				class="films__img"
+				src="{{img}}"
+				alt="{{title}}"
+				loading="lazy"
+			/>
+			<div class="films__info">
+				<p class="films__name">{{title}}</p>
+
+				<p class="films__description">
+					{{genre}} | {{releaseDate}}
+				</p>
+			</div>
+</li>
+{{/each}}
