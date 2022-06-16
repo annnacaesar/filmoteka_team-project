@@ -20,7 +20,10 @@ function onAddWatchedClick(e) {
     e.currentTarget.textContent = "add to Watched";
   }
 
-  localStorage.setItem("watchedMovies", JSON.stringify(addWatchedId));
+  localStorage.setItem(
+    `watchedMovies ${addWatchedId}`,
+    JSON.stringify(addWatchedId)
+  );
 }
 
 function addQueue() {
@@ -43,7 +46,7 @@ function onAddQueueClick(e) {
     e.currentTarget.textContent = "add to Queue";
   }
 
-  localStorage.setItem("queueMovies", JSON.stringify(addQueueId));
+  localStorage.setItem(`queueMovies ${addQueueId}`, JSON.stringify(addQueueId));
 }
 
 export { addWatched, addQueue };
