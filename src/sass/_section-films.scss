@@ -1,40 +1,45 @@
 .films {
-	display: flex;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
 
-		&__list {
-			margin-top: 20px;
-			margin-bottom: 20px;
+  &__list {
+    margin-top: 20px;
+    margin-bottom: 20px;
 
-			@include mq(tablet){
-				margin: -15px;
-				margin-top: 45px;
-				margin-bottom: 45px;
-				display: flex;		
-				flex-wrap: wrap;
-				
-			}
-		}
+    @include mq(tablet) {
+      margin: -15px;
+      margin-top: 45px;
+      margin-bottom: 45px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
 
-		&__item:not(:last-child){
-			margin-bottom: 15px;
-		}
+  &__item:not(:last-child) {
+    margin-bottom: 15px;
+  }
 
-		&__item {
-			width: 100%;
+  &__item {
+    width: 100%;
 
-			@include mq(tablet){
-				margin: 15px;
-				flex-basis: calc(100%/2 - 30px);
-				
-			}
-			@include mq(desktop){
-				flex-basis: calc(100%/3 - 30px);
-			}
-		}
-		
+    @include mq(tablet) {
+      margin: 15px;
+      flex-basis: calc(100% / 2 - 30px);
+    }
+    @include mq(desktop) {
+      flex-basis: calc(100% / 3 - 30px);
+    }
+  }
 
-		&__img {
-			width: 100%;
-		}
+  &__img {
+    width: 100%;
+    transition: var(--transition-duration);
+    transition-timing-function: var(--timing-function);
+    box-shadow: var(--box-shadow);
+  }
+  &__img:hover {
+    transform: scale(1.05);
+    box-shadow: var(--box-shadow-hover);
+  }
 }
+// --box-shadow-hoover: 5px 6px 5px 5px rgb(0 0 0 / 80%);

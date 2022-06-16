@@ -14,6 +14,7 @@ modalTeamRef.addEventListener("click", onOpenModalTeam);
 
 
 function onOpenModalTeam() {
+
   console.log("Hello");
   const modalTeam = basicLightbox.create(markup, {
     onShow: modalTeam => {

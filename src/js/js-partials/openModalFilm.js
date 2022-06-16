@@ -95,8 +95,8 @@ async function onClickCard(e) {
             </p>
           </div>
           <div class="modal__button-wrap" data-id="${id}">
-            <button class="modal__button">add to Watched</button>
-            <button class="modal__button modal__button--transparent">
+            <button class="modal__button btn-watch">add to Watched</button>
+            <button class="modal__button btn-queue modal__button--transparent">
               add to queue
             </button>
           </div>
@@ -122,4 +122,55 @@ async function onClickCard(e) {
     }
     modal.show();
   }
+
+   addWatched();
+  
+  function addWatched() {
+    const addWatchedBtn = document.querySelector('.btn-watch');
+    addWatchedBtn.addEventListener('click', onAddWatchedClick);
+  }
+  
+  function onAddWatchedClick(e) {
+    if (e.target.nodeName !== "BUTTON") {
+      return
+    }
+ 
+    const currentActiveBtn = document.querySelector('.modal__button-active');
+    const addWatchedId = e.currentTarget.parentNode.dataset.id;
+    
+    e.currentTarget.textContent = 'Remove from watched';
+    e.currentTarget.classList.toggle('modal__button-active');
+
+    if (currentActiveBtn) {
+      e.currentTarget.textContent = 'add to Watched';
+    }
+
+    localStorage.setItem('watchedMovies', JSON.stringify(addWatchedId)); 
+  }
+
+  addQueue();
+
+  function addQueue() {
+    const addWatchedBtn = document.querySelector('.btn-queue');
+    addWatchedBtn.addEventListener('click', onAddQueueClick)
+  }
+
+  function onAddQueueClick(e) {
+    if (e.target.nodeName !== "BUTTON") {
+      return
+    }
+
+    const currentActiveBtn = document.querySelector('.modal__button-active');
+    const addQueueId = e.currentTarget.parentNode.dataset.id;
+
+    e.currentTarget.textContent = 'Remove from Queue';
+    e.currentTarget.classList.toggle('modal__button-active');
+
+    if (currentActiveBtn) {
+      e.currentTarget.textContent = 'add to Queue';
+    }
+
+    localStorage.setItem('queueMovies', JSON.stringify(addQueueId)); 
+  }
+  
 }
