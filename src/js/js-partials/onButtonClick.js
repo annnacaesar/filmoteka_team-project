@@ -1,3 +1,5 @@
+let currentActiveBtn = "";
+
 function addWatched() {
   const addWatchedBtn = document.querySelector(".btn-watch");
   addWatchedBtn.addEventListener("click", onAddWatchedClick);
@@ -8,7 +10,7 @@ function onAddWatchedClick(e) {
     return;
   }
 
-  const currentActiveBtn = document.querySelector(".modal__button-active");
+  currentActiveBtn = document.querySelector(".modal__button-active");
   const addWatchedId = e.currentTarget.parentNode.dataset.id;
 
   e.currentTarget.textContent = "Remove from watched";
@@ -31,7 +33,7 @@ function onAddQueueClick(e) {
     return;
   }
 
-  const currentActiveBtn = document.querySelector(".modal__button-active");
+  currentActiveBtn = document.querySelector(".modal__button-active");
   const addQueueId = e.currentTarget.parentNode.dataset.id;
 
   e.currentTarget.textContent = "Remove from Queue";
