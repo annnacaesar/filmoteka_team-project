@@ -29,17 +29,17 @@
     @include mq(desktop) {
       flex-basis: calc(100% / 4 - 30px);
     }
+    transition-duration: var(--transition-duration);
+    transition-timing-function: var(--timing-function);
+    box-shadow: var(--box-shadow);
+  }
+  &__item:hover {
+    transform: scale(1.05);
+    box-shadow: var(--box-shadow-hover);
   }
 
   &__img {
     width: 100%;
     transition: var(--transition-duration);
-    transition-timing-function: var(--timing-function);
-    box-shadow: var(--box-shadow);
-  }
-  &__img:hover {
-    transform: scale(1.05);
-    box-shadow: var(--box-shadow-hover);
   }
 }
-// --box-shadow-hoover: 5px 6px 5px 5px rgb(0 0 0 / 80%);
