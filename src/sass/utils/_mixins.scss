@@ -38,6 +38,14 @@
   }
 }
 
+//flexContainer
+@mixin flex($base: center, $cross: center) {
+  display: flex;
+  justify-content: $base;
+  align-items: $cross;
+}
+
+
 @mixin allSpace() {
   top: 0;
   left: 0;
