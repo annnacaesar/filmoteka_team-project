@@ -123,9 +123,7 @@ async function onClickCard(e) {
     modal.show();
   }
 
-  // let watchedMovies = [];
-
-  addWatched();
+   addWatched();
   
   function addWatched() {
     const addWatchedBtn = document.querySelector('.btn-watch');
@@ -136,14 +134,19 @@ async function onClickCard(e) {
     if (e.target.nodeName !== "BUTTON") {
       return
     }
+ 
+    const currentActiveBtn = document.querySelector('.modal__button-active');
     const addWatchedId = e.currentTarget.parentNode.dataset.id;
+    
+    e.currentTarget.textContent = 'Remove from watched';
+    e.currentTarget.classList.toggle('modal__button-active');
 
-    console.log('add:', e.currentTarget.children);
+    if (currentActiveBtn) {
+      e.currentTarget.textContent = 'add to Watched';
+    }
 
     localStorage.setItem('watchedMovies', JSON.stringify(addWatchedId)); 
   }
-  
-  // let queueMovies = [];
 
   addQueue();
 
@@ -156,10 +159,18 @@ async function onClickCard(e) {
     if (e.target.nodeName !== "BUTTON") {
       return
     }
-    const addQueueBtn = e.currentTarget.parentNode.dataset.id;
-    console.log('queue:', e.currentTarget.children);
 
-    localStorage.setItem('queueMovies', JSON.stringify(addQueueBtn)); 
+    const currentActiveBtn = document.querySelector('.modal__button-active');
+    const addQueueId = e.currentTarget.parentNode.dataset.id;
+
+    e.currentTarget.textContent = 'Remove from Queue';
+    e.currentTarget.classList.toggle('modal__button-active');
+
+    if (currentActiveBtn) {
+      e.currentTarget.textContent = 'add to Queue';
+    }
+
+    localStorage.setItem('queueMovies', JSON.stringify(addQueueId)); 
   }
   
 }
