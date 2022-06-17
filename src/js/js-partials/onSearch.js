@@ -1,21 +1,32 @@
+import debounce from "lodash.debounce";
 import ApiService from "./API";
 import appendFilmsMarkup from "./appendFilmsMarkup";
 import clearFilmsContainer from "./clearFilmsContainer";
+import debounce from "lodash.debounce";
+
+const DEBOUNCE_DELAY = 300;
 
 const apiService = new ApiService();
 
 const searchForm = document.querySelector(".input__wraper");
+console.log(searchForm);
 const filmsContainerIndex = document.querySelector(".js-films-list-index");
 const inputError = document.querySelector(".input__error");
-console.log(inputError);
+const headerInput = document.querySelector(".header__input");
 
-searchForm.addEventListener("submit", onSearch);
-// searchForm.addEventListener("inout", onSearch);
+console.log(headerInput.value);
+
+// searchForm.addEventListener("submit", onSearch);
+// searchForm.addEventListener("input", debounce(onSearch, DEBOUNCE_DELAY));
+searchForm.addEventListener("input", debounce(onSearch, DEBOUNCE_DELAY));
 
 function onSearch(e) {
   e.preventDefault();
 
-  apiService.query = e.currentTarget.elements.searchQuery.value;
+  // apiService.query = e.currentTarget.elements.searchQuery.value.trim();
+  apiService.query = e.target.value.trim();
+
+  console.log(apiService.query);
   apiService.resetPage();
 
   inputError.textContent = " ";
