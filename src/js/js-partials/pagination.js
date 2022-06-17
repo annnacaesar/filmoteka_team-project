@@ -1,42 +1,37 @@
-// fetch(
-//   `https://api.themoviedb.org/3/movie/550?api_key=7cb8097836a7a1f4e5c19953961668c8`
-// ).then(response => response.json());
+import appendFilmsMarkup from "./appendFilmsMarkup";
+import clearFilmsContainer from "./clearFilmsContainer";
+import MovieApiService from "./API";
+const apiService = new MovieApiService();
 const refs = {
   arrowLeft: document.querySelector("button[aria-label='previous-page'"),
   arrowRight: document.querySelector("button[aria-label='next-page'"),
   pagination: document.querySelector(".pagination"),
   firstButton: document.querySelector(".firstButton-and-threeDots"),
   lastButton: document.querySelector(".lastButton-and-threeDots"),
+  filmsContainerIndex: document.querySelector(".js-films-list-index"),
 };
-let pageNumber = 1;
-// const pageButtons = document.querySelector("button[aria-label='next-page'");
-// function getNumberOfPages(data) {
-//   const numberOfPages = data.totalPages;
-//   return numberOfPages;
-// }
-// function handleClickPage(event) {
-//   if (event.target === event.currentTarget) return;
-//   const { page } = event.target.dataset;
-//   const currentPage = page;
-// }
-// function renderButtons(numberOfPages) {
-//   pageButtons.innerHTML = "";
-// }
+let page = 1;
+let totalPages;
 
-// const buttonPoints = document.querySelectorAll(".hidden-in-mobile");
-// buttonPoints.forEach(button => {
-//   button.classList.add("visually-hidden");
-// });
+function renderButtons(currentPage, pages) {
+  if (page > totalPages) return;
+  page = currentPage;
+  totalPages = pages;
 
-function renderButtons() {
-  let beforeActivePage = pageNumber - 2;
-  let afterActivePage = pageNumber + 2;
+  let beforeActivePage = page - 2;
+  let afterActivePage = page + 2;
+
   if (beforeActivePage < 3) {
     beforeActivePage = 1;
     afterActivePage = 5;
   }
+  if (page === totalPages || page + 1 === totalPages) {
+    beforeActivePage = page - 3;
+    afterActivePage = totalPages;
+  }
+
   for (let i = beforeActivePage; i <= afterActivePage; i += 1) {
-    if (i === pageNumber) {
+    if (i === page) {
       const pageButton = `<button id="paginationButton" data-page="${i}" class="button-page paginationButton active">${i}</button>`;
       refs.pagination.insertAdjacentHTML("beforeend", pageButton);
     } else {
@@ -46,54 +41,115 @@ function renderButtons() {
   }
 
   if (beforeActivePage >= 3) {
-    if (isThreeDots()) {
+    if (isFirstThreeDots()) {
       return;
     } else {
-      const firstButton = `<button id="paginationButton" data-page="1" class="button-page paginationButton">1</button>`;
-      const threeDots = `<span class='page-buttons__points'>···</span>`;
-      refs.firstButton.insertAdjacentHTML("beforeend", firstButton);
-      refs.firstButton.insertAdjacentHTML("beforeend", threeDots);
+      renderFirstButtonAndDots();
     }
   }
-  if (beforeActivePage < 3 && isThreeDots()) {
+
+  if (beforeActivePage < 3 && isFirstThreeDots()) {
     refs.firstButton.innerHTML = "";
   }
-}
 
-function onClickArrowLeft() {
-  if (pageNumber === 1) {
+  if (
+    page === totalPages ||
+    page + 1 === totalPages ||
+    page + 2 === totalPages ||
+    page + 3 === totalPages
+  ) {
+    refs.lastButton.innerHTML = "";
     return;
+  } else if (isLastThreeDots()) {
+    return;
+  } else {
+    renderLastButtonAndDots(totalPages);
   }
-  pageNumber -= 1;
-  resetButtons();
-  renderButtons();
+
+  refs.arrowLeft.onclick = onClickArrowLeft;
+  refs.arrowRight.onclick = onClickArrowRight;
+  refs.pagination.onclick = onClickButton;
+  refs.firstButton.onclick = onClickFirstButton;
+  refs.lastButton.onclick = onClickLastButton;
+}
+function onClickFirstButton(event) {
+  if (event.target.nodeName === "BUTTON") {
+    page = 1;
+
+    renderPaginationOnSearch(apiService.query);
+  }
+}
+function onClickLastButton(event) {
+  if (event.target.nodeName === "BUTTON") {
+    page = totalPages;
+
+    renderPaginationOnSearch(apiService.query);
+  }
+}
+function onClickArrowLeft() {
+  if (page === 1) return;
+  page -= 1;
+  renderPaginationOnSearch(apiService.query);
 }
 function onClickArrowRight() {
-  pageNumber += 1;
-  resetButtons();
-  renderButtons();
+  if (page === totalPages) return;
+
+  page += 1;
+  renderPaginationOnSearch(apiService.query);
 }
 
 function resetButtons() {
   refs.pagination.innerHTML = "";
+  refs.firstButton.innerHTML = "";
+  refs.lastButton.innerHTML = "";
 }
 
 function onClickButton(event) {
   event.preventDefault();
   if (event.target === event.currentTarget) return;
-  pageNumber = Number(event.target.dataset.page);
-  resetButtons();
-  renderButtons();
+  page = Number(event.target.dataset.page);
+  renderPaginationOnSearch(apiService.query);
 }
 
-function isThreeDots() {
-  const isThreeDots = document.querySelector(".page-buttons__points");
+function isFirstThreeDots() {
+  const isThreeDots = document.querySelector(".page-buttons__first-points");
   if (isThreeDots === null) {
     return false;
   }
   return true;
 }
-renderButtons();
-refs.arrowLeft.addEventListener("click", onClickArrowLeft);
-refs.arrowRight.addEventListener("click", onClickArrowRight);
-refs.pagination.addEventListener("click", onClickButton);
+function isLastThreeDots() {
+  const isThreeDots = document.querySelector(".page-buttons__last-points");
+  if (isThreeDots === null) {
+    return false;
+  }
+  return true;
+}
+
+function renderFirstButtonAndDots() {
+  const firstButton = `<button id="paginationButton" data-page="1" class="button-page paginationButton">1</button>`;
+  const threeDots = `<span class='page-buttons__first-points'>···</span>`;
+  refs.firstButton.insertAdjacentHTML("beforeend", firstButton);
+  refs.firstButton.insertAdjacentHTML("beforeend", threeDots);
+}
+
+function renderLastButtonAndDots(totalPages) {
+  const lastButton = `<button id="paginationButton" data-page="${totalPages}" class="button-page paginationButton">${totalPages}</button>`;
+  const threeDots = `<span class='page-buttons__last-points'>···</span>`;
+  refs.lastButton.insertAdjacentHTML("beforeend", threeDots);
+  refs.lastButton.insertAdjacentHTML("beforeend", lastButton);
+}
+
+function renderPaginationOnSearch(query) {
+  apiService.query = query;
+  apiService.page = page;
+  apiService.resetPage();
+  apiService.fetchMoviesySearch().then(({ results, total_pages }) => {
+    clearFilmsContainer();
+    appendFilmsMarkup(results, refs.filmsContainerIndex);
+    resetButtons();
+    renderButtons(apiService.page, total_pages);
+  });
+}
+
+export { renderButtons, resetButtons, renderPaginationOnSearch };

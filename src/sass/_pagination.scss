@@ -22,7 +22,13 @@
   }
 }
 
-.page-buttons__points {
+.page-buttons__first-points {
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+  padding-right: 11px;
+}
+.page-buttons__last-points {
   display: flex;
   align-items: center;
   margin-right: 5px;
@@ -32,6 +38,11 @@
 .firstButton-and-threeDots {
   display: flex;
   align-items: center;
+}
+.lastButton-and-threeDots {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
 }
 
 @include mq(mobile-only) {
