@@ -18,10 +18,6 @@ function onSearch(e) {
   apiService.query = e.currentTarget.elements.searchQuery.value;
   apiService.resetPage();
 
-  // if (apiService.query.length === 0) {
-  //   document.location.reload();
-  //   return;
-  // }
   inputError.textContent = " ";
   apiService
     .fetchMoviesySearch()
