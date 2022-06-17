@@ -42,9 +42,8 @@
   // transform: translate(-50%, -50%);
   width: 100%;
 
-  @media screen and (max-width: $tablet) {
+  @media screen and (max-width: 1023px) {
     height: 100%;
-    overflow-y: scroll;
   }
 
   @media screen and (min-width: $tablet) {
