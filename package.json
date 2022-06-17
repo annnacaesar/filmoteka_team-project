@@ -4,7 +4,7 @@
   "description": "",
   "homepage": "https://annnacaesar.github.io/filmoteka-project",
   "scripts": {
-    "start": "parcel src/*.html --open",
+    "start": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /filmoteka-project/"
   },
   "repository": {

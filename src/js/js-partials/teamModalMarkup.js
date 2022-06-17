@@ -13,7 +13,7 @@ const markup = ` <div class="modal__container">
 		<div class="modal__close-first"></div>
 		<div class="modal__close-second"></div>
 	</button>
-	<div class="modal-wrap">
+	<div class="modal-wrap team">
 		<div class="team__wrap">
 			<h1 class="team__title">Team three</h1>
 			<ul class="team__list">
@@ -23,6 +23,7 @@ const markup = ` <div class="modal__container">
 						alt="Anna Tsisar"
 						class="team__item-img"
 					/>
+          <div class="team__item-data">
 					<p class="team__item-name">Anna Tsisar</p>
 					<p class="team__item-role">Team Lead</p>
 					<div class="team__item-wrap">
@@ -47,6 +48,7 @@ const markup = ` <div class="modal__container">
 							/>
 						</a>
 					</div>
+          </div>
 				</li>
 				<li class="team__item">
 					<img
@@ -54,6 +56,7 @@ const markup = ` <div class="modal__container">
 						alt="Andriy Tsapkov"
 						class="team__item-img"
 					/>
+          <div class="team__item-data">
 					<p class="team__item-name">Andriy Tsapkov</p>
 					<p class="team__item-role">Scrum</p>
 					<div class="team__item-wrap">
@@ -78,6 +81,7 @@ const markup = ` <div class="modal__container">
 							/>
 						</a>
 					</div>
+          </div>
 				</li>
 				<li class="team__item">
 					<img
@@ -85,6 +89,7 @@ const markup = ` <div class="modal__container">
 						alt="Dmytro Onishchuk"
 						class="team__item-img"
 					/>
+          <div class="team__item-data">
 					<p class="team__item-name">Dmytro Onishchuk</p>
 					<p class="team__item-role">Developer</p>
 					<div class="team__item-wrap">
@@ -106,6 +111,7 @@ const markup = ` <div class="modal__container">
 							/>
 						</a>
 					</div>
+          </div>
 				</li>
 				<li class="team__item">
 					<img
@@ -113,6 +119,7 @@ const markup = ` <div class="modal__container">
 						alt="Natalia Boyko"
 						class="team__item-img"
 					/>
+          <div class="team__item-data">
 					<p class="team__item-name">Natalia Boyko</p>
 					<p class="team__item-role">Developer</p>
 					<div class="team__item-wrap">
@@ -134,6 +141,7 @@ const markup = ` <div class="modal__container">
 							/>
 						</a>
 					</div>
+          </div>
 				</li>
 				<li class="team__item">
 					<img
@@ -141,6 +149,7 @@ const markup = ` <div class="modal__container">
 						alt="Serhiy Yovbak"
 						class="team__item-img"
 					/>
+          <div class="team__item-data">
 					<p class="team__item-name">Serhiy Yovbak</p>
 					<p class="team__item-role">Developer</p>
 					<div class="team__item-wrap">
@@ -162,6 +171,7 @@ const markup = ` <div class="modal__container">
 							/>
 						</a>
 					</div>
+          </div>
 				</li>
 				<li class="team__item">
 					<img
@@ -169,6 +179,7 @@ const markup = ` <div class="modal__container">
 						alt="Tymur Popov"
 						class="team__item-img"
 					/>
+          <div class="team__item-data">
 					<p class="team__item-name">Tymur Popov</p>
 					<p class="team__item-role">Developer</p>
 					<div class="team__item-wrap">
@@ -187,6 +198,7 @@ const markup = ` <div class="modal__container">
 							/>
 						</a>
 					</div>
+          </div>
 				</li>
 				<li class="team__item">
 					<img
@@ -194,6 +206,7 @@ const markup = ` <div class="modal__container">
 						alt="Oleg Bunio"
 						class="team__item-img"
 					/>
+          <div class="team__item-data">
 					<p class="team__item-name">Oleg Bunio</p>
 					<p class="team__item-role">Developer</p>
 					<div class="team__item-wrap">
@@ -215,6 +228,7 @@ const markup = ` <div class="modal__container">
 							/>
 						</a>
 					</div>
+          </div>
 				</li>
 				<li class="team__item">
 					<img
@@ -222,6 +236,7 @@ const markup = ` <div class="modal__container">
 						alt="Alex Chekov"
 						class="team__item-img"
 					/>
+          <div class="team__item-data">
 					<p class="team__item-name">Alex Chekov</p>
 					<p class="team__item-role">Developer</p>
 					<div class="team__item-wrap">
@@ -243,6 +258,7 @@ const markup = ` <div class="modal__container">
 							/>
 						</a>
 					</div>
+          </div>
 				</li>
 			</ul>
 		</div>
