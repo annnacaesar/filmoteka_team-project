@@ -1,17 +1,21 @@
 
 .team{
+  border-radius: 10px;
+  
 &__wrap {
   // width: 700px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0px 10px;
+  
 }
 
 &__title {
   color: var(--accent-color);
-  font-size: 30px;
-  margin-bottom: 20px;
+  font-size: 25px;
+  margin-bottom: 15px;
 }
 
 &__list {
@@ -64,12 +68,12 @@
 }
 
 &-name {
-  font-size: 16px;
+  font-size: 14px;
   margin-bottom: 5px;
 }
 
 &-role {
-  font-size: 16px;
+  font-size: 14px;
   margin-bottom: 5px;
   color: var(--accent-color);
 }
