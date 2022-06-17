@@ -16,8 +16,6 @@ const headerInput = document.querySelector(".header__input");
 
 console.log(headerInput.value);
 
-// searchForm.addEventListener("submit", onSearch);
-// searchForm.addEventListener("input", debounce(onSearch, DEBOUNCE_DELAY));
 searchForm.addEventListener("input", debounce(onSearch, DEBOUNCE_DELAY));
 
 function onSearch(e) {
