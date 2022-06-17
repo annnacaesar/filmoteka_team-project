@@ -11,7 +11,6 @@ const apiService = new ApiService();
 const searchForm = document.querySelector(".input__wraper");
 const filmsContainerIndex = document.querySelector(".js-films-list-index");
 const inputError = document.querySelector(".input__error");
-const headerInput = document.querySelector(".header__input");
 
 searchForm.addEventListener("input", debounce(onSearch, DEBOUNCE_DELAY));
 
