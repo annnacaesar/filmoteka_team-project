@@ -1,4 +1,4 @@
-import settings from './settings'
+import settings from "./settings";
 const { API_KEY, BASE_URL } = settings;
 
 const VIDEO_BY_SEACH = `${BASE_URL}/search/movie?api_key=${API_KEY}&include_adult=false`;
@@ -16,12 +16,12 @@ export default class MovieApiService {
 
   fetchMoviesySearch() {
     return fetch(
-      `${VIDEO_BY_SEACH}&query=${this.searchQuery}&language=${this.language}&page=${this.page}`
+      `${VIDEO_BY_SEACH}&query=${this.searchQuery}&language=${this.language}&page=${this.currentPage}`
     ).then(responce => responce.json());
   }
 
   async fetchPopular() {
-    const urlPopular = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${this.page}`;
+    const urlPopular = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${this.currentPage}`;
     return fetch(urlPopular).then(responce => responce.json());
   }
 

@@ -1,7 +1,9 @@
 import appendFilmsMarkup from "./appendFilmsMarkup";
 import clearFilmsContainer from "./clearFilmsContainer";
 import MovieApiService from "./API";
+
 const apiService = new MovieApiService();
+
 const refs = {
   arrowLeft: document.querySelector("button[aria-label='previous-page'"),
   arrowRight: document.querySelector("button[aria-label='next-page'"),
@@ -9,24 +11,37 @@ const refs = {
   firstButton: document.querySelector(".firstButton-and-threeDots"),
   lastButton: document.querySelector(".lastButton-and-threeDots"),
   filmsContainerIndex: document.querySelector(".js-films-list-index"),
+  inputError: document.querySelector(".input__error"),
 };
+
 let page = 1;
 let totalPages;
 
 function renderButtons(currentPage, pages) {
+  //проверка, чтобы не рендерить кнопки больше, чем есть от бекенда
   if (page > totalPages) return;
+
   page = currentPage;
   totalPages = pages;
 
   let beforeActivePage = page - 2;
   let afterActivePage = page + 2;
 
+  //рендер, если активная кнопка среди последних
+  if (page === totalPages || page + 1 === totalPages) {
+    beforeActivePage = page - 3;
+    afterActivePage = totalPages;
+  }
+
+  //Если активная кнопка меньше 5, рендерим 5 кнопок
+  // Заодно избегаем попадания переменной beforeActivePage в минуса
   if (beforeActivePage < 3) {
     beforeActivePage = 1;
     afterActivePage = 5;
   }
-  if (page === totalPages || page + 1 === totalPages) {
-    beforeActivePage = page - 3;
+  //Проверка, что страниц не меньше 5. Если меньше - рендерим нужное количество
+  if (totalPages <= 5) {
+    beforeActivePage = page;
     afterActivePage = totalPages;
   }
 
@@ -40,6 +55,7 @@ function renderButtons(currentPage, pages) {
     }
   }
 
+  // рендер первой кнопки с точками
   if (beforeActivePage >= 3) {
     if (isFirstThreeDots()) {
       return;
@@ -48,10 +64,14 @@ function renderButtons(currentPage, pages) {
     }
   }
 
+  //Убираем точки и первую кнопку, если активная кнопка меньше 5 и точки существуют
   if (beforeActivePage < 3 && isFirstThreeDots()) {
     refs.firstButton.innerHTML = "";
   }
 
+  //Долго высчитывал. Убираем последнюю кнопку и точки, если
+  //активная страница среди последних и точки существуют
+  //Если предыдущие условия не проканали, наоборот точки и последнюю кнопку рендер
   if (
     page === totalPages ||
     page + 1 === totalPages ||
@@ -66,36 +86,41 @@ function renderButtons(currentPage, pages) {
     renderLastButtonAndDots(totalPages);
   }
 
+  //удобная замена для слушателей
   refs.arrowLeft.onclick = onClickArrowLeft;
   refs.arrowRight.onclick = onClickArrowRight;
   refs.pagination.onclick = onClickButton;
   refs.firstButton.onclick = onClickFirstButton;
   refs.lastButton.onclick = onClickLastButton;
 }
+
 function onClickFirstButton(event) {
   if (event.target.nodeName === "BUTTON") {
     page = 1;
 
-    renderPaginationOnSearch(apiService.query);
+    isQueryOrPopular();
   }
 }
+
 function onClickLastButton(event) {
   if (event.target.nodeName === "BUTTON") {
     page = totalPages;
 
-    renderPaginationOnSearch(apiService.query);
+    isQueryOrPopular();
   }
 }
+
 function onClickArrowLeft() {
   if (page === 1) return;
   page -= 1;
-  renderPaginationOnSearch(apiService.query);
+  isQueryOrPopular();
 }
+
 function onClickArrowRight() {
   if (page === totalPages) return;
 
   page += 1;
-  renderPaginationOnSearch(apiService.query);
+  isQueryOrPopular();
 }
 
 function resetButtons() {
@@ -106,11 +131,14 @@ function resetButtons() {
 
 function onClickButton(event) {
   event.preventDefault();
+  //если клик не в кнопку, а в див - ничо не делаем. Позже кнопку расширю паддингами
   if (event.target === event.currentTarget) return;
   page = Number(event.target.dataset.page);
-  renderPaginationOnSearch(apiService.query);
+  isQueryOrPopular();
 }
 
+//проверка существования точек после первой кнопки
+//нужно для их рендера или удаления
 function isFirstThreeDots() {
   const isThreeDots = document.querySelector(".page-buttons__first-points");
   if (isThreeDots === null) {
@@ -118,6 +146,9 @@ function isFirstThreeDots() {
   }
   return true;
 }
+
+//проверка существования точек перед последней кнопкой
+//нужно для их рендера или удаления
 function isLastThreeDots() {
   const isThreeDots = document.querySelector(".page-buttons__last-points");
   if (isThreeDots === null) {
@@ -140,11 +171,16 @@ function renderLastButtonAndDots(totalPages) {
   refs.lastButton.insertAdjacentHTML("beforeend", lastButton);
 }
 
-function renderPaginationOnSearch(query) {
+//Рендер кнопок и карточек по поиску.
+function renderPaginationOnSearch(query, queryPage) {
   apiService.query = query;
-  apiService.page = page;
-  apiService.resetPage();
+  apiService.page = queryPage;
   apiService.fetchMoviesySearch().then(({ results, total_pages }) => {
+    if (results.length === 0) {
+      refs.inputError.textContent =
+        "Search result not successful. Enter the correct movie name and smile : )";
+      return;
+    }
     clearFilmsContainer();
     appendFilmsMarkup(results, refs.filmsContainerIndex);
     resetButtons();
@@ -152,4 +188,33 @@ function renderPaginationOnSearch(query) {
   });
 }
 
-export { renderButtons, resetButtons, renderPaginationOnSearch };
+//Рендер кнопок и карточек популярных фильмов
+function renderPaginationPopular() {
+  apiService.page = page;
+  apiService.fetchPopular().then(({ results, total_pages }) => {
+    clearFilmsContainer();
+    appendFilmsMarkup(results, refs.filmsContainerIndex);
+    resetButtons();
+    renderButtons(apiService.page, total_pages);
+  });
+}
+
+//Чё рендерить-то - популярные или поиск? Вот функция и разбирается
+//Заодно после рендера поднимает вьюпорт в самый верх
+function isQueryOrPopular() {
+  if (apiService.query === "") {
+    renderPaginationPopular();
+    moveToTop();
+    return;
+  } else {
+    renderPaginationOnSearch(apiService.query, page);
+    moveToTop();
+  }
+}
+
+//функция для поднятия в небеса
+function moveToTop() {
+  window.scrollTo(pageXOffset, 0);
+}
+
+export { renderButtons, renderPaginationOnSearch };
