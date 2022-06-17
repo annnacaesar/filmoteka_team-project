@@ -1,4 +1,4 @@
-import settings from './settings'
+import settings from "./settings";
 const { API_KEY, BASE_URL } = settings;
 
 const VIDEO_BY_SEACH = `${BASE_URL}/search/movie?api_key=${API_KEY}&include_adult=false`;
