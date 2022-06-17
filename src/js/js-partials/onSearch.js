@@ -10,18 +10,7 @@ const inputError = document.querySelector(".input__error");
 console.log(inputError);
 
 searchForm.addEventListener("submit", onSearch);
-
-// function onSearch(e) {
-//   e.preventDefault();
-
-//   apiService.query = e.currentTarget.elements.searchQuery.value;
-//   apiService.resetPage();
-
-//   apiService.fetchMoviesySearch().then(({ results }) => {
-//     clearFilmsContainer();
-//     appendFilmsMarkup(results, filmsContainerIndex);
-//   });
-// }
+// searchForm.addEventListener("inout", onSearch);
 
 function onSearch(e) {
   e.preventDefault();
@@ -29,18 +18,21 @@ function onSearch(e) {
   apiService.query = e.currentTarget.elements.searchQuery.value;
   apiService.resetPage();
 
-  if (apiService.query.length === 0) {
-    inputError.textContent =
-      "Search result not successful. Enter the correct movie name and ";
-    setTimeout(() => {
-      document.location.reload();
-    }, 2000);
-    return;
-  } else {
-    inputError.textContent = " ";
-    apiService.fetchMoviesySearch().then(({ results }) => {
+  // if (apiService.query.length === 0) {
+  //   document.location.reload();
+  //   return;
+  // }
+  inputError.textContent = " ";
+  apiService
+    .fetchMoviesySearch()
+    .then(({ results }) => {
+      if (results.length === 0) {
+        inputError.textContent =
+          "Search result not successful. Enter the correct movie name and smile : )";
+        return;
+      }
       clearFilmsContainer();
       appendFilmsMarkup(results, filmsContainerIndex);
-    });
-  }
+    })
+    .catch(error => console.log(error));
 }
