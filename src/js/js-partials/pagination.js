@@ -33,6 +33,13 @@ function renderButtons(currentPage, pages) {
     afterActivePage = totalPages;
   }
 
+  //частный случай, который не попадает ни в одно из условий, которые есть в этом файле
+  //(охренеть просто)
+
+  if (page + 3 === totalPages) {
+    afterActivePage = totalPages;
+  }
+
   //Если активная кнопка меньше 5, рендерим 5 кнопок
   // Заодно избегаем попадания переменной beforeActivePage в минуса
   if (beforeActivePage < 3) {

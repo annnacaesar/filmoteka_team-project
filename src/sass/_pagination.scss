@@ -1,5 +1,4 @@
 #page-buttons {
-  font-family: inherit;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9,6 +8,8 @@
 .button-page {
   border-radius: 5px;
   background-color: #fff;
+  font-family: inherit;
+  font-weight: 500;
   &.arrow {
     background-color: var(--background-color);
     padding: 12px 12px 12px 12px;
