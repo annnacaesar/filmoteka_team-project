@@ -1,46 +1,47 @@
-// import Notiflix from "notiflix";
 import MovieApiService from "./API.js";
-import { refs } from "./refs.js";
 
 const movieApiService = new MovieApiService();
 
-// Notiflix.Notify.init({ position: "center-top" });
+const trailerWindow = document.querySelector(".trailer__window");
+const trailerBackdrop = document.querySelector(".trailer__backdrop");
 
-refs.filmsList.addEventListener("click", onTrailerBtnClick);
+export function addListener() {
+  const trailerBtn = document.querySelector('.modal__button-play');
+  trailerBtn.addEventListener('click', onClickTrailer);
+ }
 
-refs.closeButton.addEventListener("click", e => {
-  e.preventDefault();
-  closeModal();
-});
+function onClickTrailer(event) {
 
-async function onTrailerBtnClick(event) {
-  const item = event.target.closest(".trailer-button");
-
-  if (!item) return;
-
-  const link = document.querySelector(".films__item");
-  const id = link.dataset.id;
-  try {
-    const trailerId = await getTrailer(id);
-    openModal(trailerId);
-  } catch (error) {
-    // Notiflix.Notify.failure("Trailer not found");
-  }
+  const id = event.currentTarget.dataset.id;
+  movieApiService.fetchTrailer(id).then(
+    ({ results }) => {
+      results.forEach(result => {
+        if (result.name === 'Official Trailer') {
+          console.log(result.key);
+          // setAttribut(result.key);
+          appendMarkupTrailer(result.key);
+        }
+      });
+    }
+  )
 }
+ 
+  trailerBackdrop.addEventListener("click", e => {
+    if (e.target !==  trailerBackdrop) {
+      return;
+    }
+    closeModal();
+  });
 
-export function openModal(id) {
-  refs.trailerWindow.innerHTML = `<iframe
-    id="player"
-    width="640"
-    height="360"
-    src="https://www.youtube.com/embed/${id}?autoplay=1"
-    frameborder="0"
-    allow="autoplay"
-    allowfullscreen
-  ></iframe>`;
+function appendMarkupTrailer(key) {
+  console.log(key);
+  trailerBackdrop.classList.remove('visually-hidden');
+    trailerWindow.innerHTML = `
+  <iframe class="trailer__iframe" width="700" height="500" src="https://www.youtube.com/embed/${key}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  `;
 
-  refs.trailerBackdrop.addEventListener("click", e => {
-    if (e.target !== refs.trailerBackdrop) {
+    trailerBackdrop.addEventListener("click", e => {
+    if (e.target !==  trailerBackdrop) {
       return;
     }
     closeModal();
@@ -48,11 +49,50 @@ export function openModal(id) {
 }
 
 function closeModal() {
-  refs.trailerWindow.innerHTML = "";
+trailerBackdrop.classList.add('visually-hidden');
+   trailerWindow.innerHTML = "";
 }
 
-export async function getTrailer(id) {
-  const response = await movieApiService.fetchTrailer(id);
-  const videoId = response.results[0].key;
-  return videoId;
-}
+
+
+// function setAttribut(key) {
+//   trailerBackdrop.classList.remove('visually-hidden');
+//   console.log(iFrame.getAttribute('src'));
+//   iFrame.setAttribute('src', `https://www.youtube.com/embed/${key}`);
+//   console.log(iFrame.getAttribute('src'));
+
+
+// // Notiflix.Notify.init({ position: "center-top" });
+
+//  filmsList.addEventListener("click", onTrailerBtnClick);
+
+//  closeButton.addEventListener("click", e => {
+//   e.preventDefault();
+//   closeModal();
+// });
+
+// async function onTrailerBtnClick(event) {
+//   const item = event.target.closest(".trailer-button");
+
+//   if (!item) return;
+
+//   const link = document.querySelector(".films__item");
+//   const id = link.dataset.id;
+//   try {
+//     const trailerId = await getTrailer(id);
+//     openModal(trailerId);
+//   } catch (error) {
+//     // Notiflix.Notify.failure("Trailer not found");
+//   }
+// }
+
+// export function openModal(key) {
+//    trailerWindow.innerHTML = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${key}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+
+//    trailerBackdrop.addEventListener("click", e => {
+//     if (e.target !==  trailerBackdrop) {
+//       return;
+//     }
+//     closeModal();
+//   });
+// }

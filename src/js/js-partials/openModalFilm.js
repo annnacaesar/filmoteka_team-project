@@ -2,7 +2,9 @@ import * as basicLightbox from "basiclightbox";
 import ApiService from "./API";
 import settings from "./settings";
 import { addWatched, addQueue } from "./onButtonClick";
+import { addListener } from "./trailer";
 const { IMG_URL } = settings;
+
 
 const getImgPath = imgPath => (!imgPath ? `${noImg}` : `${IMG_URL}${imgPath}`);
 
@@ -61,6 +63,9 @@ async function onClickCard(e) {
           src="${img}"
           alt="film-picture"
           />
+          <button class="modal__button-play trailer-button" data-id="${id}">
+            <img class="modal__img-play" src="https://www.freepnglogos.com/uploads/play-button-png/play-button-file-youtube-play-buttom-icon-svg-wikimedia-commons-27.png" alt="play trailer" width="100" height="100" />
+					</button>
         </div>
         <div class="modal__desc-wrap">
           <h2 class="modal-heading">${details.title}</h2>
@@ -116,15 +121,23 @@ async function onClickCard(e) {
         },
       }
     );
-    function escapeKeyCloseModal(event) {
-      if (event.code === "Escape") {
-        modal.close();
-      }
-    }
+
+
+    
     modal.show();
   }
+
+  addListener();
 
   addWatched();
 
   addQueue();
+ 
 }
+
+function escapeKeyCloseModal(event) {
+      if (event.code === "Escape") {
+        modal.close();
+      }
+    }
+

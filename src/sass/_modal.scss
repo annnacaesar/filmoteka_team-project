@@ -133,6 +133,7 @@
 }
 
 .modal__picture-wrap {
+  position: relative;
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -157,14 +158,38 @@
     width: 375px;
     height: 478px;
   }
+  
 }
 
 .modal__picture {
+  
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 5px;
 }
+
+.modal__img-play{
+  display: none;
+}
+.modal__picture-wrap:hover .modal__img-play{
+  display: block;
+  
+}
+
+.modal__button-play{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: transparent;
+}
+
 
 .modal-heading {
   margin-bottom: 20px;
