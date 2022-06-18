@@ -9,6 +9,7 @@ import './js/js-partials/teamModal';
 import './js/js-partials/onButtonClick';
 import './js/js-partials/openModalFilm';
 import './js/js-partials/loader';
+import './js/js-partials/trailer';
 
 
 

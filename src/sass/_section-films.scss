@@ -31,15 +31,15 @@
     }
     transition-duration: var(--transition-duration);
     transition-timing-function: var(--timing-function);
-    box-shadow: var(--box-shadow);
   }
   &__item:hover {
     transform: scale(1.05);
-    box-shadow: var(--box-shadow-hover);
+    cursor: pointer;
   }
 
   &__img {
     width: 100%;
     transition: var(--transition-duration);
+    border-radius: 5px;
   }
 }

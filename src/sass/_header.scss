@@ -213,3 +213,12 @@
 .input__search-icon {
   margin-left: -13px;
 }
+.input__error {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.17;
+  margin-top: 20px;
+  color: #ff001b;
+  display: flex;
+  justify-content: center;
+}
