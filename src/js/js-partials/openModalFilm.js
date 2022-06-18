@@ -122,7 +122,11 @@ async function onClickCard(e) {
       }
     );
 
-
+    function escapeKeyCloseModal(event) {
+      if (event.code === "Escape") {
+        modal.close();
+      }
+    }
     
     modal.show();
   }
@@ -135,9 +139,5 @@ async function onClickCard(e) {
  
 }
 
-function escapeKeyCloseModal(event) {
-      if (event.code === "Escape") {
-        modal.close();
-      }
-    }
+
 
