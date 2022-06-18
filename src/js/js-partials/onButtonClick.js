@@ -23,8 +23,8 @@ const load = key => {
 };
 
 const remove = key => {
-  localStorage.removeItem(key)
-}
+  localStorage.removeItem(key);
+};
 
 function addWatched() {
   const addWatchedBtn = document.querySelector(".btn-watch");
@@ -46,16 +46,22 @@ function onAddWatchedClick(e) {
     e.currentTarget.textContent = "add to Watched";
   }
 
-  // localStorage.setItem(
-  //   `watchedMovies ${addWatchedId}`,
-  //   JSON.stringify(addWatchedId)
-  // );
-watched.id = addWatchedId;
-  console.log(watched);
+  watched.id = addWatchedId;
+  // console.log(watched);
   save(`watchedMovies`, watched);
   const savedLocalInfo = load("watchedMovies");
   allWatched.push(savedLocalInfo);
-  save(`AllWatchedMovies`, allWatched);
+  save(`allWatchedMovies`, allWatched);
+
+  if (savedLocalInfo) {
+    let watchedArr = JSON.parse(localStorage.getItem("allWatchedMovies"));
+
+    const allWatchedId = watchedArr
+      .map(watched => watched.id)
+      .filter((id, i, array) => array.indexOf(id) === i);
+    save(`allWatchedMovies`, allWatchedId);
+    console.log("allWatchedId: ", allWatchedId);
+  }
 }
 
 function addQueue() {
@@ -78,13 +84,22 @@ function onAddQueueClick(e) {
     e.currentTarget.textContent = "add to Queue";
   }
 
-  // localStorage.setItem(`queueMovies ${addQueueId}`, JSON.stringify(addQueueId));
   queue.id = addQueueId;
-  console.log(queue);
-  save(`queueMovies`,queue);
+  // console.log(queue);
+  save(`queueMovies`, queue);
   const savedLocalInfo = load("queueMovies");
   allQueue.push(savedLocalInfo);
-  save(`allQueueMovies`,allQueue);
+  save(`allQueueMovies`, allQueue);
+
+  if (savedLocalInfo) {
+    let queueArr = JSON.parse(localStorage.getItem("allQueueMovies"));
+
+    const allQueuedId = queueArr
+      .map(queued => queued.id)
+      .filter((id, i, array) => array.indexOf(id) === i);
+    save(`allQueueMovies`, allQueuedId);
+    console.log("allQueueId: ", allQueuedId);
+  }
 }
 
 export { addWatched, addQueue };
