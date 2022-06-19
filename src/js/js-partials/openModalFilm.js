@@ -5,7 +5,6 @@ import { addWatched, addQueue } from "./onButtonClick";
 import { addListener } from "./trailer";
 const { IMG_URL } = settings;
 
-
 const getImgPath = imgPath => (!imgPath ? `${noImg}` : `${IMG_URL}${imgPath}`);
 
 const apiService = new ApiService();
@@ -109,10 +108,10 @@ async function onClickCard(e) {
         </div>
       </div>
     </div>
-
   `,
       {
         onShow: modal => {
+          console.log(1);
           window.addEventListener("keydown", escapeKeyCloseModal);
           modal.element().querySelector(".modal__close").onclick = modal.close;
         },
@@ -127,7 +126,6 @@ async function onClickCard(e) {
         modal.close();
       }
     }
-    
     modal.show();
   }
 
@@ -136,8 +134,5 @@ async function onClickCard(e) {
   addWatched();
 
   addQueue();
- 
 }
-
-
 
