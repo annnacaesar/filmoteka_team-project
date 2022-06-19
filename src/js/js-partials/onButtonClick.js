@@ -1,4 +1,5 @@
 let currentActiveBtn = "";
+let fetch = {};
 const queue = {};
 const watched = {};
 const allWatched = [];
@@ -26,6 +27,10 @@ const remove = key => {
   localStorage.removeItem(key);
 };
 
+export function createConst(obj) {
+  fetch = obj;
+}
+
 function addWatched() {
   const addWatchedBtn = document.querySelector(".btn-watch");
   addWatchedBtn.addEventListener("click", onAddWatchedClick);
@@ -46,22 +51,22 @@ function onAddWatchedClick(e) {
     e.currentTarget.textContent = "add to Watched";
   }
 
-  watched.id = addWatchedId;
+  // watched.id = addWatchedId;
   // console.log(watched);
-  save(`watchedMovies`, watched);
+  save(`watchedMovies`, fetch);
   const savedLocalInfo = load("watchedMovies");
   allWatched.push(savedLocalInfo);
   save(`allWatchedMovies`, allWatched);
 
-  if (savedLocalInfo) {
-    let watchedArr = JSON.parse(localStorage.getItem("allWatchedMovies"));
+  // if (savedLocalInfo) {
+  //   let watchedArr = JSON.parse(localStorage.getItem("allWatchedMovies"));
 
-    const allWatchedId = watchedArr
-      .map(watched => watched.id)
-      .filter((id, i, array) => array.indexOf(id) === i);
-    save(`allWatchedMovies`, allWatchedId);
-    console.log("allWatchedId: ", allWatchedId);
-  }
+  //   const allWatchedId = watchedArr
+  //     .map(watched => watched.id)
+  //     .filter((id, i, array) => array.indexOf(id) === i);
+  //   save(`allWatchedMovies`, allWatchedId);
+  //   // console.log("allWatchedId: ", allWatchedId);
+  // }
 }
 
 function addQueue() {
@@ -84,22 +89,22 @@ function onAddQueueClick(e) {
     e.currentTarget.textContent = "add to Queue";
   }
 
-  queue.id = addQueueId;
+  // queue.id = addQueueId;
   // console.log(queue);
-  save(`queueMovies`, queue);
+  save(`queueMovies`, fetch);
   const savedLocalInfo = load("queueMovies");
   allQueue.push(savedLocalInfo);
   save(`allQueueMovies`, allQueue);
 
-  if (savedLocalInfo) {
-    let queueArr = JSON.parse(localStorage.getItem("allQueueMovies"));
+  // if (savedLocalInfo) {
+  //   let queueArr = JSON.parse(localStorage.getItem("allQueueMovies"));
 
-    const allQueuedId = queueArr
-      .map(queued => queued.id)
-      .filter((id, i, array) => array.indexOf(id) === i);
-    save(`allQueueMovies`, allQueuedId);
-    console.log("allQueueId: ", allQueuedId);
-  }
+  //   const allQueuedId = queueArr
+  //     .map(queued => queued.id)
+  //     .filter((id, i, array) => array.indexOf(id) === i);
+  //   save(`allQueueMovies`, allQueuedId);
+  //   // console.log("allQueueId: ", allQueuedId);
+  // }
 }
 
 export { addWatched, addQueue };
