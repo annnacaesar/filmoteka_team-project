@@ -6,3 +6,4 @@ import './js/js-partials/renderWatchedList';
 import './js/js-partials/renderQueueList';
 import './js/js-partials/openModalFilm';
 import './js/js-partials/loader';
+import './js/js-partials//onLibraryBtnsClick';
