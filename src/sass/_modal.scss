@@ -1,10 +1,12 @@
 .basicLightbox {
   width: 100%;
   // padding: 50px 20px 50px 20px;
-  overflow-y: scroll;
+  
 
-  @media screen and (max-width: $tablet) {
+  
+  @media screen and (max-width: 767px) {
     padding: 50px 20px 50px 20px;
+    overflow-y: scroll;
   }
 }
 

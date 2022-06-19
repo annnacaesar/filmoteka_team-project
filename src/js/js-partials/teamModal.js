@@ -38,7 +38,7 @@ function onOpenModalTeam() {
 
 
 // const openTeamModalBtn = document.querySelector('.footer__btn');
-const teamContainer = document.querySelector('.team__list');
+// const teamContainer = document.querySelector('.team__list');
 
 
 // const closeTeamModalBtn= document.querySelector('.js-team-close');
