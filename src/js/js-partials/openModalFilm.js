@@ -3,21 +3,18 @@ import ApiService from "./API";
 import settings from "./settings";
 import { addWatched, addQueue } from "./onButtonClick";
 import { addListener } from "./trailer";
+import { normalizationMovieObj } from "./normalization-obj";
 const { IMG_URL } = settings;
 
 const getImgPath = imgPath => (!imgPath ? `${noImg}` : `${IMG_URL}${imgPath}`);
 
 const apiService = new ApiService();
 
-async function loadImgPath(id) {
-  const imgPath = await apiService
-    .getMovieDetails(id)
-    .then(results => getImgPath(results.poster_path));
-  return imgPath;
-}
 async function filmDetails(id) {
   const details = await apiService.getMovieDetails(id).then(results => results);
-  return details;
+  const normalizeDetails = normalizationMovieObj(details);
+  // createConst(normalizeDetails);
+  return normalizeDetails;
 }
 
 const ref = {
@@ -33,21 +30,17 @@ async function onClickCard(e) {
   if (e.target.nodeName !== "DIV" && e.target.nodeName !== "UL") {
     if (e.target.nodeName === "IMG") {
       const id = e.target.parentElement.dataset.id;
-      const img = await loadImgPath(id);
       const details = await filmDetails(id);
-      renderModal({ id, img, details });
+      renderModal(details);
     }
     if (e.target.nodeName === "P") {
       const id = e.target.parentElement.parentElement.dataset.id;
-      const img = await loadImgPath(id);
       const details = await filmDetails(id);
-      renderModal({ id, img, details });
+      renderModal(details);
     }
   }
 
-  function renderModal({ id, img, details }) {
-    const genres = details.genres.map(genre => genre.name).join(", ");
-
+  function renderModal({ id, img, title, popularity, vote, votes, about, genre}) {
     const modal = basicLightbox.create(
       `
     <div class="modal__container">
@@ -67,7 +60,7 @@ async function onClickCard(e) {
 					</button>
         </div>
         <div class="modal__desc-wrap">
-          <h2 class="modal-heading">${details.title}</h2>
+          <h2 class="modal-heading">${title}</h2>
           <div class="modal__rating-wrap">
             <ul class="modal__rating-left-list">
               <li class="modal__rating-left-item">Vote / Votes</li>
@@ -77,26 +70,18 @@ async function onClickCard(e) {
             </ul>
             <ul class="modal__rating-right-list">
               <li class="modal__rating-right-item">
-                <span class="modal__rating-right-item--color">${
-                  details.vote_average
-                }</span> /
-                <span class="modal__rating-right-item--shadow">${
-                  details.vote_count
-                }</span>
+                <span class="modal__rating-right-item--color">${vote}</span> /
+                <span class="modal__rating-right-item--shadow">${votes}</span>
               </li>
-              <li class="modal__rating-right-item">${details.popularity.toFixed(
-                1
-              )}</li>
-              <li class="modal__rating-right-item modal__rating-right-item--uppercase">${
-                details.original_title
-              }</li>
-              <li class="modal__rating-right-item">${genres}</li>
+              <li class="modal__rating-right-item">${popularity}</li>
+              <li class="modal__rating-right-item modal__rating-right-item--uppercase">${title}</li>
+              <li class="modal__rating-right-item">${genre}</li>
             </ul>
           </div>
           <div class="modal__content-wrap">
             <h4 class="modal__content-heading">About</h4>
             <p class="modal__content">
-              ${details.overview}
+              ${about}
             </p>
           </div>
           <div class="modal__button-wrap" data-id="${id}">
