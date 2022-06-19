@@ -1,4 +1,5 @@
 .header {
+  background-color: rgba(0, 0, 0, 0.56);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -43,6 +44,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  background-color: rgba(0, 0, 0, 0.56);
   background-image: url("./../images/header-library/library320.jpg");
   @include mq(retina) {
     background-image: url("./../images/header-library/library320@2x.jpg");
@@ -221,4 +223,25 @@
   color: #ff001b;
   display: flex;
   justify-content: center;
+}
+
+.div-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 80vh;
+  font-weight: 700;
+  font-size: 32px;
+  color: var(--accent-color);
+
+
+
+  @include mq(tablet) {
+    font-size: 52px;
+  }
+
+  @include mq(desktop) {
+    font-size: 72px;
+  }
 }
