@@ -32,9 +32,11 @@
     transition-duration: var(--transition-duration);
     transition-timing-function: var(--timing-function);
   }
-  &__item:hover {
+  &__item:hover,
+  &__item:focus {
     transform: scale(1.05);
     cursor: pointer;
+    box-shadow: var(--box-shadow-hover);
   }
 
   &__img {
