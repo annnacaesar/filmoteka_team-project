@@ -1,7 +1,7 @@
 import * as basicLightbox from "basiclightbox";
 import ApiService from "./API";
 import settings from "./settings";
-import { addWatched, addQueue } from "./onButtonClick";
+import { createConst, addWatched, addQueue } from "./onButtonClick";
 import { addListener } from "./trailer";
 import { normalizationMovieObj } from "./normalization-obj";
 const { IMG_URL } = settings;
@@ -13,7 +13,7 @@ const apiService = new ApiService();
 async function filmDetails(id) {
   const details = await apiService.getMovieDetails(id).then(results => results);
   const normalizeDetails = normalizationMovieObj(details);
-  // createConst(normalizeDetails);
+  createConst(normalizeDetails);
   return normalizeDetails;
 }
 
@@ -40,7 +40,16 @@ async function onClickCard(e) {
     }
   }
 
-  function renderModal({ id, img, title, popularity, vote, votes, about, genre}) {
+  function renderModal({
+    id,
+    img,
+    title,
+    popularity,
+    vote,
+    votes,
+    about,
+    genre,
+  }) {
     const modal = basicLightbox.create(
       `
     <div class="modal__container">
@@ -120,4 +129,3 @@ async function onClickCard(e) {
 
   addQueue();
 }
-
