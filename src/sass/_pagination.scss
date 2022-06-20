@@ -17,6 +17,7 @@
   &.active {
     padding: 13px 13px 11px 13px;
     background-color: var(--accent-color);
+    color: var(--secondary-text-color);
   }
   &:not(:last-child) {
     margin-right: 16px;
@@ -65,4 +66,14 @@
   justify-content: center;
   align-items: center;
   margin-right: 16px;
+}
+#paginationButton {
+  padding-top: 13px;
+  padding-bottom: 11px;
+  // &:not(.active) {
+  //   &:hover,
+  //   :focus {
+  //     background-color: grey;
+  //   }
+  // }
 }
