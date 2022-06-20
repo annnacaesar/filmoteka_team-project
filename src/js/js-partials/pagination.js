@@ -86,6 +86,8 @@ function renderButtons(currentPage, pages) {
     page + 3 === totalPages
   ) {
     refs.lastButton.innerHTML = "";
+    refs.lastButton.style.marginRight = 0;
+
     return;
   } else if (isLastThreeDots()) {
     return;
@@ -105,7 +107,7 @@ function onClickFirstButton(event) {
   if (event.target.nodeName === "BUTTON") {
     page = 1;
 
-    isQueryOrPopular();
+    isQueryOrPopular(apiService.query, page);
   }
 }
 
@@ -113,21 +115,21 @@ function onClickLastButton(event) {
   if (event.target.nodeName === "BUTTON") {
     page = totalPages;
 
-    isQueryOrPopular();
+    isQueryOrPopular(apiService.query, page);
   }
 }
 
 function onClickArrowLeft() {
   if (page === 1) return;
   page -= 1;
-  isQueryOrPopular();
+  isQueryOrPopular(apiService.query, page);
 }
 
 function onClickArrowRight() {
   if (page === totalPages) return;
 
   page += 1;
-  isQueryOrPopular();
+  isQueryOrPopular(apiService.query, page);
 }
 
 function resetButtons() {
@@ -141,7 +143,7 @@ function onClickButton(event) {
   //если клик не в кнопку, а в див - ничо не делаем. Позже кнопку расширю паддингами
   if (event.target === event.currentTarget) return;
   page = Number(event.target.dataset.page);
-  isQueryOrPopular();
+  isQueryOrPopular(apiService.query, page);
 }
 
 //проверка существования точек после первой кнопки
@@ -176,12 +178,15 @@ function renderLastButtonAndDots(totalPages) {
   const threeDots = `<span class='page-buttons__last-points'>···</span>`;
   refs.lastButton.insertAdjacentHTML("beforeend", threeDots);
   refs.lastButton.insertAdjacentHTML("beforeend", lastButton);
+  refs.lastButton.style.marginRight = "10px";
 }
 
 //Рендер кнопок и карточек по поиску.
 function renderPaginationOnSearch(query, queryPage) {
   apiService.query = query;
   apiService.page = queryPage;
+  sessionStorage.setItem("query", query);
+  sessionStorage.setItem("page", queryPage);
   apiService.fetchMoviesySearch().then(({ results, total_pages }) => {
     if (results.length === 0) {
       refs.inputError.textContent =
@@ -196,8 +201,12 @@ function renderPaginationOnSearch(query, queryPage) {
 }
 
 //Рендер кнопок и карточек популярных фильмов
-function renderPaginationPopular() {
+function renderPaginationPopular(pagePopular) {
+  page = pagePopular;
   apiService.page = page;
+  apiService.query = "";
+  sessionStorage.setItem("query", apiService.query);
+  sessionStorage.setItem("page", page);
   apiService.fetchPopular().then(({ results, total_pages }) => {
     clearFilmsContainer();
     appendFilmsMarkup(results, refs.filmsContainerIndex);
@@ -208,13 +217,13 @@ function renderPaginationPopular() {
 
 //Чё рендерить-то - популярные или поиск? Вот функция и разбирается
 //Заодно после рендера поднимает вьюпорт в самый верх
-function isQueryOrPopular() {
-  if (apiService.query === "") {
-    renderPaginationPopular();
+function isQueryOrPopular(query, page) {
+  if (query === "") {
+    renderPaginationPopular(page);
     moveToTop();
     return;
   } else {
-    renderPaginationOnSearch(apiService.query, page);
+    renderPaginationOnSearch(query, page);
     moveToTop();
   }
 }
@@ -224,4 +233,4 @@ function moveToTop() {
   window.scrollTo(pageXOffset, 0);
 }
 
-export { renderButtons, renderPaginationOnSearch };
+export { renderButtons, renderPaginationOnSearch, isQueryOrPopular };
