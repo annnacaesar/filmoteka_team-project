@@ -1,4 +1,9 @@
+body{
+  position: relative;
+}
 footer {
+  position: absolute;
+  bottom: -15px;
   background-color: #f7f7f7;
   padding-top: 30px;
   padding-bottom: 30px;
@@ -6,8 +11,7 @@ footer {
   justify-content: center;
   align-items: center;
 
-  position: relative;
-  bottom: 0px;
+
   width: 100%;
 }
 .foter__list {
@@ -67,3 +71,4 @@ footer {
   width: 200px;
   height: 200px;
 }
+
