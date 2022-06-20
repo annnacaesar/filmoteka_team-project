@@ -1,34 +1,33 @@
 .header {
-  background-color: rgba(0, 0, 0, 0.56);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-image: url("./../images/header-main/header320.jpg");
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./../images/header-main/header320.jpg");
   @include mq(retina) {
-    background-image: url("./../images/header-main/header320@2x.jpg");
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./../images/header-main/header320@2x.jpg");
   }
 
   @include mq(mobile) {
     // background-size: cover;
-    background-image: url("./../images/header-main/header320.jpg");
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./../images/header-main/header320.jpg");
     @include mq(retina) {
-      background-image: url("./../images/header-main/header320@2x.jpg");
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./../images/header-main/header320@2x.jpg");
     }
   }
 
   @include mq(tablet) {
     // background-size: contain;
-    background-image: url("./../images/header-main/header768.jpg");
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./../images/header-main/header768.jpg");
     @include mq(retina) {
-      background-image: url("./../images/header-main/header768@2x.jpg");
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./../images/header-main/header768@2x.jpg");
     }
   }
 
   @include mq(desktop) {
     // background-size: contain;
-    background-image: url("./../images/header-main/header1024.jpg");
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./../images/header-main/header1024.jpg");
     @include mq(retina) {
-      background-image: url("./../images/header-main/header1024@2x.jpg");
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./../images/header-main/header1024@2x.jpg");
     }
   }
 
@@ -45,32 +44,32 @@
   background-position: center;
   background-size: cover;
   background-color: rgba(0, 0, 0, 0.56);
-  background-image: url("./../images/header-library/library320.jpg");
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./../images/header-library/library320.jpg");
   @include mq(retina) {
-    background-image: url("./../images/header-library/library320@2x.jpg");
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./../images/header-library/library320@2x.jpg");
   }
 
   @include mq(mobile) {
     background-size: cover;
-    background-image: url("./../images/header-library/library320.jpg");
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./../images/header-library/library320.jpg");
     @include mq(retina) {
-      background-image: url("./../images/header-library/library320@2x.jpg");
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./../images/header-library/library320@2x.jpg");
     }
   }
 
   @include mq(tablet) {
     background-size: cover;
-    background-image: url("./../images/header-library/library768.jpg");
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./../images/header-library/library768.jpg");
     @include mq(retina) {
-      background-image: url("./../images/header-library/library768@2x.jpg");
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./../images/header-library/library768@2x.jpg");
     }
   }
 
   @include mq(desktop) {
     background-size: cover;
-    background-image: url("./../images/header-library/library1024.jpg");
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./../images/header-library/library1024.jpg");
     @include mq(retina) {
-      background-image: url("./../images/header-library/library1024@2x.jpg");
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./../images/header-library/library1024@2x.jpg");
     }
   }
 
