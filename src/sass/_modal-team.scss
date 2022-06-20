@@ -1,17 +1,21 @@
 
 .team{
+  border-radius: 10px;
+  
 &__wrap {
   // width: 700px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0px 10px;
+  
 }
 
 &__title {
   color: var(--accent-color);
-  font-size: 30px;
-  margin-bottom: 20px;
+  font-size: 25px;
+  margin-bottom: 15px;
 }
 
 &__list {
@@ -36,11 +40,13 @@
   box-shadow: var(--box-shadow-team);
   transition: var(--transition-duration);
 
-   @media screen and (min-width: $mobile) {
-    flex-basis: calc(100% / 2 - 20px);
+   @include mq(mobile) {
+  //  flex-basis: calc(100% / 2 - 20px);
+    width: 140px;
   }
  
-  @media screen and (min-width: $desktop) {
+ 
+  @include mq(desktop) {
    flex-basis: calc(100% / 4 - 20px);
   }
 
@@ -64,14 +70,20 @@
 }
 
 &-name {
-  font-size: 16px;
+  font-size: 14px;
   margin-bottom: 5px;
+   @include mq(mobile) {
+    font-size: 12px;
+  }
 }
 
 &-role {
-  font-size: 16px;
+  font-size: 14px;
   margin-bottom: 5px;
   color: var(--accent-color);
+   @include mq(mobile) {
+    font-size: 12px;
+  }
 }
 
 &-icon {

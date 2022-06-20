@@ -1,10 +1,14 @@
 footer {
+  position: relative;
+  bottom: 0px;
   background-color: #f7f7f7;
   padding-top: 30px;
   padding-bottom: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  width: 100%;
 }
 .foter__list {
   display: flex;
@@ -62,4 +66,14 @@ footer {
 .footer__btn:hover .footer__list-icon {
   width: 200px;
   height: 200px;
+}
+// ====================================
+
+.for__footer-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+main {
+  flex: 1;
 }

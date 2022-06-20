@@ -1,4 +1,4 @@
-// import debounce from "lodash.debounce";
+import { trim } from "lodash.throttle";
 import ApiService from "./API";
 import appendFilmsMarkup from "./appendFilmsMarkup";
 import clearFilmsContainer from "./clearFilmsContainer";
@@ -15,25 +15,28 @@ searchForm.addEventListener("submit", onSearch);
 export function onSearch(e) {
   e.preventDefault();
 
-  apiService.query = e.currentTarget.searchQuery.value;
+  apiService.query = e.currentTarget.searchQuery.value.trim();
+  inputError.textContent = " ";
+
   apiService.resetPage();
 
-  inputError.textContent = " ";
+  if (!apiService.query) {
+    inputError.textContent = "Please enter something to search ";
+    return;
+  }
 
   renderPaginationOnSearch(apiService.query, apiService.page);
 
-  //Вибач, Наталю, але мені або зробити ось так, або переписувати половину свого коду :(
-
-  apiService
-    .fetchMoviesySearch()
-    .then(({ results, total_pages }) => {
-      if (results.length === 0) {
-        inputError.textContent =
-          "Search result not successful. Enter the correct movie name and smile : )";
-        return;
-      }
-      clearFilmsContainer();
-      appendFilmsMarkup(results, filmsContainerIndex);
-    })
-    .catch(error => console.log(error));
+  // apiService
+  //   .fetchMoviesySearch()
+  //   .then(({ results, total_pages }) => {
+  //     if (results.length === 0) {
+  //       inputError.textContent =
+  //         "Search result not successful. Enter the correct movie name and smile : )";
+  //       return;
+  //     }
+  //     clearFilmsContainer();
+  //     appendFilmsMarkup(results, filmsContainerIndex);
+  //   })
+  //   .catch(error => console.log(error));
 }

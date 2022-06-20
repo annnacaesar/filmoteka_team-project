@@ -1,21 +1,25 @@
 {{#each this}}
-<li class="films__item" data-id={{id}}>
-	<img
-				class="films__img"
-				src="{{img}}"
-				alt="{{title}}"
-				loading="lazy"
-			/>
-			<div class="films__info">
-				<p class="films__name">{{title}}</p>
+  <li class="films__item" data-id={{id}}>
 
-				<p class="films__description">
-					{{genre}} | {{releaseDate}}
-				</p>
-			</div>
+    <a href="" class="films__wrapper">
+      <div class="films__img-wrapper">
+        <img class="films__img" src="{{img}}" alt="{{title}}" loading="lazy" />
+      </div>
 
-			  <div class='trailer-button'>
-      <a href='#' class='video-play-btn' aria-label='watch trailer'></a>
+      <div class="films__info">
+        <p class="films__name">{{title}}</p>
+
+        <p class="films__description">
+          {{genre}}
+          |
+          {{releaseDate}}
+        </p>
+      </div>
+    </a>
+
+    <div class="trailer-button">
+      <a href="#" class="video-play-btn" aria-label="watch trailer"></a>
     </div>
-</li>
+
+  </li>
 {{/each}}
