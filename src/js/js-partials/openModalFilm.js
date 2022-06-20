@@ -29,12 +29,14 @@ async function onClickCard(e) {
   // console.log(e.target);
   if (e.target.nodeName !== "DIV" && e.target.nodeName !== "UL") {
     if (e.target.nodeName === "IMG") {
-      const id = e.target.parentElement.dataset.id;
+      const id = e.target.parentElement.parentElement.parentElement.dataset.id;
+      // console.log(e.target.parentElement.parentElement.parentElement);
       const details = await filmDetails(id);
       renderModal(details);
     }
     if (e.target.nodeName === "P") {
-      const id = e.target.parentElement.parentElement.dataset.id;
+      const id = e.target.parentElement.parentElement.parentElement.dataset.id;
+      // console.log(e.target.parentElement.parentElement.parentElement);
       const details = await filmDetails(id);
       renderModal(details);
     }
