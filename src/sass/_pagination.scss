@@ -70,10 +70,10 @@
 #paginationButton {
   padding-top: 13px;
   padding-bottom: 11px;
-  &:not(.active) {
-    &:hover,
-    :focus {
-      background-color: grey;
-    }
-  }
+  // &:not(.active) {
+  //   &:hover,
+  //   :focus {
+  //     background-color: grey;
+  //   }
+  // }
 }
