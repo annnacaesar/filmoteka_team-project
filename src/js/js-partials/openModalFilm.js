@@ -105,12 +105,13 @@ async function onClickCard(e) {
   `,
       {
         onShow: modal => {
-          console.log(1);
           window.addEventListener("keydown", escapeKeyCloseModal);
+          window.addEventListener("click", clickForCloseModal);
           modal.element().querySelector(".modal__close").onclick = modal.close;
         },
         onClose: modal => {
           window.removeEventListener("keydown", escapeKeyCloseModal);
+          window.removeEventListener("click", clickForCloseModal);
         },
       }
     );
@@ -120,6 +121,14 @@ async function onClickCard(e) {
         modal.close();
       }
     }
+
+    function clickForCloseModal(event) {
+      console.log(event.target.classList.value);
+      if (event.target.classList.value === "basicLightbox__placeholder") {
+        modal.close();
+      }
+    }
+
     modal.show();
   }
 

@@ -7,30 +7,31 @@
 // 		}
 // }
 .trailer {
+  // 		&__backdrop {
+  // 		}
 
-// 		&__backdrop {
-// 		}
-
-		&__window {
-			@media screen and (max-width: 767px)  {
-				margin-top: 200px;
-			}
-		}
-
-		&__iframe {
-			width: 100%;
-			
-			
-
-  @media screen and (min-width: $tablet) {
-    width: 700px;
-		height: 470px;
+  &__window {
+    @media screen and (max-width: 767px) {
+      margin-top: 200px;
+    }
   }
-  @media screen and (min-width: $desktop) {
-    width: 815px;
-		height: 550px;
+
+  &__iframe {
+    width: 100%;
+
+    @media screen and (min-width: $tablet) {
+      width: 700px;
+      height: 470px;
+    }
+    @media screen and (min-width: $desktop) {
+      width: 815px;
+      height: 550px;
+    }
   }
-		}
+}
+
+.trailer__backdrop {
+  z-index: 10;
 }
 // .visually-hidden {
 // }

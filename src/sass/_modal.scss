@@ -1,9 +1,8 @@
 .basicLightbox {
   width: 100%;
+  z-index: 9;
   // padding: 50px 20px 50px 20px;
-  
 
-  
   @media screen and (max-width: 767px) {
     padding: 50px 20px 50px 20px;
     overflow-y: scroll;
