@@ -14,13 +14,13 @@
     }
   }
 
-  &__footer-to-bottom{
-    margin-bottom: 126px;
+  // &__footer-to-bottom{
+  //   margin-bottom: 126px;
 
-    @include mq(tablet){
-       margin-bottom: 110px;
-    }
-  }
+  //   @include mq(tablet){
+  //      margin-bottom: 110px;
+  //   }
+  // }
 
   &__list {
     
