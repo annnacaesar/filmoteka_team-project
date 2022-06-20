@@ -190,7 +190,7 @@ const markup = ` <div class="modal__container">
 								class="team__item-icon"
 							/>
 						</a>
-						<a href="https://www.linkedin.com" target="_blank">
+						<a href="https://www.linkedin.com/in/timpopua/" target="_blank">
 							<img
 								src="https://cdn4.iconfinder.com/data/icons/social-media-free-13/32/Linkedin_social_media_logo-512.png"
 								alt=""

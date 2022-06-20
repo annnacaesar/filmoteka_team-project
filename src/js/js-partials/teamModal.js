@@ -19,11 +19,12 @@ function onOpenModalTeam() {
   const modalTeam = basicLightbox.create(markup, {
     onShow: modalTeam => {
       window.addEventListener("keydown", escapeKeyCloseModal);
-      modalTeam.element().querySelector(".modal__close").onclick =
-        modalTeam.close;
+          window.addEventListener("click", clickForCloseModal);
+          modalTeam.element().querySelector(".modal__close").onclick = modalTeam.close;
     },
     onClose: modalTeam => {
       window.removeEventListener("keydown", escapeKeyCloseModal);
+          window.removeEventListener("click", clickForCloseModal);
     },
   });
   function escapeKeyCloseModal(event) {
@@ -31,6 +32,13 @@ function onOpenModalTeam() {
       modalTeam.close();
     }
   }
+function clickForCloseModal(event) {
+      console.log(event.target.classList.value);
+      if (event.target.classList.value === "basicLightbox__placeholder") {
+        modalTeam.close();
+      }
+    }
+
   modalTeam.show();
 }
 

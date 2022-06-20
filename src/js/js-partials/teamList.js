@@ -50,7 +50,7 @@ export default [
     photo: photoPopov,
     role: "Developer",
     git: "http://github.com/Tymur-Popov",
-    ln: "https://www.linkedin.com",
+    ln: "https://www.linkedin.com/in/timpopua/",
   },
   {
     name: "Oleg Bunio",
