@@ -1,9 +1,5 @@
-import ApiService from "./API";
-import appendFilmsMarkup from "./appendFilmsMarkup";
-import { renderButtons, isQueryOrPopular } from "./pagination";
+import { isQueryOrPopular } from "./pagination";
 
-const apiService = new ApiService();
-const filmsContainerIndex = document.querySelector(".js-films-list-index");
 const logo = document.querySelector(".logo");
 const btnAuth = document.querySelector('#modal-btn-auth');
 
