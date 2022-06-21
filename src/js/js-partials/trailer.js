@@ -4,13 +4,15 @@ const movieApiService = new MovieApiService();
 
 const trailerWindow = document.querySelector(".trailer__window");
 const trailerBackdrop = document.querySelector(".trailer__backdrop");
+let trailerBtn;
 
 export function addListener(id) {
-  const trailerBtn = document.querySelector(
-    `.modal__button-play[data-id="${id}"]`
-  );
+  // const trailerBtn = document.querySelector(
+  //   `.modal__button-play[data-id="${id}"]`
+  // );
+  trailerBtn = document.querySelector(`.modal__button-play`);
   if (trailerBtn) {
-    trailerBtn.addEventListener("click", onClickTrailer);
+    trailerBtn.addEventListener("click", onClickTrailer, { once: true });
   }
 }
 
@@ -51,6 +53,7 @@ function appendMarkupTrailer(key) {
 }
 
 function closeModal() {
+  // trailerBtn.removeEventListener("click", onClickTrailer);
   const modal = document.querySelector(".basicLightbox");
   modal.classList.remove("visually-hidden");
   trailerBackdrop.classList.add("visually-hidden");
