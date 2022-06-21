@@ -10,22 +10,20 @@ function onLibraryBtnsClick (evt) {
         return;
     };
 
-    // if (evt.target.classList.contains('is-active')) {
-    //     evt.target.classList.toggle('is-active')
-    // };
-
-    if (libraryWatchedBtn.classList.contains('is-active')) {
-        libraryWatchedBtn.classList.toggle('is-active');
-        libraryQueueBtn.classList.toggle('is-active');
+    if (evt.target.classList.contains("library__watched-btn")) {
+        libraryWatchedBtn.classList.add("is-active");
+        libraryQueueBtn.classList.remove("is-active");
         return;
-    }
-
-    if (libraryQueueBtn.classList.contains('is-active')) {
-        libraryWatchedBtn.classList.toggle('is-active');
-        libraryQueueBtn.classList.toggle('is-active');
+      }
+    
+      if (evt.target.classList.contains("library__queue-btn")) {
+        libraryWatchedBtn.classList.remove("is-active");
+        libraryQueueBtn.classList.add("is-active");
         return;
-    }
+      }
 
 };
+
+
 
 
