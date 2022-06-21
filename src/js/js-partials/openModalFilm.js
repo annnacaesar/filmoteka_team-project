@@ -106,6 +106,7 @@ async function onClickCard(e) {
       {
         onShow: modal => {
           window.addEventListener("keydown", escapeKeyCloseModal);
+
           window.addEventListener("click", clickForCloseModal);
           modal.element().querySelector(".modal__close").onclick = modal.close;
         },
@@ -118,12 +119,14 @@ async function onClickCard(e) {
 
     function escapeKeyCloseModal(event) {
       if (event.code === "Escape") {
-        modal.close();
+        if (!modal.element().classList.contains("visually-hidden")) {
+          modal.close();
+        }
       }
     }
 
     function clickForCloseModal(event) {
-      console.log(event.target.classList.value);
+      // console.log(event.target.classList.value);
       if (event.target.classList.value === "basicLightbox__placeholder") {
         modal.close();
       }
@@ -131,8 +134,8 @@ async function onClickCard(e) {
 
     modal.show();
   }
-
-  addListener();
+  const id = e.target.parentElement.parentElement.parentElement.dataset.id;
+  addListener(id);
 
   addWatched();
 
