@@ -3,55 +3,11 @@ import { firebaseConfig } from "./firebase";
 const btnAuth = document.querySelector('#modal-btn-auth');
 const backdrop = document.querySelector('.auth__backdrop');
 const error = document.querySelector('#js-auth__error');
+const library = document.querySelector('.nav__item-auth');
 
 btnAuth.addEventListener('click', onOpenAuth);
-	
-function firebaseFetch(token) {
-    if (!token) {
-      return Promise.resolve(`<p class="error"> you don't have a token</p>`)
-    }
-    return fetch(`https://filmoteka-209ce-default-rtdb.firebaseio.com/films.json?auth=${token}`).then(response => response.json()).then(response => {
-      console.log('films:', response)
-      if (response && response.error) {
-        return `<p class="error">${response.error}</p>`;
-      }
-
-      return response ? Object.keys(response).map(key =>({...response[key], id : key})) : []
-    })
-  }
-
-const save = (key, value) => {
-  try {
-    const serializedState = JSON.stringify(value);
-    localStorage.setItem(key, serializedState);
-  } catch (error) {
-    console.error("Set state error: ", error.message);
-  }
-};
-
-function addToLocalStorage(film) {
-  const all = getFilmsToLocalStorage();
-  console.log(all);
-  all.push(film)
-  save('film', all)
-}
-
-function getFilmsToLocalStorage() {
-  return JSON.parse(localStorage.getItem('film') || '[]')
-}
-
-function authWithEmailAndPassword(email, password) {
-  return fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${firebaseConfig.apiKey}`, {
-    method: "POST",
-    body: JSON.stringify({ email, password, returnSecureToken: true }),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  }).then(response => response.json()).then(data => data.idToken)
-}
 
 function onOpenAuth(e) {
-	console.log(btnAuth.textContent);
 	if (btnAuth.textContent !== 'log out') {
 		backdrop.classList.remove('visually-hidden');
 	const form = document.querySelector('.auth__form');
@@ -59,32 +15,21 @@ function onOpenAuth(e) {
 	} else {
 		sessionStorage.removeItem('sign-in');
 		btnAuth.textContent = 'sign in';
+		library.classList.add('visually-hidden');
 	}
 	window.addEventListener("keydown", escapeKeyCloseModal);
 	backdrop.addEventListener("click", clickForCloseModal);
 }
 
 function authFormHandler (e) {
-	e.preventDefault();
+e.preventDefault();
 
-	const email = e.target.querySelector("#email").value.trim();
-	const password = e.target.querySelector("#password").value.trim();
+const email = e.target.querySelector("#email").value.trim();
+const password = e.target.querySelector("#password").value.trim();
 
-	authWithEmailAndPassword(email, password).then(token => 
-		firebaseFetch(token)
-	).then(renderModalAfterAuth)
-}
-
-function renderModalAfterAuth(content) {
-	if (typeof content === 'string') {
-		error.textContent = 'INVALID EMAIL OR PASSWORD';
-	} else {
-		error.textContent = '';
-		backdrop.classList.add('visually-hidden');
-		btnAuth.textContent = 'log out'
-		sessionStorage.setItem('sign-in', 'true');
-	}
-	console.log(content);
+authWithEmailAndPassword(email, password).then(token => 
+	firebaseFetch(token)
+).then(renderModalAfterAuth)
 }
 
 function escapeKeyCloseModal(event) {
@@ -99,6 +44,44 @@ function clickForCloseModal(event) {
 	}
 }
 
+function authWithEmailAndPassword(email, password) {
+  return fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${firebaseConfig.apiKey}`, {
+    method: "POST",
+    body: JSON.stringify({ email, password, returnSecureToken: true }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).then(response => response.json()).then(data => data.idToken)
+}
+
+function firebaseFetch(token) {
+    if (!token) {
+      return Promise.resolve(`<p class="error"> you don't have a token</p>`)
+    }
+    return fetch(`https://filmoteka-209ce-default-rtdb.firebaseio.com/films.json?auth=${token}`).then(response => response.json()).then(response => {
+      console.log('films:', response)
+      if (response && response.error) {
+        return `<p class="error">${response.error}</p>`;
+      }
+
+      return response ? Object.keys(response).map(key =>({...response[key], id : key})) : []
+    })
+  }
+
+function renderModalAfterAuth(content) {
+	if (typeof content === 'string') {
+		error.textContent = 'INVALID EMAIL OR PASSWORD';
+	} else {
+		error.textContent = '';
+		backdrop.classList.add('visually-hidden');
+		library.classList.remove('visually-hidden');
+		btnAuth.textContent = 'log out'
+		sessionStorage.setItem('sign-in', 'true');
+	}
+	console.log(content);
+}
+
+
 // function firebaseCreate(film) {
 //     return fetch('https://filmoteka-209ce-default-rtdb.firebaseio.com/films.json', {
 //       method: "POST",
@@ -112,6 +95,26 @@ function clickForCloseModal(event) {
 //         return film;
 //       })
 //       .then(film => addToLocalStorage(film))
+// }
+
+// function addToLocalStorage(film) {
+//   const all = getFilmsToLocalStorage();
+//   console.log(all);
+//   all.push(film)
+//   save('film', all)
+// }
+
+// const save = (key, value) => {
+//   try {
+//     const serializedState = JSON.stringify(value);
+//     localStorage.setItem(key, serializedState);
+//   } catch (error) {
+//     console.error("Set state error: ", error.message);
+//   }
+// };
+
+// function getFilmsToLocalStorage() {
+//   return JSON.parse(localStorage.getItem('film') || '[]')
 // }
 
 	//--on btn click
