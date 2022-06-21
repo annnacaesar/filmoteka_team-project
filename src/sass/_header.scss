@@ -118,11 +118,15 @@
 .nav {
   display: flex;
   margin-top: 40px;
+  
   &__list {
     display: flex;
     align-items: center;
     justify-content: left;
-    // width: 143px;
+    margin-right: 20px;
+  @include mq(tablet){
+      margin-right: 40px;
+    }
   }
 
   &__item{
