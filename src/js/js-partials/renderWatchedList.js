@@ -1,4 +1,4 @@
-import filmCard from "../../templates/films.hbs";
+import filmCard from "../../templates/library-films.hbs";
 
 const load = key => {
   try {

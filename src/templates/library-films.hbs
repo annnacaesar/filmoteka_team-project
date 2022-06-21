@@ -1,0 +1,21 @@
+{{#each this}}
+  <li class="films__item" data-id={{id}}>
+
+    <a href="" class="films__wrapper">
+      <div class="films__img-wrapper">
+        <img class="films__img" src="{{img}}" alt="{{title}}" loading="lazy" />
+      </div>
+
+      <div class="films__info">
+        <p class="films__name">{{title}}</p>
+
+        <p class="films__description">
+          {{genre}}
+          |
+          {{releaseDate}}<span class="rating-on-library-card">{{vote}}</span>
+        </p>
+      </div>
+    </a>
+    
+  </li>
+{{/each}}

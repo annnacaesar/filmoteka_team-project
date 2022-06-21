@@ -10,6 +10,16 @@
   margin-top: 8px;
 }
 
+.rating-on-library-card {
+  background: var(--accent-color);
+  color: #fff;
+
+  margin-left: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 5px;
+}
+
 .films__name {
   text-transform: uppercase;
 
