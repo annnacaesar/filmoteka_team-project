@@ -1,4 +1,4 @@
-import filmCard from '../../templates/films.hbs';
+import filmCard from "../../templates/films.hbs";
 
 const load = key => {
   try {
@@ -9,32 +9,25 @@ const load = key => {
   }
 };
 
-console.log(load('allQueueMovies'));
-const loadQueue = load('allQueueMovies');
 
-const library = document.querySelector('.js-films-list-library');
-const queueBtn = document.querySelector('.library__queue-btn');
-const watchedBtn = document.querySelector('.library__watched-btn');
+const library = document.querySelector(".js-films-list-library");
+const queueBtn = document.querySelector(".library__queue-btn");
+const watchedBtn = document.querySelector(".library__watched-btn");
 
-queueBtn.addEventListener('click', onQueueBtnClick);
+queueBtn.addEventListener("click", onQueueBtnClick);
 
 function onQueueBtnClick(e) {
-  console.log(load('allQueueMovies'));
-
-//   if (watchedBtn.classList.contains('is-active')) {
-//     return;
-//     }
+  const loadQueue = load("allQueueMovies");
   appendFilm(loadQueue);
 }
 
-function appendFilm (films) {
+function appendFilm(films) {
   const normalObjs = films.map(film => {
     film.genre.length <= 3
       ? (film.genre = film.genre.join(", "))
       : (film.genre = [film.genre[0], film.genre[1], "Other"].join(", "));
     return film;
   });
-  console.log(normalObjs);
-  library.innerHTML = '';
+  library.innerHTML = "";
   library.insertAdjacentHTML("beforeend", filmCard(normalObjs));
 }

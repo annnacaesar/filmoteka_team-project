@@ -1,32 +1,4 @@
-// import ApiService from './API';
-// import appendFilmsMarkup from './appendFilmsMarkup';
-
-// const apiService = new ApiService();
-// const library = document.querySelector('.js-films-list-library');
-
-// window.addEventListener('load', onLibraryLoad);
-
-// function onLibraryLoad () {
-//     let watchedList = [];
-//     watchedList = JSON.parse(localStorage.getItem('AllWatchedMovies'));
-//     console.log(watchedList);
-
-
-//     watchedList.forEach(function (element) {
-//       apiService.movieId = element.id;
-//       console.log(apiService.movieId);
-
-//       apiService.fetchById(element.id).then(({ results }) => {
-//         appendFilmsMarkup(results, library);
-//       });
-
-//     });
-
-    
-// };
-
-import filmCard from '../../templates/films.hbs';
-
+import filmCard from "../../templates/films.hbs";
 
 const load = key => {
   try {
@@ -37,42 +9,38 @@ const load = key => {
   }
 };
 
-console.log(load('allWatchedMovies'));
-const loadWatched = load('allWatchedMovies');
 
-const library = document.querySelector('.js-films-list-library');
-const queueBtn = document.querySelector('.library__queue-btn');
-const watchedBtn = document.querySelector('.library__watched-btn');
+const library = document.querySelector(".js-films-list-library");
+const queueBtn = document.querySelector(".library__queue-btn");
+const watchedBtn = document.querySelector(".library__watched-btn");
 
-window.addEventListener('load', renderLibrary);
-watchedBtn.addEventListener('click', renderLibrary);
+window.addEventListener("load", renderLibrary);
+watchedBtn.addEventListener("click", renderLibrary);
 
 function renderLibrary(e) {
-    // if (queueBtn.classList.contains('is-active')) {
-    //     return;
-    // }
-  console.log(load('allWatchedMovies'));
+  const loadWatched = load("allWatchedMovies");
   appendFilm(loadWatched);
 }
 
-function appendFilm (films) {
+function appendFilm(films) {
   const normalObjs = films.map(film => {
     film.genre.length <= 3
       ? (film.genre = film.genre.join(", "))
       : (film.genre = [film.genre[0], film.genre[1], "Other"].join(", "));
     return film;
   });
-  console.log(normalObjs);
-  library.innerHTML = '';
+  library.innerHTML = "";
   library.insertAdjacentHTML("beforeend", filmCard(normalObjs));
 }
 
-import * as basicLightbox from "basiclightbox";
-import settings from "./settings";
-import { createConst, addWatched, addQueue } from "./onButtonClick";
-import { normalizationMovieObj } from "./normalization-obj";
-import  {savedLocalInfo } from './onButtonClick';
-const { IMG_URL } = settings;
+// --------РЕНДЕР МОДАЛКИ-------
+
+// import * as basicLightbox from "basiclightbox";
+// import settings from "./settings";
+// import { createConst, addWatched, addQueue } from "./onButtonClick";
+// import { normalizationMovieObj } from "./normalization-obj";
+// import { savedLocalInfo } from "./onButtonClick";
+// const { IMG_URL } = settings;
 
 // const ref = {
 //   cardContainer: document.querySelector(".films__container"),
@@ -87,14 +55,15 @@ const { IMG_URL } = settings;
 //   if (e.target.nodeName !== "DIV" && e.target.nodeName !== "UL") {
 //     if (e.target.nodeName === "IMG") {
 //       const id = e.target.parentElement.parentElement.parentElement.dataset.id;
+//       console.log(id);
 //       // console.log(e.target.parentElement.parentElement.parentElement);
-//       const details = await filmDetails(id);
+//       const details = load("allWatchedMovies");
 //       renderModal(details);
 //     }
 //     if (e.target.nodeName === "P") {
 //       const id = e.target.parentElement.parentElement.parentElement.dataset.id;
 //       // console.log(e.target.parentElement.parentElement.parentElement);
-//       const details = await filmDetails(id);
+//       const details = load("allWatchedMovies");
 //       renderModal(details);
 //     }
 //   }
@@ -197,5 +166,3 @@ const { IMG_URL } = settings;
 
 //   addQueue();
 // }
-
-
