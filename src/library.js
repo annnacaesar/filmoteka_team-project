@@ -7,3 +7,4 @@ import './js/js-partials/renderQueueList';
 // import './js/js-partials/openModalFilm';
 import './js/js-partials/loader';
 import './js/js-partials//onLibraryBtnsClick';
+import "./js/js-partials/theme";
