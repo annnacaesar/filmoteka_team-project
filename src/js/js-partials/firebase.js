@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -15,80 +16,54 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const btnRecord = document.querySelector('#modal-btn-record');
 
-class Firebase {
-  create(film) {
-    return fetch('https://filmoteka-209ce-default-rtdb.firebaseio.com/films.json', {
-      method: "POST",
-      body: JSON.stringify(film),
-      header: {
-        'Content-Type': 'application/json',
-      }
-    }).then(response => response.json())
-      .then(response => {
-        film.nameId = response.name;
-        return film;
-      })
-      .then(film => addToLocalStorage(film))
 
-  }
 
-  fetch(token) {
-    if (!token) {
-      return Promise.resolve(`<p class="error"> you don't have a token</p>`)
-    }
-    return fetch(`https://filmoteka-209ce-default-rtdb.firebaseio.com/films.json?auth=${token}`).then(response => response.json()).then(response => {
-      console.log('films:', response)
-      if (response && response.error) {
-        return `<p class="error">${response.error}</p>`;
-      }
+btnRecord.addEventListener('click', onOpenRecord);
+const backdrop = document.querySelector('.record__backdrop');
+const errorRecord = document.querySelector('#js-record__error');
 
-      return response ? Object.keys(response).map(key =>({...response[key], id : key})) : []
-    })
-  }
+function onOpenRecord (e) {
+  backdrop.classList.remove('visually-hidden');
+	const form = document.querySelector('.record__form');
+	form.addEventListener('submit', recordFormHandler, {once: true})
+  
+	window.addEventListener("keydown", escapeKeyCloseModal);
+	backdrop.addEventListener("click", clickForCloseModal);
 }
 
-const save = (key, value) => {
-  try {
-    const serializedState = JSON.stringify(value);
-    localStorage.setItem(key, serializedState);
-  } catch (error) {
-    console.error("Set state error: ", error.message);
-  }
-};
+function recordFormHandler(e) {
+  e.preventDefault();
 
-const load = key => {
-  try {
-    const serializedState = localStorage.getItem(key);
-    return serializedState === null ? undefined : JSON.parse(serializedState);
-  } catch (error) {
-    console.error("Get state error: ", error.message);
-  }
-};
-
-const remove = key => {
-  localStorage.removeItem(key);
-};
-
-function addToLocalStorage(film) {
-  const all = getFilmsToLocalStorage();
-  console.log(all);
-  all.push(film)
-  save('film', all)
+  const email = e.target.querySelector("#email").value.trim();
+	const password = e.target.querySelector("#password").value.trim();
+  
+  createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    const user = userCredential.user;
+    errorRecord.textContent = ''
+    backdrop.classList.add('visually-hidden');
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    errorRecord.textContent = 'this email is being used'
+  });
 }
 
-function getFilmsToLocalStorage() {
-  return JSON.parse(localStorage.getItem('film') || '[]')
+function escapeKeyCloseModal(event) {
+	if (event.code === "Escape") {
+		backdrop.classList.add('visually-hidden');
+	}
 }
 
-function authWithEmailAndPassword(email, password) {
-  return fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${firebaseConfig.apiKey}`, {
-    method: "POST",
-    body: JSON.stringify({ email, password, returnSecureToken: true }),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  }).then(response => response.json()).then(data => data.idToken)
+function clickForCloseModal(event) {
+	if (event.target === event.currentTarget) {
+		backdrop.classList.add('visually-hidden');
+	}
 }
 
-export { Firebase, authWithEmailAndPassword };
+export { firebaseConfig };
+

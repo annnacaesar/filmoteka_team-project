@@ -18,7 +18,8 @@
 }
 
 .form label,
-#js-auth__error {
+#js-auth__error,
+#js-record__error {
     /* Size and position */
     width: 50%;
     float: left;
@@ -180,9 +181,11 @@
     display: none;
 }
 
-#js-auth__error{
+#js-auth__error,
+#js-record__error{
 	width: 100%;
 	color: red;
 	display: flex;
 	justify-content: center;
 }
+

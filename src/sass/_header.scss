@@ -83,8 +83,9 @@
 
 .logo {
   margin-top: 40px;
-  margin-left: 20px;
+ 
   @include mq(tablet) {
+    margin-left: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -123,12 +124,43 @@
     margin-top: 40px;
   }
 
-  &__item:not(:last-child) {
-    margin-right: 40px;
+  &__item{
+    font-size: 10px;
+    @include mq(tablet){
+      font-size: 12px;
+    }
   }
 
+  &__item:not(:last-child) {
+    margin-right: 20px;
+    @include mq(tablet){
+      margin-right: 40px;
+    }
+  }
+
+  &__btn-wrapper{
+    @include mq(tablet){
+      display: flex;
+    }
+  }
+
+
   &__item-button{
+    min-width: 56px;
     padding: 5px;
+    padding-bottom: 3px;
+    font-size: 10px;
+    @include mq(tablet){
+      font-size: 12px;
+    }
+  }
+
+  &__item-button:first-child{
+    margin-bottom: 5px;
+    @include mq(tablet){
+      margin-bottom: 0;
+      margin-right: 5px;
+    }
   }
 
   &__item-button:focus{
