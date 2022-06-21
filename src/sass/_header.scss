@@ -119,12 +119,25 @@
     display: flex;
     align-items: center;
     justify-content: left;
-    width: 143px;
+    // width: 143px;
     margin-top: 40px;
   }
 
-  &__item:nth-child(1) {
+  &__item:not(:last-child) {
     margin-right: 40px;
+  }
+
+  &__item-button{
+    padding: 5px;
+  }
+
+  &__item-button:focus{
+    background-color: #ab8d7852;
+  }
+
+  &__item-button:hover,
+  &__item-button:focus{
+    color: #fff;
   }
 
   &__item.active {

@@ -11,3 +11,4 @@ import "./js/js-partials/openModalFilm";
 import "./js/js-partials/loader";
 import "./js/js-partials/trailer";
 import "./js/js-partials/searchSpan";
+import "./js/js-partials/auth";
