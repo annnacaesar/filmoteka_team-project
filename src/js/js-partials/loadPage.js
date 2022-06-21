@@ -5,6 +5,7 @@ import { renderButtons, isQueryOrPopular } from "./pagination";
 const apiService = new ApiService();
 const filmsContainerIndex = document.querySelector(".js-films-list-index");
 const logo = document.querySelector(".logo");
+const btnAuth = document.querySelector('#modal-btn-auth');
 
 window.addEventListener("load", loadPage);
 logo.addEventListener("click", loadPopularPage);
@@ -12,8 +13,10 @@ logo.addEventListener("click", loadPopularPage);
 export default function loadPage() {
   let query = sessionStorage.getItem("query");
   let page = sessionStorage.getItem("page");
+  let signIn = sessionStorage.getItem('sign-in');
   if (query === null) query = "";
   if (page === null) page = 1;
+  if (signIn) btnAuth.textContent = 'log out';
   isQueryOrPopular(query, Number(page));
 }
 

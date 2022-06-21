@@ -68,9 +68,8 @@ function clickForCloseModal(event) {
 //const btnAuth = document.querySelector('#modal-btn-auth');
 //--fn load page
 // let signIn = sessionStorage.getItem('sign-in');
-//  if (signIn) {
-  //   btnAuth.textContent = 'log out';
-  // }
+//  if (signIn) btnAuth.textContent = 'log out';
+  
 
 	//--on btn click
 	//import { Firebase } from "./firebase";
