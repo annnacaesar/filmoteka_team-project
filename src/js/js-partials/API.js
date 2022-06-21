@@ -45,14 +45,13 @@ export default class MovieApiService {
   }
 
   async fetchTrailer(id) {
-    loaderToggle();
     const responce = await fetch(
       `${BASE_URL}/movie/${id}/videos?api_key=${API_KEY}`
     );
     const data = await responce.json();
-   
+   document.querySelector('.loader-overlay').classList.remove("is-open");
     return data;
-     loaderToggle();
+     
   }
 
   getMoviedId(newId) {
