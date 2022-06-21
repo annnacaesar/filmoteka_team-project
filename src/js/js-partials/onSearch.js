@@ -2,7 +2,7 @@ import { trim } from "lodash.throttle";
 import ApiService from "./API";
 import appendFilmsMarkup from "./appendFilmsMarkup";
 import clearFilmsContainer from "./clearFilmsContainer";
-import { renderPaginationOnSearch } from "./pagination";
+import { isQueryOrPopular } from "./pagination";
 
 const apiService = new ApiService();
 
@@ -25,7 +25,7 @@ export function onSearch(e) {
     return;
   }
 
-  renderPaginationOnSearch(apiService.query, apiService.page);
+  isQueryOrPopular(apiService.query, apiService.page);
 
   // apiService
   //   .fetchMoviesySearch()
