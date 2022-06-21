@@ -5,9 +5,13 @@ const movieApiService = new MovieApiService();
 const trailerWindow = document.querySelector(".trailer__window");
 const trailerBackdrop = document.querySelector(".trailer__backdrop");
 
-export function addListener() {
-  const trailerBtn = document.querySelector(".modal__button-play");
-  trailerBtn.addEventListener("click", onClickTrailer);
+export function addListener(id) {
+  const trailerBtn = document.querySelector(
+    `.modal__button-play[data-id="${id}"]`
+  );
+  if (trailerBtn) {
+    trailerBtn.addEventListener("click", onClickTrailer);
+  }
 }
 
 function onClickTrailer(event) {
@@ -15,10 +19,7 @@ function onClickTrailer(event) {
   movieApiService.fetchTrailer(id).then(({ results }) => {
     results.forEach(result => {
       if (result.name === "Official Trailer") {
-        console.log(result.key);
-        const modal = document.querySelector(
-          ".basicLightbox .modal__container"
-        );
+        const modal = document.querySelector(".basicLightbox");
         modal.classList.add("visually-hidden");
         // setAttribut(result.key);
         appendMarkupTrailer(result.key);
@@ -35,7 +36,7 @@ trailerBackdrop.addEventListener("click", e => {
 });
 
 function appendMarkupTrailer(key) {
-  console.log(key);
+  // console.log(key);
   trailerBackdrop.classList.remove("visually-hidden");
   trailerWindow.innerHTML = `
   <iframe class="trailer__iframe" width="700" height="500" src="https://www.youtube.com/embed/${key}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -50,7 +51,7 @@ function appendMarkupTrailer(key) {
 }
 
 function closeModal() {
-  const modal = document.querySelector(".basicLightbox .modal__container");
+  const modal = document.querySelector(".basicLightbox");
   modal.classList.remove("visually-hidden");
   trailerBackdrop.classList.add("visually-hidden");
   trailerWindow.innerHTML = "";
