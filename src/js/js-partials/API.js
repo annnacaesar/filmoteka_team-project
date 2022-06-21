@@ -1,5 +1,5 @@
 import settings from "./settings";
-import loaderToggle from './loader';
+import { loaderToggle, hideLoader } from "./loader";
 const { API_KEY, BASE_URL } = settings;
 
 const VIDEO_BY_SEACH = `${BASE_URL}/search/movie?api_key=${API_KEY}&include_adult=false`;
@@ -45,11 +45,12 @@ export default class MovieApiService {
   }
 
   async fetchTrailer(id) {
+    loaderToggle();
     const responce = await fetch(
       `${BASE_URL}/movie/${id}/videos?api_key=${API_KEY}`
     );
     const data = await responce.json();
-   document.querySelector('.loader-overlay').classList.remove("is-open");
+    hideLoader();
     return data;
      
   }
