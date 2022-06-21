@@ -24,8 +24,8 @@ function onOpenAuth(e) {
 function authFormHandler (e) {
 e.preventDefault();
 
-const email = e.target.querySelector("#email").value.trim();
-const password = e.target.querySelector("#password").value.trim();
+const email = e.target.querySelector("#email-auth").value.trim();
+const password = e.target.querySelector("#password-auth").value.trim();
 
 authWithEmailAndPassword(email, password).then(token => 
 	firebaseFetch(token)

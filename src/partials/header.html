@@ -17,23 +17,19 @@
 							my library
 						</a>
 					</li>
-
-					<div class="nav__btn-wrapper">
-						<button
-							class="nav__item-button button"
-							id="modal-btn-record"
-						>
-							sign up
-						</button>
-
-						<button
-							class="nav__item-button button"
-							id="modal-btn-auth"
-						>
-							sign in
-						</button>
-					</div>
 				</ul>
+				<div class="nav__btn-wrapper">
+					<button
+						class="nav__item-button button"
+						id="modal-btn-record"
+					>
+						sign up
+					</button>
+
+					<button class="nav__item-button button" id="modal-btn-auth">
+						sign in
+					</button>
+				</div>
 			</nav>
 		</div>
 		<div class="input">
@@ -54,26 +50,44 @@
 				</button>
 			</form>
 		</div>
-<div class="container toolbar">
+		<div class="container toolbar">
+			<div class="theme-switch">
+				<svg
+					class="theme-switch-icon"
+					width="20px"
+					height="20px"
+					role="img"
+					aria-label="Іконка сонця"
+				>
+					<use href="./images/symbol-defs.svg#sun"></use>
+				</svg>
 
-	<div class="theme-switch">
-		<svg class="theme-switch-icon" width="20px" height="20px" role="img" aria-label="Іконка сонця">
-			<use href="./images/symbol-defs.svg#sun"></use>
-		</svg>
+				<div class="theme-switch-control">
+					<input
+						class="theme-switch-toggle"
+						type="checkbox"
+						name="theme"
+						id="theme-switch-toggle"
+						aria-label="Перемикач теми"
+					/>
+					<label
+						aria-hidden="true"
+						class="theme-switch-track"
+						for="theme-switch-toggle"
+					></label>
+					<div aria-hidden="true" class="theme-switch-marker"></div>
+				</div>
 
-		<div class="theme-switch-control">
-			<input class="theme-switch-toggle" type="checkbox" name="theme" id="theme-switch-toggle"
-				aria-label="Перемикач теми" />
-			<label aria-hidden="true" class="theme-switch-track" for="theme-switch-toggle">
-			</label>
-			<div aria-hidden="true" class="theme-switch-marker"></div>
+				<svg
+					class="theme-switch-icon"
+					width="20px"
+					height="20px"
+					aria-label="Іконка місяця"
+				>
+					<use href="./images/symbol-defs.svg#moon"></use>
+				</svg>
+			</div>
 		</div>
-
-		<svg class="theme-switch-icon" width="20px" height="20px" aria-label="Іконка місяця">
-			<use href="./images/symbol-defs.svg#moon"></use>
-		</svg>
-	</div>
-</div>
 		<p class="input__error" id="js-input-error"></p>
 	</div>
 </header>
