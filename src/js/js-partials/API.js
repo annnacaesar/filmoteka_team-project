@@ -1,4 +1,5 @@
 import settings from "./settings";
+import loaderToggle from './loader';
 const { API_KEY, BASE_URL } = settings;
 
 const VIDEO_BY_SEACH = `${BASE_URL}/search/movie?api_key=${API_KEY}&include_adult=false`;
@@ -15,35 +16,43 @@ export default class MovieApiService {
   // ======== search films =========
 
   fetchMoviesySearch() {
+    loaderToggle();
     return fetch(
       `${VIDEO_BY_SEACH}&query=${this.searchQuery}&language=${this.language}&page=${this.currentPage}`
-    ).then(responce => responce.json());
+    ).then(responce => responce.json()).finally(loaderToggle);
+    
   }
 
   async fetchPopular() {
+     loaderToggle();
     const urlPopular = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${this.currentPage}`;
-    return fetch(urlPopular).then(responce => responce.json());
+    return fetch(urlPopular).then(responce => responce.json()).finally(loaderToggle);
   }
 
   async getMovieDetails(id) {
+    loaderToggle();
     const url = `${BASE_URL}/movie/${id}?api_key=${API_KEY}`;
-    return fetch(url).then(res => res.json());
+    return fetch(url).then(res => res.json()).finally(loaderToggle);
   }
 
   async fetchById() {
+    loaderToggle();
     const responce = await fetch(
       `${BASE_URL}/movie/${this.movieId}?api_key=${API_KEY}`
     );
-    const data = await responce.json();
+    const data = await responce.json().finally(loaderToggle);
     return data;
   }
 
   async fetchTrailer(id) {
+    loaderToggle();
     const responce = await fetch(
       `${BASE_URL}/movie/${id}/videos?api_key=${API_KEY}`
     );
     const data = await responce.json();
+   
     return data;
+     loaderToggle();
   }
 
   getMoviedId(newId) {
