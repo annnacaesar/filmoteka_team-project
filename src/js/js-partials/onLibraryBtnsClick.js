@@ -15,14 +15,14 @@ function onLibraryBtnsClick (evt) {
     // };
 
     if (libraryWatchedBtn.classList.contains('is-active')) {
-        libraryWatchedBtn.classList.toggle('is-active');
-        libraryQueueBtn.classList.toggle('is-active');
+        libraryWatchedBtn.classList.remove('is-active');
+        libraryQueueBtn.classList.add('is-active');
         return;
     }
 
     if (libraryQueueBtn.classList.contains('is-active')) {
-        libraryWatchedBtn.classList.toggle('is-active');
-        libraryQueueBtn.classList.toggle('is-active');
+        libraryWatchedBtn.classList.add('is-active');
+        libraryQueueBtn.classList.remove('is-active');
         return;
     }
 
