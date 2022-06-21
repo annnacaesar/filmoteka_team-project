@@ -323,6 +323,19 @@
     margin-right: 20px;
   }
 
+  &.is-active {
+    background-color: #ff6b01;
+    color: #ffffff;
+    border: 1px solid #ff6b01;
+  }
+
+  // &.is-active::before {
+  //  content: "REMOVE FROM WATCHED";
+  // }
+
+  // &:not(.is-active)::after {
+  //   content: "ADD WATCHED";
+  // }
   @media screen and (min-width: $tablet) {
     width: 125px;
   }

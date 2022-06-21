@@ -1,7 +1,5 @@
-let currentActiveBtn = "";
+// let currentActiveBtn = "";
 let fetch = {};
-// const queue = {};
-// const watched = {};
 const allWatched = [];
 const allQueue = [];
 
@@ -23,10 +21,6 @@ const load = key => {
   }
 };
 
-// const remove = key => {
-//   localStorage.removeItem(key);
-// };
-
 export function createConst(obj) {
   fetch = obj;
 }
@@ -37,17 +31,14 @@ function addWatched() {
 }
 
 function onAddWatchedClick(e) {
-  if (e.target.nodeName !== "BUTTON") {
-    return;
-  }
-  currentActiveBtn = document.querySelector(".modal__button-active");
+  const currentActiveBtn = document.querySelector(".btn-watch.is-active");
 
-  e.currentTarget.textContent = "Remove from watched";
-  e.currentTarget.classList.toggle("modal__button-active");
+  // e.currentTarget.textContent = "Remove from watched";
+  e.currentTarget.classList.toggle("is-active");
   const savedLocalInfo = load("allWatchedMovies");
 
   if (currentActiveBtn) {
-    e.currentTarget.textContent = "add to Watched";
+    // e.currentTarget.textContent = "add to Watched";
     let index;
     savedLocalInfo.forEach(({ id }, i) => (id === fetch.id ? (index = i) : i));
     allWatched.splice(index, 1);
@@ -62,8 +53,6 @@ function onAddWatchedClick(e) {
     return;
   }
 
-  // save(`watchedMovies`, fetch);
-
   allWatched.push(fetch);
   save(`allWatchedMovies`, allWatched);
 }
@@ -74,13 +63,10 @@ function addQueue() {
 }
 
 function onAddQueueClick(e) {
-  if (e.target.nodeName !== "BUTTON") {
-    return;
-  }
-  currentActiveBtn = document.querySelector(".modal__button-active");
+  const currentActiveBtn = document.querySelector(".btn-queue.is-active");
 
-  e.currentTarget.textContent = "Remove from Queue";
-  e.currentTarget.classList.toggle("modal__button-active");
+  // e.currentTarget.textContent = "Remove from Queue";
+  e.currentTarget.classList.toggle("is-active");
   const savedLocalInfo = load("allQueueMovies");
 
   if (currentActiveBtn) {
@@ -88,7 +74,7 @@ function onAddQueueClick(e) {
     let index;
     savedLocalInfo.forEach(({ id }, i) => (id === fetch.id ? (index = i) : i));
     allQueue.splice(index, 1);
-    save(`allWatchedMovies`, allQueue);
+    save(`allQueueMovies`, allQueue);
   }
 
   const isInArray = savedLocalInfo
