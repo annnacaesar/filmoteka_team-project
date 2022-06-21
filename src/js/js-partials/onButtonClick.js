@@ -1,7 +1,5 @@
-let currentActiveBtn = "";
+// let currentActiveBtn = "";
 let fetch = {};
-const queue = {};
-const watched = {};
 const allWatched = [];
 const allQueue = [];
 
@@ -23,10 +21,6 @@ const load = key => {
   }
 };
 
-const remove = key => {
-  localStorage.removeItem(key);
-};
-
 export function createConst(obj) {
   fetch = obj;
 }
@@ -37,36 +31,30 @@ function addWatched() {
 }
 
 function onAddWatchedClick(e) {
-  if (e.target.nodeName !== "BUTTON") {
+  const currentActiveBtn = document.querySelector(".btn-watch.is-active");
+
+  // e.currentTarget.textContent = "Remove from watched";
+  e.currentTarget.classList.toggle("is-active");
+  const savedLocalInfo = load("allWatchedMovies");
+
+  if (currentActiveBtn) {
+    // e.currentTarget.textContent = "add to Watched";
+    let index;
+    savedLocalInfo.forEach(({ id }, i) => (id === fetch.id ? (index = i) : i));
+    allWatched.splice(index, 1);
+    save(`allWatchedMovies`, allWatched);
+  }
+
+  const isInArray = savedLocalInfo
+    ? savedLocalInfo.find(({ id }) => id === fetch.id)
+    : false;
+
+  if (!!isInArray) {
     return;
   }
 
-  currentActiveBtn = document.querySelector(".modal__button-active");
-  const addWatchedId = e.currentTarget.parentNode.dataset.id;
-
-  e.currentTarget.textContent = "Remove from watched";
-  e.currentTarget.classList.toggle("modal__button-active");
-
-  if (currentActiveBtn) {
-    e.currentTarget.textContent = "add to Watched";
-  }
-
-  // watched.id = addWatchedId;
-  // console.log(watched);
-  save(`watchedMovies`, fetch);
-  const savedLocalInfo = load("watchedMovies");
-  allWatched.push(savedLocalInfo);
+  allWatched.push(fetch);
   save(`allWatchedMovies`, allWatched);
-
-  // if (savedLocalInfo) {
-  //   let watchedArr = JSON.parse(localStorage.getItem("allWatchedMovies"));
-
-  //   const allWatchedId = watchedArr
-  //     .map(watched => watched.id)
-  //     .filter((id, i, array) => array.indexOf(id) === i);
-  //   save(`allWatchedMovies`, allWatchedId);
-  //   // console.log("allWatchedId: ", allWatchedId);
-  // }
 }
 
 function addQueue() {
@@ -75,36 +63,30 @@ function addQueue() {
 }
 
 function onAddQueueClick(e) {
-  if (e.target.nodeName !== "BUTTON") {
-    return;
-  }
+  const currentActiveBtn = document.querySelector(".btn-queue.is-active");
 
-  currentActiveBtn = document.querySelector(".modal__button-active");
-  const addQueueId = e.currentTarget.parentNode.dataset.id;
-
-  e.currentTarget.textContent = "Remove from Queue";
-  e.currentTarget.classList.toggle("modal__button-active");
+  // e.currentTarget.textContent = "Remove from Queue";
+  e.currentTarget.classList.toggle("is-active");
+  const savedLocalInfo = load("allQueueMovies");
 
   if (currentActiveBtn) {
     e.currentTarget.textContent = "add to Queue";
+    let index;
+    savedLocalInfo.forEach(({ id }, i) => (id === fetch.id ? (index = i) : i));
+    allQueue.splice(index, 1);
+    save(`allQueueMovies`, allQueue);
   }
 
-  // queue.id = addQueueId;
-  // console.log(queue);
-  save(`queueMovies`, fetch);
-  const savedLocalInfo = load("queueMovies");
-  allQueue.push(savedLocalInfo);
+  const isInArray = savedLocalInfo
+    ? savedLocalInfo.find(({ id }) => id === fetch.id)
+    : false;
+
+  if (!!isInArray) {
+    return;
+  }
+
+  allQueue.push(fetch);
   save(`allQueueMovies`, allQueue);
-
-  // if (savedLocalInfo) {
-  //   let queueArr = JSON.parse(localStorage.getItem("allQueueMovies"));
-
-  //   const allQueuedId = queueArr
-  //     .map(queued => queued.id)
-  //     .filter((id, i, array) => array.indexOf(id) === i);
-  //   save(`allQueueMovies`, allQueuedId);
-  //   // console.log("allQueueId: ", allQueuedId);
-  // }
 }
 
 export { addWatched, addQueue };

@@ -1,6 +1,7 @@
 import appendFilmsMarkup from "./appendFilmsMarkup";
 import clearFilmsContainer from "./clearFilmsContainer";
 import MovieApiService from "./API";
+import { dispaySpan } from "./searchSpan";
 
 const apiService = new MovieApiService();
 
@@ -12,6 +13,7 @@ const refs = {
   lastButton: document.querySelector(".lastButton-and-threeDots"),
   filmsContainerIndex: document.querySelector(".js-films-list-index"),
   inputError: document.querySelector(".input__error"),
+  searchSpan: document.querySelector(".search-span"),
 };
 
 let page = 1;
@@ -219,10 +221,12 @@ function renderPaginationPopular(pagePopular) {
 //Заодно после рендера поднимает вьюпорт в самый верх
 function isQueryOrPopular(query, page) {
   if (query === "") {
+    dispaySpan(query, page);
     renderPaginationPopular(page);
     moveToTop();
     return;
   } else {
+    dispaySpan(query, page);
     renderPaginationOnSearch(query, page);
     moveToTop();
   }

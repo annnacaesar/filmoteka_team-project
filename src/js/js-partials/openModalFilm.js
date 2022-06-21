@@ -97,9 +97,7 @@ async function onClickCard(e) {
           </div>
           <div class="modal__button-wrap" data-id="${id}">
             <button class="modal__button btn-watch">add to Watched</button>
-            <button class="modal__button btn-queue modal__button--transparent">
-              add to queue
-            </button>
+            <button class="modal__button btn-queue">add to queue</button>
           </div>
         </div>
       </div>
