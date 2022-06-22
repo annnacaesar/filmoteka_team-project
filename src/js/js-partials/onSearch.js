@@ -1,14 +1,10 @@
-import { trim } from "lodash.throttle";
 import ApiService from "./API";
-import appendFilmsMarkup from "./appendFilmsMarkup";
-import clearFilmsContainer from "./clearFilmsContainer";
 import { isQueryOrPopular } from "./pagination";
 
 const apiService = new ApiService();
 
 const searchForm = document.querySelector(".input__wraper");
 const inputError = document.querySelector(".input__error");
-const filmsContainerIndex = document.querySelector(".js-films-list-index");
 
 searchForm.addEventListener("submit", onSearch);
 
