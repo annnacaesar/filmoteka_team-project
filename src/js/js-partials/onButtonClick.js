@@ -32,11 +32,15 @@ function addWatched() {
 function textContentWatched(id) {
   const activeBtn = document.querySelector('.btn-watch');
   const savedId = load("allWatchedMovies");
-  const getUserWithEmail = savedId.find(movie => movie.id === id);
-  if (getUserWithEmail) {
+  if (savedId) {
+    const getUserWithEmail = savedId.find(movie => movie.id === id);
+    if (getUserWithEmail) {
     activeBtn.classList.add("is-active")
     activeBtn.textContent = "Remove from watched"
   }
+  }
+  
+  
 }
 
 function onAddWatchedClick(e) {
@@ -74,11 +78,15 @@ function addQueue() {
 function textContentQueue(id) {
   const activeBtn = document.querySelector('.btn-queue');
   const savedId = load("allQueueMovies");
-  const getUserWithEmail = savedId.find(movie => movie.id === id);
-  if (getUserWithEmail) {
+  if (savedId) {
+    const getUserWithEmail = savedId.find(movie => movie.id === id);
+    if (getUserWithEmail) {
     activeBtn.classList.add("is-active")
     activeBtn.textContent = "remove from queue"
   }
+  }
+  
+ 
 }
 
 function onAddQueueClick(e) {
