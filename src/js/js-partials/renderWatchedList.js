@@ -9,7 +9,6 @@ const load = key => {
   }
 };
 
-
 const library = document.querySelector(".js-films-list-library");
 const queueBtn = document.querySelector(".library__queue-btn");
 const watchedBtn = document.querySelector(".library__watched-btn");
@@ -58,7 +57,9 @@ async function onClickCard(e) {
   console.log(e.target);
   if (e.target.nodeName !== "DIV" && e.target.nodeName !== "UL") {
     if (e.target.nodeName === "IMG") {
-      const id = Number(e.target.parentElement.parentElement.parentElement.dataset.id);
+      const id = Number(
+        e.target.parentElement.parentElement.parentElement.dataset.id
+      );
       console.log(id);
       // console.log(e.target.parentElement.parentElement.parentElement);
       const allDetails = load("allWatchedMovies");
@@ -155,7 +156,9 @@ async function onClickCard(e) {
 
     function escapeKeyCloseModal(event) {
       if (event.code === "Escape") {
-        modal.close();
+        if (!modal.element().classList.contains("visually-hidden")) {
+          modal.close();
+        }
       }
     }
 
