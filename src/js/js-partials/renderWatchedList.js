@@ -1,6 +1,5 @@
 import filmCard from "../../templates/library-films.hbs";
-
-const load = key => {
+ export const load = key => {
   try {
     const serializedState = localStorage.getItem(key);
     return serializedState === null ? undefined : JSON.parse(serializedState);
@@ -9,22 +8,33 @@ const load = key => {
   }
 };
 
+const filmsContainer = document.querySelector(".films__container");
 const library = document.querySelector(".js-films-list-library");
 const queueBtn = document.querySelector(".library__queue-btn");
 const watchedBtn = document.querySelector(".library__watched-btn");
 
-window.addEventListener("load", renderLibrary);
-watchedBtn.addEventListener("click", renderLibrary);
+window.addEventListener("load", renderWatched);
+watchedBtn.addEventListener("click", renderWatched);
 
-const loadWatched = load("allWatchedMovies");
-console.log(loadWatched);
+// const loadWatched = load("allWatchedMovies");
 
-function renderLibrary(e) {
+function renderWatched(e) {
   const loadWatched = load("allWatchedMovies");
-  appendFilm(loadWatched);
+  if (loadWatched === undefined || loadWatched === []) {
+    console.log(13);
+    filmsContainer.innerHTML = "";
+    emptyLibraryImg = `<div class="empty-library-img"></div>
+    <p class="empty-library-text">Vincent can't find your watched films :(</p>
+    `;
+    filmsContainer.insertAdjacentHTML("beforeend", emptyLibraryImg);
+    console.log(11);
+    return;
+  } else {
+    appendFilm(loadWatched);
+  }
 }
 
-function appendFilm(films) {
+export function appendFilm(films) {
   const normalObjs = films.map(film => {
     film.genre.length <= 3
       ? (film.genre = film.genre.join(", "))
@@ -39,9 +49,6 @@ function appendFilm(films) {
 
 import * as basicLightbox from "basiclightbox";
 import settings from "./settings";
-// import { createConst, addWatched, addQueue } from "./onButtonClick";
-// import { normalizationMovieObj } from "./normalization-obj";
-// import { savedLocalInfo } from "./onButtonClick";
 import { addListener } from "./trailer";
 const { IMG_URL } = settings;
 
@@ -69,7 +76,9 @@ async function onClickCard(e) {
       renderModal(details);
     }
     if (e.target.nodeName === "P") {
-      const id = e.target.parentElement.parentElement.parentElement.dataset.id;
+      const id = Number(
+        e.target.parentElement.parentElement.parentElement.dataset.id
+        );
       // console.log(e.target.parentElement.parentElement.parentElement);
       const allDetails = load("allWatchedMovies");
       const details = allDetails.find(element => element.id === id);
@@ -132,10 +141,7 @@ async function onClickCard(e) {
             </p>
           </div>
           <div class="modal__button-wrap" data-id="${id}">
-            <button class="modal__button btn-watch">add to Watched</button>
-            <button class="modal__button btn-queue modal__button--transparent">
-              add to queue
-            </button>
+            <button class="modal__button btn-remove-watch" type="submit">remove from Watched</button>
           </div>
         </div>
       </div>
@@ -173,8 +179,14 @@ async function onClickCard(e) {
   }
 
   addListener();
-
-  // addWatched();
-
-  // addQueue();
 }
+
+// ==========УДАЛЕНИЕ ИЗ БИБЛИОТЕКИ============
+
+const removeWatchBtn = document.querySelector('.btn-remove-watch');
+console.log(removeWatchBtn);
+// removeWatchBtn.addEventListener('click', onRemoveWatchBtnClick);
+
+// function onRemoveWatchBtnClick (event) {
+//   localStorage.removeItem("allWatchedMovies");
+// };
