@@ -30,12 +30,12 @@ function onClickTrailer(event) {
   });
 }
 
-trailerBackdrop.addEventListener("click", e => {
-  if (e.target !== trailerBackdrop) {
-    return;
-  }
-  closeModal();
-});
+// trailerBackdrop.addEventListener("click", e => {
+//   if (e.target !== trailerBackdrop) {
+//     return;
+//   }
+//   closeModal();
+// });
 
 function appendMarkupTrailer(key) {
   // console.log(key);
@@ -50,6 +50,8 @@ function appendMarkupTrailer(key) {
     }
     closeModal();
   });
+
+  window.addEventListener("keydown", escapeKeyCloseTrailer, { once: true });
 }
 
 function closeModal() {
@@ -58,6 +60,16 @@ function closeModal() {
   modal.classList.remove("visually-hidden");
   trailerBackdrop.classList.add("visually-hidden");
   trailerWindow.innerHTML = "";
+}
+
+function escapeKeyCloseTrailer(event) {
+  console.log(event);
+  if (event.code === "Escape") {
+    const modal = document.querySelector(".basicLightbox");
+    modal.classList.remove("visually-hidden");
+    trailerBackdrop.classList.add("visually-hidden");
+    trailerWindow.innerHTML = "";
+  }
 }
 
 // function setAttribut(key) {
