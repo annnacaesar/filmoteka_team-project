@@ -28,23 +28,10 @@ function onQueueBtnClick(e) {
     <p class="empty-library-text">Vincent can't find your queue films :(</p>
     `;
     filmsContainer.insertAdjacentHTML("beforeend", emptyLibraryImg);
-  return}
-  else {
+  return;
+} else {
     appendFilm(loadQueue);}
 }
-
-// function appendFilm(films) {
-//   if (loadQueue === undefined) {
-//     filmsContainer.innerHTML = "";
-//     emptyLibraryImg = `<div class="empty-library-img"></div>
-//     <p class="empty-library-text">Vincent can't find your films :(</p>
-//     `;
-//     filmsContainer.insertAdjacentHTML("beforeend", emptyLibraryImg);
-//   return}
-//   else {
-//     appendFilm(loadQueue);
-//   }
-// }
 
 // ==============РЕНДЕР МОДАЛКИ================
 
