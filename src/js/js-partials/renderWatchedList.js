@@ -162,7 +162,9 @@ async function onClickCard(e) {
 
     function escapeKeyCloseModal(event) {
       if (event.code === "Escape") {
-        modal.close();
+        if (!modal.element().classList.contains("visually-hidden")) {
+          modal.close();
+        }
       }
     }
 

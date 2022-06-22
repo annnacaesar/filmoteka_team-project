@@ -1,6 +1,8 @@
 import { firebaseConfig } from "./firebase";
+import { loaderToggle } from "./loader";
 
 const btnAuth = document.querySelector('#modal-btn-auth');
+const btnRecord = document.querySelector('#modal-btn-record');
 const backdrop = document.querySelector('.auth__backdrop');
 const error = document.querySelector('#js-auth__error');
 const library = document.querySelector('.nav__item-auth');
@@ -16,6 +18,7 @@ function onOpenAuth(e) {
 		sessionStorage.removeItem('sign-in');
 		btnAuth.textContent = 'sign in';
 		library.classList.add('visually-hidden');
+		btnRecord.classList.remove('visually-hidden');
 	}
 	window.addEventListener("keydown", escapeKeyCloseModal);
 	backdrop.addEventListener("click", clickForCloseModal);
@@ -45,13 +48,14 @@ function clickForCloseModal(event) {
 }
 
 function authWithEmailAndPassword(email, password) {
+	loaderToggle();
   return fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${firebaseConfig.apiKey}`, {
     method: "POST",
     body: JSON.stringify({ email, password, returnSecureToken: true }),
     headers: {
       'Content-Type': 'application/json'
     }
-  }).then(response => response.json()).then(data => data.idToken)
+  }).then(response => response.json()).then(data => data.idToken).finally(loaderToggle)
 }
 
 function firebaseFetch(token) {
@@ -77,6 +81,7 @@ function renderModalAfterAuth(content) {
 		library.classList.remove('visually-hidden');
 		btnAuth.textContent = 'log out'
 		sessionStorage.setItem('sign-in', 'true');
+		btnRecord.classList.add('visually-hidden');
 	}
 	console.log(content);
 }

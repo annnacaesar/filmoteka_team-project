@@ -1,7 +1,13 @@
 import * as basicLightbox from "basiclightbox";
 import ApiService from "./API";
 import settings from "./settings";
-import { createConst, addWatched, addQueue } from "./onButtonClick";
+import {
+  createConst,
+  addWatched,
+  addQueue,
+  textContentWatched,
+  textContentQueue,
+} from "./onButtonClick";
 import { addListener } from "./trailer";
 import { normalizationMovieObj } from "./normalization-obj";
 const { IMG_URL } = settings;
@@ -96,7 +102,7 @@ async function onClickCard(e) {
             </p>
           </div>
           <div class="modal__button-wrap" data-id="${id}">
-            <button class="modal__button btn-watch">add to Watched</button>
+            <button class="modal__button btn-watch">add to watched</button>
             <button class="modal__button btn-queue">add to queue</button>
           </div>
         </div>
@@ -106,7 +112,6 @@ async function onClickCard(e) {
       {
         onShow: modal => {
           window.addEventListener("keydown", escapeKeyCloseModal);
-
           window.addEventListener("click", clickForCloseModal);
           modal.element().querySelector(".modal__close").onclick = modal.close;
         },
@@ -133,6 +138,8 @@ async function onClickCard(e) {
     }
 
     modal.show();
+    textContentWatched(id);
+    textContentQueue(id);
   }
   const id = e.target.parentElement.parentElement.parentElement.dataset.id;
   addListener(id);

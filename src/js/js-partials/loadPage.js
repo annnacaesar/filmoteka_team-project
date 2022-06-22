@@ -2,6 +2,7 @@ import { isQueryOrPopular } from "./pagination";
 
 const logo = document.querySelector(".logo");
 const btnAuth = document.querySelector('#modal-btn-auth');
+const btnRecord = document.querySelector('#modal-btn-record');
 const library = document.querySelector('.nav__item-auth');
 
 window.addEventListener("load", loadPage);
@@ -18,6 +19,7 @@ export default function loadPage() {
   } else {
     btnAuth.textContent = 'log out';
     library.classList.remove('visually-hidden');
+    btnRecord.classList.add('visually-hidden');
   } 
 
 

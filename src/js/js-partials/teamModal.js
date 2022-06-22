@@ -8,6 +8,7 @@ const modalTeamRef = document.querySelector(".footer__btn");
 
 modalTeamRef.addEventListener("click", onOpenModalTeam);
 
+
 function onOpenModalTeam() {
   console.log("Hello");
   const modalTeam = basicLightbox.create(markup, {
@@ -38,26 +39,36 @@ function onOpenModalTeam() {
 }
 
 // ======================================================================
+// --------------------------------------------------------------------------
+// function onOpenModalTeam() {
+//   console.log("Hello");
+//   const modalTeam = basicLightbox.create(document.querySelector('template'))
+
+//   modalTeam.show();
+// }
+
+// // -------------------------------------------------------------------------
 
 // const openTeamModalBtn = document.querySelector('.footer__btn');
 // const teamContainer = document.querySelector('.team__list');
 
-// const closeTeamModalBtn= document.querySelector('.js-team-close');
-// const backdropTeamModal = document.querySelector('.js-backdrop');
+// // const closeTeamModalBtn= document.querySelector('.js-team-close');
+// // const backdropTeamModal = document.querySelector('.js-backdrop');
 
 // const body = document.querySelector('body');
 
 // openTeamModalBtn.addEventListener('click', onOpenModal);
-// const mmarkup = renderTeam(teamList);
+// // const mmarkup = renderTeam(teamList);
 
-function onOpenModal(evt) {
-  evt.preventDefault();
-  console.log("Hello");
+// function onOpenModal(evt) {
+//   evt.preventDefault();
+//   console.log("Hello");
+//   onOpenModalTeam();
 
-  renderTeam(teamList);
-}
+//   renderTeam(teamList);
+// }
 
-function renderTeam() {
-  const markup = teamTpl(teamList);
-  teamContainer.innerHTML = markup;
-}
+// function renderTeam() {
+//   const markup = teamTpl(teamList);
+//   teamContainer.innerHTML = markup;
+// }
