@@ -43,6 +43,11 @@
     z-index: 0;
     position: absolute;
     margin-right: 20px;
+
+    @media screen and (max-width: 479px) {
+        margin-right: -40px;
+        margin-top: 20px;
+    }
 }
 
 .theme-switch-icon {
