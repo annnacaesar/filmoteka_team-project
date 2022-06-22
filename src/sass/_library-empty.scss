@@ -1,20 +1,22 @@
 .empty-library-img {
-    background-image: url(../images/empty-library.jpg);
     background-size: cover;
 
     margin: 0 auto;
 
     @media screen and (min-width: $mobile) {
-        width: 250px;
-        height: 150px;
+        width: 200px;
+        height: 250px;
+        background-image: url(../images/empty-library/empty-library-mobile.jpg);
       }
       @media screen and (min-width: $tablet) {
         width: 350px;
         height: 250px;
+        background-image: url(../images/empty-library/empty-library.jpg);
       }
       @media screen and (min-width: $desktop) {
         width: 500px;
         height: 350px;
+        background-image: url(../images/empty-library/empty-library.jpg);
       }
 };
 

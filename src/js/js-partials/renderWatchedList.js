@@ -1,5 +1,5 @@
 import filmCard from "../../templates/library-films.hbs";
-const load = key => {
+ export const load = key => {
   try {
     const serializedState = localStorage.getItem(key);
     return serializedState === null ? undefined : JSON.parse(serializedState);
@@ -21,6 +21,7 @@ watchedBtn.addEventListener("click", renderWatched);
 function renderWatched(e) {
   const loadWatched = load("allWatchedMovies");
   if (loadWatched === undefined || loadWatched === []) {
+    console.log(13);
     filmsContainer.innerHTML = "";
     emptyLibraryImg = `<div class="empty-library-img"></div>
     <p class="empty-library-text">Vincent can't find your watched films :(</p>
