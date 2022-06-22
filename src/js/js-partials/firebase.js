@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { loaderToggle } from "./loader";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -36,6 +37,7 @@ function onOpenRecord (e) {
 
 function recordFormHandler(e) {
   e.preventDefault();
+  loaderToggle();
 
   const email = e.target.querySelector("#email").value.trim();
 	const password = e.target.querySelector("#password").value.trim();
@@ -50,7 +52,7 @@ function recordFormHandler(e) {
     const errorCode = error.code;
     const errorMessage = error.message;
     errorRecord.textContent = 'this email is being used'
-  });
+  }).then(loaderToggle);
 }
 
 function escapeKeyCloseModal(event) {
