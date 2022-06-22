@@ -12,3 +12,4 @@ import "./js/js-partials/trailer";
 import "./js/js-partials/searchSpan";
 import "./js/js-partials/auth";
 import "./js/js-partials/theme";
+import "./js/js-partials/button-up";
