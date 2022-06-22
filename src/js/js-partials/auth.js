@@ -1,4 +1,5 @@
 import { firebaseConfig } from "./firebase";
+import { loaderToggle } from "./loader";
 
 const btnAuth = document.querySelector('#modal-btn-auth');
 const backdrop = document.querySelector('.auth__backdrop');
@@ -45,13 +46,14 @@ function clickForCloseModal(event) {
 }
 
 function authWithEmailAndPassword(email, password) {
+	loaderToggle();
   return fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${firebaseConfig.apiKey}`, {
     method: "POST",
     body: JSON.stringify({ email, password, returnSecureToken: true }),
     headers: {
       'Content-Type': 'application/json'
     }
-  }).then(response => response.json()).then(data => data.idToken)
+  }).then(response => response.json()).then(data => data.idToken).finally(loaderToggle)
 }
 
 function firebaseFetch(token) {
