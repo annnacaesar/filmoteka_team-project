@@ -23,7 +23,8 @@
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
     "modern-normalize": "^1.1.0",
-    "simplelightbox": "^2.10.3"
+    "simplelightbox": "^2.10.3",
+    "vanilla-back-to-top": "^7.2.1"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
