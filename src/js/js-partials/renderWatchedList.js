@@ -13,24 +13,27 @@ const library = document.querySelector(".js-films-list-library");
 const queueBtn = document.querySelector(".library__queue-btn");
 const watchedBtn = document.querySelector(".library__watched-btn");
 
-window.addEventListener("load", renderLibrary);
-watchedBtn.addEventListener("click", renderLibrary);
+window.addEventListener("load", renderWatched);
+watchedBtn.addEventListener("click", renderWatched);
 
-const loadWatched = load("allWatchedMovies");
+// const loadWatched = load("allWatchedMovies");
 
-function renderLibrary(e) {
+function renderWatched(e) {
   const loadWatched = load("allWatchedMovies");
-  if (loadWatched === undefined) {
-    const emptyLibraryImg = `<div>
-    <img src="../images/empty-library.jpg" alt="empty_library" width="50px" height="50px">
-  </div>`;
+  if (loadWatched === undefined || loadWatched === []) {
+    filmsContainer.innerHTML = "";
+    emptyLibraryImg = `<div class="empty-library-img"></div>
+    <p class="empty-library-text">Vincent can't find your watched films :(</p>
+    `;
     filmsContainer.insertAdjacentHTML("beforeend", emptyLibraryImg);
+    console.log(11);
+    return;
   } else {
     appendFilm(loadWatched);
   }
 }
 
-function appendFilm(films) {
+export function appendFilm(films) {
   const normalObjs = films.map(film => {
     film.genre.length <= 3
       ? (film.genre = film.genre.join(", "))
@@ -72,7 +75,9 @@ async function onClickCard(e) {
       renderModal(details);
     }
     if (e.target.nodeName === "P") {
-      const id = e.target.parentElement.parentElement.parentElement.dataset.id;
+      const id = Number(
+        e.target.parentElement.parentElement.parentElement.dataset.id
+        );
       // console.log(e.target.parentElement.parentElement.parentElement);
       const allDetails = load("allWatchedMovies");
       const details = allDetails.find(element => element.id === id);
@@ -177,8 +182,8 @@ async function onClickCard(e) {
 
 const removeWatchBtn = document.querySelector('.btn-remove-watch');
 console.log(removeWatchBtn);
-removeWatchBtn.addEventListener('click', onRemoveWatchBtnClick);
+// removeWatchBtn.addEventListener('click', onRemoveWatchBtnClick);
 
-function onRemoveWatchBtnClick (event) {
-  localStorage.removeItem("allWatchedMovies");
-};
+// function onRemoveWatchBtnClick (event) {
+//   localStorage.removeItem("allWatchedMovies");
+// };

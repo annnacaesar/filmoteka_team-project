@@ -1,0 +1,29 @@
+.empty-library-img {
+    background-image: url(../images/empty-library.jpg);
+    background-size: cover;
+
+    margin: 0 auto;
+
+    @media screen and (min-width: $mobile) {
+        width: 250px;
+        height: 150px;
+      }
+      @media screen and (min-width: $tablet) {
+        width: 350px;
+        height: 250px;
+      }
+      @media screen and (min-width: $desktop) {
+        width: 500px;
+        height: 350px;
+      }
+};
+
+.empty-library-text {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 16px;
+
+    margin-top: 20px;
+    text-align: center;
+    color: var(--accent-color);
+}

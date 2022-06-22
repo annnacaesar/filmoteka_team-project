@@ -1,4 +1,5 @@
 import filmCard from "../../templates/library-films.hbs";
+import { appendFilm } from "./renderWatchedList";
 
 const load = key => {
   try {
@@ -13,24 +14,39 @@ const load = key => {
 const library = document.querySelector(".js-films-list-library");
 const queueBtn = document.querySelector(".library__queue-btn");
 const watchedBtn = document.querySelector(".library__watched-btn");
+const filmsContainer = document.querySelector(".films__container");
 
 queueBtn.addEventListener("click", onQueueBtnClick);
 
 function onQueueBtnClick(e) {
   const loadQueue = load("allQueueMovies");
-  appendFilm(loadQueue);
+
+  if (loadQueue === undefined || loadQueue === []) {
+    console.log(12);
+    filmsContainer.innerHTML = "";
+    emptyLibraryImg = `<div class="empty-library-img"></div>
+    <p class="empty-library-text">Vincent can't find your queue films :(</p>
+    `;
+    filmsContainer.insertAdjacentHTML("beforeend", emptyLibraryImg);
+  return}
+  else {
+    appendFilm(loadQueue);}
 }
 
-function appendFilm(films) {
-  const normalObjs = films.map(film => {
-    film.genre.length <= 3
-      ? (film.genre = film.genre.join(", "))
-      : (film.genre = [film.genre[0], film.genre[1], "Other"].join(", "));
-    return film;
-  });
-  library.innerHTML = "";
-  library.insertAdjacentHTML("beforeend", filmCard(normalObjs));
-}
+// function appendFilm(films) {
+//   if (loadQueue === undefined) {
+//     filmsContainer.innerHTML = "";
+//     emptyLibraryImg = `<div class="empty-library-img"></div>
+//     <p class="empty-library-text">Vincent can't find your films :(</p>
+//     `;
+//     filmsContainer.insertAdjacentHTML("beforeend", emptyLibraryImg);
+//   return}
+//   else {
+//     appendFilm(loadQueue);
+//   }
+// }
+
+// ==============РЕНДЕР МОДАЛКИ================
 
 import * as basicLightbox from "basiclightbox";
 import settings from "./settings";
