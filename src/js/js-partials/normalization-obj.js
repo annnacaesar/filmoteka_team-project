@@ -1,6 +1,6 @@
 import genreList from "./genreList";
 import settings from "./settings";
-const { API_KEY, BASE_URL, IMG_URL } = settings;
+const { IMG_URL } = settings;
 import noImg from "../../images/noImageAvailable.jpg";
 
 const getGenreArray = genre_ids => genre_ids.map(el => genreList[`${el}`]);
