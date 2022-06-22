@@ -1,4 +1,3 @@
-// let currentActiveBtn = "";
 let fetch = {};
 const allWatched = [];
 const allQueue = [];
@@ -21,7 +20,7 @@ const load = key => {
   }
 };
 
-export function createConst(obj) {
+function createConst(obj) {
   fetch = obj;
 }
 
@@ -30,29 +29,39 @@ function addWatched() {
   addWatchedBtn.addEventListener("click", onAddWatchedClick);
 }
 
+function textContentWatched(id) {
+  const activeBtn = document.querySelector('.btn-watch');
+  const savedId = load("allWatchedMovies");
+  const getUserWithEmail = savedId.find(movie => movie.id === id);
+  if (getUserWithEmail) {
+    activeBtn.classList.add("is-active")
+    activeBtn.textContent = "Remove from watched"
+  }
+}
+
 function onAddWatchedClick(e) {
   const currentActiveBtn = document.querySelector(".btn-watch.is-active");
-
-  // e.currentTarget.textContent = "Remove from watched";
-  e.currentTarget.classList.toggle("is-active");
   const savedLocalInfo = load("allWatchedMovies");
+  e.currentTarget.classList.toggle("is-active");
 
   if (currentActiveBtn) {
-    // e.currentTarget.textContent = "add to Watched";
     let index;
     savedLocalInfo.forEach(({ id }, i) => (id === fetch.id ? (index = i) : i));
     allWatched.splice(index, 1);
     save(`allWatchedMovies`, allWatched);
   }
-
+ 
   const isInArray = savedLocalInfo
     ? savedLocalInfo.find(({ id }) => id === fetch.id)
     : false;
+  
+  e.currentTarget.textContent = "add to Watched";
 
   if (!!isInArray) {
     return;
   }
 
+  e.currentTarget.textContent = "Remove from watched";
   allWatched.push(fetch);
   save(`allWatchedMovies`, allWatched);
 }
@@ -62,15 +71,22 @@ function addQueue() {
   addWatchedBtn.addEventListener("click", onAddQueueClick);
 }
 
+function textContentQueue(id) {
+  const activeBtn = document.querySelector('.btn-queue');
+  const savedId = load("allQueueMovies");
+  const getUserWithEmail = savedId.find(movie => movie.id === id);
+  if (getUserWithEmail) {
+    activeBtn.classList.add("is-active")
+    activeBtn.textContent = "remove from queue"
+  }
+}
+
 function onAddQueueClick(e) {
   const currentActiveBtn = document.querySelector(".btn-queue.is-active");
-
-  // e.currentTarget.textContent = "Remove from Queue";
-  e.currentTarget.classList.toggle("is-active");
   const savedLocalInfo = load("allQueueMovies");
+  e.currentTarget.classList.toggle("is-active");
 
   if (currentActiveBtn) {
-    e.currentTarget.textContent = "add to Queue";
     let index;
     savedLocalInfo.forEach(({ id }, i) => (id === fetch.id ? (index = i) : i));
     allQueue.splice(index, 1);
@@ -80,13 +96,16 @@ function onAddQueueClick(e) {
   const isInArray = savedLocalInfo
     ? savedLocalInfo.find(({ id }) => id === fetch.id)
     : false;
+  
+  e.currentTarget.textContent = "add to Queue";
 
   if (!!isInArray) {
     return;
   }
 
+  e.currentTarget.textContent = "Remove from Queue";
   allQueue.push(fetch);
   save(`allQueueMovies`, allQueue);
 }
 
-export { addWatched, addQueue };
+export { createConst, addWatched, addQueue, textContentWatched, textContentQueue };
