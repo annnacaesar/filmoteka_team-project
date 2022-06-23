@@ -2,13 +2,14 @@
 import { appendFilm } from "./renderWatchedList";
 import { save , load } from "./onButtonClick";
 import * as basicLightbox from "basiclightbox";
+import { allQueue } from "./onButtonClick";
 
 
 const library = document.querySelector(".js-films-list-library");
 const queueBtn = document.querySelector(".library__queue-btn");
 const watchedBtn = document.querySelector(".library__watched-btn");
 const filmsContainer = document.querySelector(".films__container");
-let newQueue = [];
+const loadQueue = load("allQueueMovies");
 
 queueBtn.addEventListener("click", onQueueBtnClick);
 
@@ -167,11 +168,8 @@ async function onClickCard(e) {
 // ==========УДАЛЕНИЕ ИЗ БИБЛИОТЕКИ============
 function onRemoveQueueBtnClick (event) {
   let index;
-  newQueue.push(load("allQueueMovies"));
-  newQueue.forEach(({ id }, i) => (id === load(`allWatchedMovies`).id ? (index = i) : i));
-  newQueue.splice(index, 1);
-    save(`allQueueMovies`, newQueue);
+    loadQueue.forEach(({ id }, i) => (id === fetch.id ? (index = i) : i));
+    allQueue.splice(index, 1);
+    save(`allQueueMovies`, allQueue);
     onQueueBtnClick();
-    console.log(event.target);
-    modal.close();
 };
