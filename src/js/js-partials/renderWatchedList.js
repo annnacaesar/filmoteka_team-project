@@ -1,33 +1,27 @@
 import filmCard from "../../templates/library-films.hbs";
- export const load = key => {
-  try {
-    const serializedState = localStorage.getItem(key);
-    return serializedState === null ? undefined : JSON.parse(serializedState);
-  } catch (error) {
-    console.error("Get state error: ", error.message);
-  }
-};
+import { save , load } from "./onButtonClick";
+import * as basicLightbox from "basiclightbox";
 
 const filmsContainer = document.querySelector(".films__container");
 const library = document.querySelector(".js-films-list-library");
-const queueBtn = document.querySelector(".library__queue-btn");
+// const queueBtn = document.querySelector(".library__queue-btn");
 const watchedBtn = document.querySelector(".library__watched-btn");
+let newWatched = [];
 
 window.addEventListener("load", renderWatched);
 watchedBtn.addEventListener("click", renderWatched);
-
-// const loadWatched = load("allWatchedMovies");
+const loadWatched = load("allWatchedMovies");
 
 function renderWatched(e) {
   const loadWatched = load("allWatchedMovies");
-  if (loadWatched === undefined || loadWatched === []) {
-    console.log(13);
+  if (loadWatched === undefined || loadWatched.length === 0) {
     filmsContainer.innerHTML = "";
-    emptyLibraryImg = `<div class="empty-library-img"></div>
+    emptyLibraryImg = `<div>
+      <img class="empty-library-img" src="https://images.everyeye.it/img-notizie/pulp-fiction-cosa-vincent-vega-amsterdam-scopriamolo-insieme-v4-465501-1280x960.jpg" alt="empty-img">
+    </div>
     <p class="empty-library-text">Vincent can't find your watched films :(</p>
     `;
     filmsContainer.insertAdjacentHTML("beforeend", emptyLibraryImg);
-    console.log(11);
     return;
   } else {
     appendFilm(loadWatched);
@@ -61,18 +55,15 @@ ref.cardContainer.addEventListener("click", onClickCard);
 async function onClickCard(e) {
   e.preventDefault();
 
-  console.log(e.target);
+  // console.log(e.target);
   if (e.target.nodeName !== "DIV" && e.target.nodeName !== "UL") {
     if (e.target.nodeName === "IMG") {
       const id = Number(
         e.target.parentElement.parentElement.parentElement.dataset.id
       );
-      console.log(id);
       // console.log(e.target.parentElement.parentElement.parentElement);
       const allDetails = load("allWatchedMovies");
-      console.log(allDetails);
       const details = allDetails.find(element => element.id === id);
-      console.log(details);
       renderModal(details);
     }
     if (e.target.nodeName === "P") {
@@ -82,7 +73,6 @@ async function onClickCard(e) {
       // console.log(e.target.parentElement.parentElement.parentElement);
       const allDetails = load("allWatchedMovies");
       const details = allDetails.find(element => element.id === id);
-      console.log(details);
       renderModal(details);
     }
   }
@@ -141,7 +131,7 @@ async function onClickCard(e) {
             </p>
           </div>
           <div class="modal__button-wrap" data-id="${id}">
-            <button class="modal__button btn-remove-watch" type="submit">remove from Watched</button>
+            <button class="modal__button btn-remove-watch" type="button">remove from Watched</button>
           </div>
         </div>
       </div>
@@ -169,7 +159,7 @@ async function onClickCard(e) {
     }
 
     function clickForCloseModal(event) {
-      console.log(event.target.classList.value);
+      // console.log(event.target.classList.value);
       if (event.target.classList.value === "basicLightbox__placeholder") {
         modal.close();
       }
@@ -179,14 +169,19 @@ async function onClickCard(e) {
   }
 
   addListener();
+
+  const removeWatchBtn = document.querySelector('.btn-remove-watch');
+  removeWatchBtn.addEventListener('click', onRemoveWatchBtnClick);
 }
 
 // ==========УДАЛЕНИЕ ИЗ БИБЛИОТЕКИ============
-
-const removeWatchBtn = document.querySelector('.btn-remove-watch');
-console.log(removeWatchBtn);
-// removeWatchBtn.addEventListener('click', onRemoveWatchBtnClick);
-
-// function onRemoveWatchBtnClick (event) {
-//   localStorage.removeItem("allWatchedMovies");
-// };
+function onRemoveWatchBtnClick (event) {
+  let index;
+  newWatched.push(loadWatched);
+  newWatched.forEach(({ id }, i) => (id === load(`allWatchedMovies`).id ? (index = i) : i));
+  newWatched.splice(index, 1);
+    save(`allWatchedMovies`, newWatched);
+    renderWatched();
+    console.log(event.target);
+    modal.close();
+};
