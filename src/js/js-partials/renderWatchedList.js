@@ -17,9 +17,7 @@ function renderWatched(e) {
   const loadWatched = load("allWatchedMovies");
   if (loadWatched === undefined || loadWatched.length === 0) {
     filmsContainer.innerHTML = "";
-    emptyLibraryImg = `<div>
-      <img class="empty-library-img" src="https://images.everyeye.it/img-notizie/pulp-fiction-cosa-vincent-vega-amsterdam-scopriamolo-insieme-v4-465501-1280x960.jpg" alt="empty-img">
-    </div>
+    emptyLibraryImg = `<div class="empty-library-img"></div>
     <p class="empty-library-text">Vincent can't find your watched films :(</p>
     `;
     filmsContainer.insertAdjacentHTML("beforeend", emptyLibraryImg);
@@ -177,14 +175,6 @@ async function onClickCard(e) {
 
 // ==========УДАЛЕНИЕ ИЗ БИБЛИОТЕКИ============
 function onRemoveWatchBtnClick (event) {
-  // let index;
-  // newWatched.push(loadWatched);
-  // newWatched.forEach(({ id }, i) => (id === load(`allWatchedMovies`).id ? (index = i) : i));
-  // newWatched.splice(index, 1);
-  //   save(`allWatchedMovies`, newWatched);
-  //   renderWatched();
-  //   console.log(event.target);
-  //   modal.close();
   let index;
     loadWatched.forEach(({ id }, i) => (id === fetch.id ? (index = i) : i));
     allWatched.splice(index, 1);
