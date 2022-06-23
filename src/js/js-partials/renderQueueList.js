@@ -1,15 +1,13 @@
 // import filmCard from "../../templates/library-films.hbs";
 import { appendFilm } from "./renderWatchedList";
-import { save , load } from "./onButtonClick";
+import { save, load } from "./onButtonClick";
 import * as basicLightbox from "basiclightbox";
 import { allQueue } from "./onButtonClick";
 
-
-// const library = document.querySelector(".js-films-list-library");
 const queueBtn = document.querySelector(".library__queue-btn");
-// const watchedBtn = document.querySelector(".library__watched-btn");
 const filmsContainer = document.querySelector(".films__container");
 const loadQueue = load("allQueueMovies");
+const watchedBtn = document.querySelector(".library__watched-btn");
 
 queueBtn.addEventListener("click", onQueueBtnClick);
 
@@ -17,15 +15,15 @@ function onQueueBtnClick() {
   const loadQueue = load("allQueueMovies");
 
   if (loadQueue === undefined || loadQueue.length === 0) {
-    console.log(12);
     filmsContainer.innerHTML = "";
     const emptyLibraryImg = `<div class="empty-library-img"></div>
     <p class="empty-library-text">Vincent can't find your queue films :(</p>
     `;
     filmsContainer.insertAdjacentHTML("beforeend", emptyLibraryImg);
-  return;
-} else {
-    appendFilm(loadQueue);}
+    return;
+  } else {
+    appendFilm(loadQueue);
+  }
 }
 
 // ==============РЕНДЕР МОДАЛКИ================
@@ -44,7 +42,6 @@ ref.cardContainer.addEventListener("click", onClickCard);
 async function onClickCard(e) {
   e.preventDefault();
   if (!queueBtn.classList.contains("is-active")) return;
-
   // console.log(e.target);
   if (e.target.nodeName !== "DIV" && e.target.nodeName !== "UL") {
     if (e.target.nodeName === "IMG") {
@@ -54,9 +51,7 @@ async function onClickCard(e) {
       // console.log(id);
       // console.log(e.target.parentElement.parentElement.parentElement);
       const allDetails = load("allQueueMovies");
-      console.log(allDetails);
       const details = allDetails.find(element => element.id === id);
-      console.log(details);
       renderModalQueue(details);
     }
     if (e.target.nodeName === "P") {
@@ -64,7 +59,6 @@ async function onClickCard(e) {
       // console.log(e.target.parentElement.parentElement.parentElement);
       const allDetails = load("allQueueMovies");
       const details = allDetails.find(element => element.id === id);
-      console.log(details);
       renderModalQueue(details);
     }
   }
@@ -79,7 +73,6 @@ async function onClickCard(e) {
     about,
     genre,
   }) {
-    console.log({id});
     const modal = basicLightbox.create(
       `
     <div class="modal__container">
@@ -161,15 +154,15 @@ async function onClickCard(e) {
 
   addListener();
 
-  const removeQueueBtn = document.querySelector('.btn-remove-queue');
-  removeQueueBtn.addEventListener('click', onRemoveQueueBtnClick);
+  const removeQueueBtn = document.querySelector(".btn-remove-queue");
+  removeQueueBtn.addEventListener("click", onRemoveQueueBtnClick);
 }
 
 // ==========УДАЛЕНИЕ ИЗ БИБЛИОТЕКИ============
-function onRemoveQueueBtnClick (event) {
+function onRemoveQueueBtnClick(event) {
   let index;
-    loadQueue.forEach(({ id }, i) => (id === fetch.id ? (index = i) : i));
-    allQueue.splice(index, 1);
-    save(`allQueueMovies`, allQueue);
-    onQueueBtnClick();
-};
+  loadQueue.forEach(({ id }, i) => (id === fetch.id ? (index = i) : i));
+  allQueue.splice(index, 1);
+  save(`allQueueMovies`, allQueue);
+  onQueueBtnClick();
+}
