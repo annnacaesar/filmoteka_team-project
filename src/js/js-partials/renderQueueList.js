@@ -5,9 +5,9 @@ import * as basicLightbox from "basiclightbox";
 import { allQueue } from "./onButtonClick";
 
 
-const library = document.querySelector(".js-films-list-library");
+// const library = document.querySelector(".js-films-list-library");
 const queueBtn = document.querySelector(".library__queue-btn");
-const watchedBtn = document.querySelector(".library__watched-btn");
+// const watchedBtn = document.querySelector(".library__watched-btn");
 const filmsContainer = document.querySelector(".films__container");
 const loadQueue = load("allQueueMovies");
 
@@ -43,6 +43,7 @@ ref.cardContainer.addEventListener("click", onClickCard);
 
 async function onClickCard(e) {
   e.preventDefault();
+  if (!queueBtn.classList.contains("is-active")) return;
 
   // console.log(e.target);
   if (e.target.nodeName !== "DIV" && e.target.nodeName !== "UL") {

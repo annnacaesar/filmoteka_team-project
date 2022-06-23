@@ -26,6 +26,7 @@ function renderWatched(e) {
 }
 
 export function appendFilm(films) {
+  console.log(films);
   const normalObjs = films.map(film => {
     film.genre.length <= 3
       ? (film.genre = film.genre.join(", "))
@@ -51,6 +52,7 @@ ref.cardContainer.addEventListener("click", onClickCard);
 
 async function onClickCard(e) {
   e.preventDefault();
+  if (!watchedBtn.classList.contains("is-active")) return;
 
   // console.log(e.target);
   if (e.target.nodeName !== "DIV" && e.target.nodeName !== "UL") {
