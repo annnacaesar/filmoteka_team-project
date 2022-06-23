@@ -1,4 +1,4 @@
-#page-buttons {
+.page-buttons {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6,13 +6,18 @@
 }
 
 .button-page {
+  padding-top: 13px;
+  padding-bottom: 11px;
+  padding-left: 13px;
+  padding-right: 13px;
+
   border-radius: 5px;
   background-color: #fff;
   font-family: inherit;
   font-weight: 500;
   &.arrow {
     background-color: var(--background-color);
-    padding: 12px 12px 12px 12px;
+    padding: 10px;
   }
   &.active {
     padding: 13px 13px 11px 13px;
@@ -20,26 +25,32 @@
     color: var(--secondary-text-color);
   }
   &:not(:last-child) {
-    margin-right: 16px;
+    margin-right: 2px;
+  }
+
+  &:not(.arrow):not(.active):hover {
+    background-color: var(--accent-color);
+    color: var(--secondary-text-color);
+    opacity: 85%;
   }
 }
 
 .page-buttons__first-points {
   display: flex;
   align-items: center;
-  margin-right: 5px;
-  padding-right: 11px;
+  margin-right: 16px;
+  margin-left: 16px;
 }
 .page-buttons__last-points {
   display: flex;
   align-items: center;
-  margin-right: 5px;
-  padding-right: 11px;
+  margin-right: 16px;
 }
 
 .firstButton-and-threeDots {
   display: flex;
   align-items: center;
+  margin-left: 10px;
 }
 .lastButton-and-threeDots {
   display: flex;
@@ -60,20 +71,14 @@
     clip-path: inset(50%);
     margin: -1px;
   }
+  .page-buttons__pagination {
+    margin-right: 5px !important;
+    margin-left: 5px;
+  }
 }
-.pagination {
+.page-buttons__pagination {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-right: 16px;
-}
-#paginationButton {
-  padding-top: 13px;
-  padding-bottom: 11px;
-  // &:not(.active) {
-  //   &:hover,
-  //   :focus {
-  //     background-color: grey;
-  //   }
-  // }
 }

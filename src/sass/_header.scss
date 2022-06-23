@@ -2,32 +2,72 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./../images/header-main/header320.jpg");
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.56),
+      rgba(0, 0, 0, 0.56)
+    ),
+    url("./../images/header-main/header320.jpg");
   @include mq(retina) {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./../images/header-main/header320@2x.jpg");
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url("./../images/header-main/header320@2x.jpg");
   }
 
   @include mq(mobile) {
     // background-size: cover;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./../images/header-main/header320.jpg");
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url("./../images/header-main/header320.jpg");
     @include mq(retina) {
-      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./../images/header-main/header320@2x.jpg");
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url("./../images/header-main/header320@2x.jpg");
     }
   }
 
   @include mq(tablet) {
     // background-size: contain;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./../images/header-main/header768.jpg");
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url("./../images/header-main/header768.jpg");
     @include mq(retina) {
-      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./../images/header-main/header768@2x.jpg");
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url("./../images/header-main/header768@2x.jpg");
     }
   }
 
   @include mq(desktop) {
     // background-size: contain;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./../images/header-main/header1024.jpg");
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url("./../images/header-main/header1024.jpg");
     @include mq(retina) {
-      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./../images/header-main/header1024@2x.jpg");
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url("./../images/header-main/header1024@2x.jpg");
     }
   }
 
@@ -44,32 +84,72 @@
   background-position: center;
   background-size: cover;
   background-color: rgba(0, 0, 0, 0.56);
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./../images/header-library/library320.jpg");
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.56),
+      rgba(0, 0, 0, 0.56)
+    ),
+    url("./../images/header-library/library320.jpg");
   @include mq(retina) {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./../images/header-library/library320@2x.jpg");
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url("./../images/header-library/library320@2x.jpg");
   }
 
   @include mq(mobile) {
     background-size: cover;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./../images/header-library/library320.jpg");
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url("./../images/header-library/library320.jpg");
     @include mq(retina) {
-      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./../images/header-library/library320@2x.jpg");
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url("./../images/header-library/library320@2x.jpg");
     }
   }
 
   @include mq(tablet) {
     background-size: cover;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./../images/header-library/library768.jpg");
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url("./../images/header-library/library768.jpg");
     @include mq(retina) {
-      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./../images/header-library/library768@2x.jpg");
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url("./../images/header-library/library768@2x.jpg");
     }
   }
 
   @include mq(desktop) {
     background-size: cover;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./../images/header-library/library1024.jpg");
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url("./../images/header-library/library1024.jpg");
     @include mq(retina) {
-      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./../images/header-library/library1024@2x.jpg");
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url("./../images/header-library/library1024@2x.jpg");
     }
   }
 
@@ -83,7 +163,7 @@
 
 .logo {
   margin-top: 40px;
- 
+
   @include mq(tablet) {
     margin-left: 20px;
     display: flex;
@@ -118,63 +198,62 @@
 .nav {
   display: flex;
   margin-top: 40px;
-  
+
   &__list {
     display: flex;
     align-items: center;
     justify-content: left;
     margin-right: 20px;
-  @include mq(tablet){
+    @include mq(tablet) {
       margin-right: 40px;
     }
   }
 
-  &__item{
+  &__item {
     font-size: 10px;
-    @include mq(tablet){
+    @include mq(tablet) {
       font-size: 12px;
     }
   }
 
   &__item:not(:last-child) {
     margin-right: 20px;
-    @include mq(tablet){
+    @include mq(tablet) {
       margin-right: 40px;
     }
   }
 
-  &__btn-wrapper{
+  &__btn-wrapper {
     height: 30px;
-    @include mq(tablet){
+    @include mq(tablet) {
       display: flex;
     }
   }
 
-
-  &__item-button{
+  &__item-button {
     min-width: 56px;
     padding: 5px;
     padding-bottom: 3px;
     font-size: 10px;
-    @include mq(tablet){
+    @include mq(tablet) {
       font-size: 12px;
     }
   }
 
-  &__item-button:first-child{
+  &__item-button:first-child {
     margin-bottom: 5px;
-    @include mq(tablet){
+    @include mq(tablet) {
       margin-bottom: 0;
       margin-right: 5px;
     }
   }
 
-  &__item-button:focus{
+  &__item-button:focus {
     background-color: #ab8d7852;
   }
 
   &__item-button:hover,
-  &__item-button:focus{
+  &__item-button:focus {
     color: #fff;
   }
 
@@ -231,6 +310,10 @@
   }
 }
 
+.header__input::placeholder {
+  color: var(--secondary-text-color);
+}
+
 .input__search-btn {
   position: absolute;
   content: "";
@@ -284,8 +367,6 @@
   font-weight: 700;
   font-size: 32px;
   color: var(--accent-color);
-
-
 
   @include mq(tablet) {
     font-size: 52px;
