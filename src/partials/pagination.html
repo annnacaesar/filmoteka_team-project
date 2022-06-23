@@ -1,13 +1,21 @@
-<div id="page-buttons">
-  <button class="button-page arrow" type="button" aria-label="previous-page">
+<div class="pagination">
+  <button
+    class="pagination__button--arrow"
+    type="button"
+    aria-label="previous-page"
+  >
     <svg width="16" height="16">
       <use href="./images/symbol-defs.svg#icon-arrow-left2"></use>
     </svg>
   </button>
-  <div class="firstButton-and-threeDots hidden-in-mobile"></div>
-  <div class="pagination"></div>
-  <div class="lastButton-and-threeDots hidden-in-mobile"></div>
-  <button class="button-page arrow" type="button" aria-label="next-page">
+  <div class="pagination__container--first-button hidden-in-mobile"></div>
+  <div class="pagination__container--buttons"></div>
+  <div class="pagination__container--last-button hidden-in-mobile"></div>
+  <button
+    class="pagination__button--arrow"
+    type="button"
+    aria-label="next-page"
+  >
     <svg width="16" height="16">
       <use href="./images/symbol-defs.svg#icon-arrow-right2"></use>
     </svg>

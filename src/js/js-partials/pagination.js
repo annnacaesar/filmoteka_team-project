@@ -8,12 +8,13 @@ const apiService = new MovieApiService();
 const refs = {
   arrowLeft: document.querySelector("button[aria-label='previous-page'"),
   arrowRight: document.querySelector("button[aria-label='next-page'"),
-  pagination: document.querySelector(".pagination"),
-  firstButton: document.querySelector(".firstButton-and-threeDots"),
-  lastButton: document.querySelector(".lastButton-and-threeDots"),
+  buttons: document.querySelector(".pagination__container--buttons"),
+  firstButton: document.querySelector(".pagination__container--first-button"),
+  lastButton: document.querySelector(".pagination__container--last-button"),
   filmsContainerIndex: document.querySelector(".js-films-list-index"),
   inputError: document.querySelector(".input__error"),
   searchSpan: document.querySelector(".search-span"),
+  pagination: document.querySelector(".pagination"),
 };
 
 let page = 1;
@@ -56,11 +57,11 @@ function renderButtons(currentPage, pages) {
 
   for (let i = beforeActivePage; i <= afterActivePage; i += 1) {
     if (i === page) {
-      const pageButton = `<button id="paginationButton" data-page="${i}" class="button-page paginationButton active">${i}</button>`;
-      refs.pagination.insertAdjacentHTML("beforeend", pageButton);
+      const pageButton = `<button data-page="${i}" class="pagination__button active">${i}</button>`;
+      refs.buttons.insertAdjacentHTML("beforeend", pageButton);
     } else {
-      const pageButton = `<button id="paginationButton" data-page="${i}" class="button-page paginationButton">${i}</button>`;
-      refs.pagination.insertAdjacentHTML("beforeend", pageButton);
+      const pageButton = `<button data-page="${i}" class="pagination__button">${i}</button>`;
+      refs.buttons.insertAdjacentHTML("beforeend", pageButton);
     }
   }
 
@@ -98,11 +99,59 @@ function renderButtons(currentPage, pages) {
   }
 
   //удобная замена для слушателей
-  refs.arrowLeft.onclick = onClickArrowLeft;
-  refs.arrowRight.onclick = onClickArrowRight;
-  refs.pagination.onclick = onClickButton;
-  refs.firstButton.onclick = onClickFirstButton;
-  refs.lastButton.onclick = onClickLastButton;
+  // refs.arrowLeft.onclick = onClickArrowLeft;
+  // refs.arrowRight.onclick = onClickArrowRight;
+  // refs.buttons.onclick = onClickButton;
+  // refs.firstButton.onclick = onClickFirstButton;
+  // refs.lastButton.onclick = onClickLastButton;
+}
+
+refs.pagination.addEventListener("click", onClickPagination);
+
+function onClickPagination(event) {
+  //если клик не в кнопку, а в див - ничо не делаем.
+  if (event.target === event.currentTarget) return;
+  console.dir(event.target);
+  console.dir(event.currentTarget);
+  console.log(event.target.classList);
+
+  // левая стрелка
+  if (event.target.ariaLabel === "previous-page") {
+    onClickArrowLeft();
+    return;
+  }
+  // правая стрелка
+  if (event.target.ariaLabel === "next-page") {
+    onClickArrowRight();
+    return;
+  }
+  //первая кнопка-цифра (перед точками)
+  if (
+    event.target.parentElement.classList.contains(
+      "pagination__container--first-button"
+    )
+  ) {
+    onClickFirstButton(event);
+    return;
+  }
+  //последняя кнопка-цифра (после точек)
+  if (
+    event.target.parentElement.classList.contains(
+      "pagination__container--last-button"
+    )
+  ) {
+    onClickLastButton(event);
+    return;
+  }
+  //все остальные кнопки
+  if (
+    event.target.parentElement.classList.contains(
+      "pagination__container--buttons"
+    )
+  ) {
+    onClickButton(event);
+    return;
+  }
 }
 
 function onClickFirstButton(event) {
@@ -135,7 +184,7 @@ function onClickArrowRight() {
 }
 
 function resetButtons() {
-  refs.pagination.innerHTML = "";
+  refs.buttons.innerHTML = "";
   refs.firstButton.innerHTML = "";
   refs.lastButton.innerHTML = "";
 }
@@ -151,7 +200,7 @@ function onClickButton(event) {
 //проверка существования точек после первой кнопки
 //нужно для их рендера или удаления
 function isFirstThreeDots() {
-  const isThreeDots = document.querySelector(".page-buttons__first-points");
+  const isThreeDots = document.querySelector(".pagination__points--first");
   if (isThreeDots === null) {
     return false;
   }
@@ -161,7 +210,7 @@ function isFirstThreeDots() {
 //проверка существования точек перед последней кнопкой
 //нужно для их рендера или удаления
 function isLastThreeDots() {
-  const isThreeDots = document.querySelector(".page-buttons__last-points");
+  const isThreeDots = document.querySelector(".pagination__points--last");
   if (isThreeDots === null) {
     return false;
   }
@@ -169,15 +218,15 @@ function isLastThreeDots() {
 }
 
 function renderFirstButtonAndDots() {
-  const firstButton = `<button id="paginationButton" data-page="1" class="button-page paginationButton">1</button>`;
-  const threeDots = `<span class='page-buttons__first-points'>···</span>`;
+  const firstButton = `<button data-page="1" class="pagination__button">1</button>`;
+  const threeDots = `<span class='pagination__points--first'>···</span>`;
   refs.firstButton.insertAdjacentHTML("beforeend", firstButton);
   refs.firstButton.insertAdjacentHTML("beforeend", threeDots);
 }
 
 function renderLastButtonAndDots(totalPages) {
-  const lastButton = `<button id="paginationButton" data-page="${totalPages}" class="button-page paginationButton">${totalPages}</button>`;
-  const threeDots = `<span class='page-buttons__last-points'>···</span>`;
+  const lastButton = `<button data-page="${totalPages}" class="pagination__button">${totalPages}</button>`;
+  const threeDots = `<span class='pagination__points--last'>···</span>`;
   refs.lastButton.insertAdjacentHTML("beforeend", threeDots);
   refs.lastButton.insertAdjacentHTML("beforeend", lastButton);
   refs.lastButton.style.marginRight = "10px";
@@ -234,7 +283,7 @@ function isQueryOrPopular(query, page) {
 
 //функция для поднятия в небеса
 function moveToTop() {
-  window.scrollTo(pageXOffset, 0);
+  window.scrollTo(scrollX, 0);
 }
 
 export { renderButtons, renderPaginationOnSearch, isQueryOrPopular };
