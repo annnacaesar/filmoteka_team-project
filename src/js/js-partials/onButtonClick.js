@@ -1,8 +1,8 @@
 let fetch = {};
 const watched = localStorage.getItem(`allWatchedMovies`);
 const queue = localStorage.getItem(`allQueueMovies`);
-const allWatched = watched ? JSON.parse(watched) : [];
-const allQueue = queue ? JSON.parse(queue) : [];
+export const allWatched = watched ? JSON.parse(watched) : [];
+export const allQueue = queue ? JSON.parse(queue) : [];
 
 
 export const save = (key, value) => {

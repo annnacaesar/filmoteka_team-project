@@ -1,6 +1,7 @@
 import filmCard from "../../templates/library-films.hbs";
 import { save , load } from "./onButtonClick";
 import * as basicLightbox from "basiclightbox";
+import { allWatched } from "./onButtonClick";
 
 const filmsContainer = document.querySelector(".films__container");
 const library = document.querySelector(".js-films-list-library");
@@ -176,12 +177,17 @@ async function onClickCard(e) {
 
 // ==========УДАЛЕНИЕ ИЗ БИБЛИОТЕКИ============
 function onRemoveWatchBtnClick (event) {
+  // let index;
+  // newWatched.push(loadWatched);
+  // newWatched.forEach(({ id }, i) => (id === load(`allWatchedMovies`).id ? (index = i) : i));
+  // newWatched.splice(index, 1);
+  //   save(`allWatchedMovies`, newWatched);
+  //   renderWatched();
+  //   console.log(event.target);
+  //   modal.close();
   let index;
-  newWatched.push(loadWatched);
-  newWatched.forEach(({ id }, i) => (id === load(`allWatchedMovies`).id ? (index = i) : i));
-  newWatched.splice(index, 1);
-    save(`allWatchedMovies`, newWatched);
+    loadWatched.forEach(({ id }, i) => (id === fetch.id ? (index = i) : i));
+    allWatched.splice(index, 1);
+    save(`allWatchedMovies`, allWatched);
     renderWatched();
-    console.log(event.target);
-    modal.close();
 };
