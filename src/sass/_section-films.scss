@@ -45,6 +45,7 @@
 }
 
 .films__wrapper {
+  padding: 4px;
   display: block;
   transition-property: transform;
   transition-duration: var(--transition-duration);
@@ -55,9 +56,25 @@
 .films__wrapper:focus {
   padding: 4px;
   transform: scale(1.05);
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.284);
   cursor: pointer;
   box-shadow: var(--box-shadow-hover);
   outline: none;
   border-radius: 5px;
+}
+
+.img__row {
+  color: var(--accent-color);
+  font-weight: 500;
+  background-color: #00000040;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  display: flex;
+  position: relative;
+  bottom: 30px;
+  font-size: 12px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  margin-bottom: -30px;
 }

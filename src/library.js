@@ -8,3 +8,5 @@ import './js/js-partials/renderQueueList';
 import './js/js-partials/loader';
 import './js/js-partials//onLibraryBtnsClick';
 import "./js/js-partials/theme";
+import "./js/js-partials/button-up";
+import "./js/js-partials/log-out";

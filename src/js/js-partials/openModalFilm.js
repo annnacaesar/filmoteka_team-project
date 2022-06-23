@@ -1,7 +1,13 @@
 import * as basicLightbox from "basiclightbox";
 import ApiService from "./API";
 import settings from "./settings";
-import { createConst, addWatched, addQueue, textContentWatched, textContentQueue  } from "./onButtonClick";
+import {
+  createConst,
+  addWatched,
+  addQueue,
+  textContentWatched,
+  textContentQueue,
+} from "./onButtonClick";
 import { addListener } from "./trailer";
 import { normalizationMovieObj } from "./normalization-obj";
 const { IMG_URL } = settings;
@@ -106,7 +112,6 @@ async function onClickCard(e) {
       {
         onShow: modal => {
           window.addEventListener("keydown", escapeKeyCloseModal);
-
           window.addEventListener("click", clickForCloseModal);
           modal.element().querySelector(".modal__close").onclick = modal.close;
         },
@@ -133,7 +138,7 @@ async function onClickCard(e) {
     }
 
     modal.show();
-    textContentWatched(id)
+    textContentWatched(id);
     textContentQueue(id);
   }
   const id = e.target.parentElement.parentElement.parentElement.dataset.id;

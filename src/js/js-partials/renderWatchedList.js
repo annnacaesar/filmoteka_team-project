@@ -1,31 +1,33 @@
 import filmCard from "../../templates/library-films.hbs";
+import { save , load } from "./onButtonClick";
+import * as basicLightbox from "basiclightbox";
+import { allWatched } from "./onButtonClick";
 
-const load = key => {
-  try {
-    const serializedState = localStorage.getItem(key);
-    return serializedState === null ? undefined : JSON.parse(serializedState);
-  } catch (error) {
-    console.error("Get state error: ", error.message);
-  }
-};
-
-
+const filmsContainer = document.querySelector(".films__container");
 const library = document.querySelector(".js-films-list-library");
-const queueBtn = document.querySelector(".library__queue-btn");
+// const queueBtn = document.querySelector(".library__queue-btn");
 const watchedBtn = document.querySelector(".library__watched-btn");
+let newWatched = [];
 
-window.addEventListener("load", renderLibrary);
-watchedBtn.addEventListener("click", renderLibrary);
-
+window.addEventListener("load", renderWatched);
+watchedBtn.addEventListener("click", renderWatched);
 const loadWatched = load("allWatchedMovies");
-console.log(loadWatched);
 
-function renderLibrary(e) {
+function renderWatched(e) {
   const loadWatched = load("allWatchedMovies");
-  appendFilm(loadWatched);
+  if (loadWatched === undefined || loadWatched.length === 0) {
+    filmsContainer.innerHTML = "";
+    emptyLibraryImg = `<div class="empty-library-img"></div>
+    <p class="empty-library-text">Vincent can't find your watched films :(</p>
+    `;
+    filmsContainer.insertAdjacentHTML("beforeend", emptyLibraryImg);
+    return;
+  } else {
+    appendFilm(loadWatched);
+  }
 }
 
-function appendFilm(films) {
+export function appendFilm(films) {
   const normalObjs = films.map(film => {
     film.genre.length <= 3
       ? (film.genre = film.genre.join(", "))
@@ -40,9 +42,6 @@ function appendFilm(films) {
 
 import * as basicLightbox from "basiclightbox";
 import settings from "./settings";
-// import { createConst, addWatched, addQueue } from "./onButtonClick";
-// import { normalizationMovieObj } from "./normalization-obj";
-// import { savedLocalInfo } from "./onButtonClick";
 import { addListener } from "./trailer";
 const { IMG_URL } = settings;
 
@@ -55,24 +54,24 @@ ref.cardContainer.addEventListener("click", onClickCard);
 async function onClickCard(e) {
   e.preventDefault();
 
-  console.log(e.target);
+  // console.log(e.target);
   if (e.target.nodeName !== "DIV" && e.target.nodeName !== "UL") {
     if (e.target.nodeName === "IMG") {
-      const id = Number(e.target.parentElement.parentElement.parentElement.dataset.id);
-      console.log(id);
+      const id = Number(
+        e.target.parentElement.parentElement.parentElement.dataset.id
+      );
       // console.log(e.target.parentElement.parentElement.parentElement);
       const allDetails = load("allWatchedMovies");
-      console.log(allDetails);
       const details = allDetails.find(element => element.id === id);
-      console.log(details);
       renderModal(details);
     }
     if (e.target.nodeName === "P") {
-      const id = e.target.parentElement.parentElement.parentElement.dataset.id;
+      const id = Number(
+        e.target.parentElement.parentElement.parentElement.dataset.id
+        );
       // console.log(e.target.parentElement.parentElement.parentElement);
       const allDetails = load("allWatchedMovies");
       const details = allDetails.find(element => element.id === id);
-      console.log(details);
       renderModal(details);
     }
   }
@@ -131,10 +130,7 @@ async function onClickCard(e) {
             </p>
           </div>
           <div class="modal__button-wrap" data-id="${id}">
-            <button class="modal__button btn-watch">add to Watched</button>
-            <button class="modal__button btn-queue modal__button--transparent">
-              add to queue
-            </button>
+            <button class="modal__button btn-remove-watch" type="button">remove from Watched</button>
           </div>
         </div>
       </div>
@@ -155,12 +151,14 @@ async function onClickCard(e) {
 
     function escapeKeyCloseModal(event) {
       if (event.code === "Escape") {
-        modal.close();
+        if (!modal.element().classList.contains("visually-hidden")) {
+          modal.close();
+        }
       }
     }
 
     function clickForCloseModal(event) {
-      console.log(event.target.classList.value);
+      // console.log(event.target.classList.value);
       if (event.target.classList.value === "basicLightbox__placeholder") {
         modal.close();
       }
@@ -171,7 +169,15 @@ async function onClickCard(e) {
 
   addListener();
 
-  // addWatched();
-
-  // addQueue();
+  const removeWatchBtn = document.querySelector('.btn-remove-watch');
+  removeWatchBtn.addEventListener('click', onRemoveWatchBtnClick);
 }
+
+// ==========УДАЛЕНИЕ ИЗ БИБЛИОТЕКИ============
+function onRemoveWatchBtnClick (event) {
+  let index;
+    loadWatched.forEach(({ id }, i) => (id === fetch.id ? (index = i) : i));
+    allWatched.splice(index, 1);
+    save(`allWatchedMovies`, allWatched);
+    renderWatched();
+};

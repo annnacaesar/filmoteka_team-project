@@ -1,0 +1,32 @@
+.empty-library-img {
+  margin: 0 auto;
+
+  @media screen and (min-width: 320px) {
+    width: 250px;
+    height: 280px;
+    background-size: cover;
+    background-image: url(../images/empty-library/empty-library-mobile.jpg);
+  }
+  @media screen and (min-width: $tablet) {
+    width: 450px;
+    height: 300px;
+    background-image: url(../images/empty-library/empty-library.jpg);
+    background-size: cover;
+  }
+  @media screen and (min-width: $desktop) {
+    width: 500px;
+    height: 350px;
+    background-image: url(../images/empty-library/empty-library.jpg);
+    background-size: cover;
+  }
+}
+
+.empty-library-text {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 16px;
+
+  margin-top: 20px;
+  text-align: center;
+  color: var(--accent-color);
+}

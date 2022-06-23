@@ -26,7 +26,10 @@
   display: flex;
   text-align: center;
   justify-content: center;
-  margin-top: 46px;
+  @media screen and (max-width: 767px) {
+    margin-top: 30px;
+  }
+  
 }
 
 .library__button {
