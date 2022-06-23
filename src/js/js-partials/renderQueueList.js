@@ -1,22 +1,26 @@
-import filmCard from "../../templates/library-films.hbs";
+// import filmCard from "../../templates/library-films.hbs";
 import { appendFilm } from "./renderWatchedList";
-import { load } from "./renderWatchedList";
+import { save , load } from "./onButtonClick";
+import * as basicLightbox from "basiclightbox";
 
 
 const library = document.querySelector(".js-films-list-library");
 const queueBtn = document.querySelector(".library__queue-btn");
 const watchedBtn = document.querySelector(".library__watched-btn");
 const filmsContainer = document.querySelector(".films__container");
+let newQueue = [];
 
 queueBtn.addEventListener("click", onQueueBtnClick);
 
-function onQueueBtnClick(e) {
+function onQueueBtnClick() {
   const loadQueue = load("allQueueMovies");
 
-  if (loadQueue === undefined || loadQueue === []) {
+  if (loadQueue === undefined || loadQueue.length === 0) {
     console.log(12);
     filmsContainer.innerHTML = "";
-    emptyLibraryImg = `<div class="empty-library-img"></div>
+    emptyLibraryImg = `<div>
+      <img class="empty-library-img" src="https://images.everyeye.it/img-notizie/pulp-fiction-cosa-vincent-vega-amsterdam-scopriamolo-insieme-v4-465501-1280x960.jpg" alt="empty-img">
+    </div>
     <p class="empty-library-text">Vincent can't find your queue films :(</p>
     `;
     filmsContainer.insertAdjacentHTML("beforeend", emptyLibraryImg);
@@ -41,13 +45,13 @@ ref.cardContainer.addEventListener("click", onClickCard);
 async function onClickCard(e) {
   e.preventDefault();
 
-  console.log(e.target);
+  // console.log(e.target);
   if (e.target.nodeName !== "DIV" && e.target.nodeName !== "UL") {
     if (e.target.nodeName === "IMG") {
       const id = Number(
         e.target.parentElement.parentElement.parentElement.dataset.id
       );
-      console.log(id);
+      // console.log(id);
       // console.log(e.target.parentElement.parentElement.parentElement);
       const allDetails = load("allQueueMovies");
       console.log(allDetails);
@@ -145,7 +149,7 @@ async function onClickCard(e) {
     }
 
     function clickForCloseModal(event) {
-      console.log(event.target.classList.value);
+      // console.log(event.target.classList.value);
       if (event.target.classList.value === "basicLightbox__placeholder") {
         modal.close();
       }
@@ -156,7 +160,18 @@ async function onClickCard(e) {
 
   addListener();
 
-  // addWatched();
-
-  // addQueue();
+  const removeQueueBtn = document.querySelector('.btn-remove-queue');
+  removeQueueBtn.addEventListener('click', onRemoveQueueBtnClick);
 }
+
+// ==========УДАЛЕНИЕ ИЗ БИБЛИОТЕКИ============
+function onRemoveQueueBtnClick (event) {
+  let index;
+  newQueue.push(load("allQueueMovies"));
+  newQueue.forEach(({ id }, i) => (id === load(`allWatchedMovies`).id ? (index = i) : i));
+  newQueue.splice(index, 1);
+    save(`allQueueMovies`, newQueue);
+    onQueueBtnClick();
+    console.log(event.target);
+    modal.close();
+};
