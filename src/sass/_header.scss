@@ -295,3 +295,16 @@
     font-size: 72px;
   }
 }
+
+.nav__list-library{
+  margin-right: 0;
+}
+
+.nav__item-log-out{
+  background-color: #fff;
+padding: 8px 5px 6px;
+min-width: 56px;
+@media screen and (min-width: 768px){
+  font-size: 12px;
+}
+}

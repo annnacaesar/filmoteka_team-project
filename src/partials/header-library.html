@@ -8,7 +8,7 @@
 				<span class="logo__text">Filmoteka</span>
 			</a>
 			<nav class="nav">
-				<ul class="nav__list">
+				<ul class="nav__list nav__list-library">
 					<li class="nav__item">
 						<a class="nav__link" href="index.html">home</a>
 					</li>
@@ -17,25 +17,57 @@
 							my library
 						</a>
 					</li>
+					<form
+						class="nav__form-log-out"
+						method="LINK"
+						action="index.thml"
+					>
+						<input
+							class="nav__item-button nav__item-log-out button"
+							type="submit"
+							value="log out"
+						/>
+					</form>
+					<!-- <li class="nav__item-button nav__item-log-out button">
+						<a href="./index.html">log out</a>
+					</li> -->
 				</ul>
 			</nav>
 		</div>
 		<div class="container toolbar-library">
-		
 			<div class="theme-switch">
-				<svg class="theme-switch-icon" width="20px" height="20px" role="img" aria-label="Іконка сонця">
+				<svg
+					class="theme-switch-icon"
+					width="20px"
+					height="20px"
+					role="img"
+					aria-label="Іконка сонця"
+				>
 					<use href="./images/symbol-defs.svg#sun"></use>
 				</svg>
-		
+
 				<div class="theme-switch-control">
-					<input class="theme-switch-toggle" type="checkbox" name="theme" id="theme-switch-toggle"
-						aria-label="Перемикач теми" />
-					<label aria-hidden="true" class="theme-switch-track" for="theme-switch-toggle">
-					</label>
+					<input
+						class="theme-switch-toggle"
+						type="checkbox"
+						name="theme"
+						id="theme-switch-toggle"
+						aria-label="Перемикач теми"
+					/>
+					<label
+						aria-hidden="true"
+						class="theme-switch-track"
+						for="theme-switch-toggle"
+					></label>
 					<div aria-hidden="true" class="theme-switch-marker"></div>
 				</div>
-		
-				<svg class="theme-switch-icon" width="20px" height="20px" aria-label="Іконка місяця">
+
+				<svg
+					class="theme-switch-icon"
+					width="20px"
+					height="20px"
+					aria-label="Іконка місяця"
+				>
 					<use href="./images/symbol-defs.svg#moon"></use>
 				</svg>
 			</div>
