@@ -19,7 +19,7 @@ function onQueueBtnClick() {
   if (loadQueue === undefined || loadQueue.length === 0) {
     console.log(12);
     filmsContainer.innerHTML = "";
-    emptyLibraryImg = `<div class="empty-library-img"></div>
+    const emptyLibraryImg = `<div class="empty-library-img"></div>
     <p class="empty-library-text">Vincent can't find your queue films :(</p>
     `;
     filmsContainer.insertAdjacentHTML("beforeend", emptyLibraryImg);
@@ -78,6 +78,7 @@ async function onClickCard(e) {
     about,
     genre,
   }) {
+    console.log({id});
     const modal = basicLightbox.create(
       `
     <div class="modal__container">
