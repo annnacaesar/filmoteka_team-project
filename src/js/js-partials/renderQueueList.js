@@ -19,9 +19,7 @@ function onQueueBtnClick() {
   if (loadQueue === undefined || loadQueue.length === 0) {
     console.log(12);
     filmsContainer.innerHTML = "";
-    emptyLibraryImg = `<div>
-      <img class="empty-library-img" src="https://images.everyeye.it/img-notizie/pulp-fiction-cosa-vincent-vega-amsterdam-scopriamolo-insieme-v4-465501-1280x960.jpg" alt="empty-img">
-    </div>
+    emptyLibraryImg = `<div class="empty-library-img"></div>
     <p class="empty-library-text">Vincent can't find your queue films :(</p>
     `;
     filmsContainer.insertAdjacentHTML("beforeend", emptyLibraryImg);
