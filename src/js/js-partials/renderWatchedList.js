@@ -1,5 +1,5 @@
 import filmCard from "../../templates/library-films.hbs";
-import { save , load } from "./onButtonClick";
+import { save, load } from "./onButtonClick";
 import * as basicLightbox from "basiclightbox";
 import { allWatched } from "./onButtonClick";
 
@@ -26,7 +26,6 @@ function renderWatched(e) {
 }
 
 export function appendFilm(films) {
-  console.log(films);
   const normalObjs = films.map(film => {
     film.genre.length <= 3
       ? (film.genre = film.genre.join(", "))
@@ -68,7 +67,7 @@ async function onClickCard(e) {
     if (e.target.nodeName === "P") {
       const id = Number(
         e.target.parentElement.parentElement.parentElement.dataset.id
-        );
+      );
       // console.log(e.target.parentElement.parentElement.parentElement);
       const allDetails = load("allWatchedMovies");
       const details = allDetails.find(element => element.id === id);
@@ -169,15 +168,15 @@ async function onClickCard(e) {
 
   addListener();
 
-  const removeWatchBtn = document.querySelector('.btn-remove-watch');
-  removeWatchBtn.addEventListener('click', onRemoveWatchBtnClick);
+  const removeWatchBtn = document.querySelector(".btn-remove-watch");
+  removeWatchBtn.addEventListener("click", onRemoveWatchBtnClick);
 }
 
 // ==========УДАЛЕНИЕ ИЗ БИБЛИОТЕКИ============
-function onRemoveWatchBtnClick (event) {
+function onRemoveWatchBtnClick(event) {
   let index;
-    loadWatched.forEach(({ id }, i) => (id === fetch.id ? (index = i) : i));
-    allWatched.splice(index, 1);
-    save(`allWatchedMovies`, allWatched);
-    renderWatched();
-};
+  loadWatched.forEach(({ id }, i) => (id === fetch.id ? (index = i) : i));
+  allWatched.splice(index, 1);
+  save(`allWatchedMovies`, allWatched);
+  renderWatched();
+}
