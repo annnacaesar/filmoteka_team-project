@@ -5,9 +5,7 @@ import { allWatched } from "./onButtonClick";
 
 const filmsContainer = document.querySelector(".films__container");
 const library = document.querySelector(".js-films-list-library");
-// const queueBtn = document.querySelector(".library__queue-btn");
 const watchedBtn = document.querySelector(".library__watched-btn");
-let newWatched = [];
 
 window.addEventListener("load", renderWatched);
 watchedBtn.addEventListener("click", renderWatched);
@@ -17,7 +15,7 @@ function renderWatched(e) {
   const loadWatched = load("allWatchedMovies");
   if (loadWatched === undefined || loadWatched.length === 0) {
     filmsContainer.innerHTML = "";
-    emptyLibraryImg = `<div class="empty-library-img"></div>
+    const emptyLibraryImg = `<div class="empty-library-img"></div>
     <p class="empty-library-text">Vincent can't find your watched films :(</p>
     `;
     filmsContainer.insertAdjacentHTML("beforeend", emptyLibraryImg);
